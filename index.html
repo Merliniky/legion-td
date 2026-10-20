@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1b2440">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>军团战争 · 英雄冲突 Legion TD</title>
+<meta name="description" content="魔兽争霸3 军团战争（Legion TD）风格的单机手机小游戏：建造兵团守住战线，派遣佣兵进攻对手，保护你的国王。">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="td.css?v=1">
+<link rel="stylesheet" href="lt.css?v=1">
+</head>
+<body class="td lt">
+<canvas id="cv"></canvas>
+<div id="ltHud" class="hidden">
+  <div class="hrow">
+    <div class="pill"><span class="lbl">波次</span><b id="hWave">1</b><i class="dim">/12</i></div>
+    <div class="pill" id="pTimer"><span class="ic">⏱</span><b id="hTimer">45</b></div>
+    <div class="pill" id="pGold"><span class="ic">💰</span><b id="hGold">0</b></div>
+    <div class="pill" id="pInc"><span class="ic">📈</span><b id="hInc">+20</b></div>
+    <button class="pill btn" id="speedBtn">1×</button>
+    <button class="pill btn" id="pauseBtn">⏸</button>
+  </div>
+  <div class="hrow2">
+    <div class="kbar me"><span class="kn">👑 我方国王</span><div class="kb"><i id="kMe"></i></div><b id="kMeT">2500</b></div>
+    <button class="kbar opp" id="oppBtn"><span class="kn">🤖 对手</span><div class="kb"><i id="kOpp"></i></div><b id="kOppT">2500</b><span class="eye" id="eyeT">👁 观战</span></button>
+  </div>
+  <div id="nextInfo"></div>
+</div>
+<div id="viewTag" class="hidden">👁 正在观看对手战线 · 点「返回」回到你的战线</div>
+<div id="ltPanel" class="hidden">
+  <div class="tabs">
+    <button class="tab on" data-tab="build">⚔ 建造</button>
+    <button class="tab" data-tab="merc">🐺 派兵</button>
+    <button class="tab" data-tab="king">👑 国王</button>
+    <button class="dbtn go" id="goBtn">▶ 开战</button>
+  </div>
+  <div class="tbody" id="tBuild"><div class="grid" id="rosterGrid"></div><div class="phint" id="bHint">选择兵种，再点战线上的空格建造</div></div>
+  <div class="tbody hidden2" id="tMerc"><div class="grid" id="mercGrid"></div><div class="phint" id="mHint">派出的佣兵会在下一波进攻对手，并永久增加你的收入</div></div>
+  <div class="tbody hidden2" id="tKing"><div id="kingBox"></div></div>
+  <div id="infoBox" class="hidden2"></div>
+</div>
+<div id="tdTip"></div>
+<div id="toasts"></div>
+<div id="flash"></div>
+<div id="banner2"></div>
+<div id="ltTitle" class="overlay show">
+  <div class="logo"><div class="l1">军团战争</div><div class="l2">HEROES CLASH · LEGION TD</div></div>
+  <div class="tdrules">
+    <p>⚔ 在你的战线上 <b>建造兵团</b>，每波开始时士兵会自动迎战</p>
+    <p>🔁 每波结束后，所有士兵 <b>复活并回到原位</b>，可升级或出售</p>
+    <p>🐺 <b>派遣佣兵</b> 进攻对手战线，并永久提高每波 <b>收入</b></p>
+    <p>👑 漏掉的敌人会攻击你的 <b>国王</b>，国王阵亡即失败</p>
+    <p>🏆 守住 <b>12 波</b>（第 12 波为骨龙王首领）或先击倒对手国王即可获胜</p>
+  </div>
+  <button class="big-btn" id="startBtn">开始游戏</button>
+  <div class="foot">英雄无敌3 生物 · 素材沿用「英雄冲突」（CC0，见 CREDITS.md）· 灵感来自魔兽争霸3 军团战争</div>
+</div>
+<div id="ltPause" class="overlay">
+  <div class="go-title">已暂停</div>
+  <div class="tbtns col"><button class="big-btn" id="resumeBtn">▶ 继续</button><button class="dbtn blue" id="restartBtn">↻ 重新开始</button><button class="dbtn stone" id="muteBtn">🔊 声音：开</button></div>
+</div>
+<div id="ltOver" class="overlay">
+  <div class="go-title" id="oTitle">胜利</div>
+  <div class="go-sub" id="oSub"></div>
+  <div class="tbtns col"><button class="big-btn" id="againBtn">再来一局</button></div>
+</div>
+<script src="audio.js?v=1"></script>
+<script src="lt_core.js?v=1"></script>
+<script type="importmap">{"imports":{"three":"./lib/three.module.min.js","three/addons/":"./lib/addons/"}}</script>
+<script type="module" src="lt.js?v=1"></script>
+</body>
+</html>
