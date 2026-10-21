@@ -173,3 +173,50 @@ R('h0CW',{k:0.98,h:1.0,torso:'default',head:'default',skin:0x8aa86a,hair:0x3a3a2
 R('h0CY',{k:1.12,h:1.15,bw:1.6,torso:'brute',head:'default',headS:0.85,skin:0xb8c8a8,torsoC:0xb8c8a8,legC:0x8a9a7a,sleeve:0xb8c8a8,handC:0x9aa88a,bootC:0x5a5a4a,eye:0xffe04a,weapon:'axe',wMetal:0x9a9aa0,off:'chain',atk:'swing',extras:['stitches','belly:0xc8d8b8','chains','spikes:0x6a6a6a']});
 R('h0D0',{k:1.12,h:1.18,bw:1.5,legs:'none',floatY:0.38,torso:'brute',head:'beast',headC:0x8a4a2a,helm:'horns',hornC:0x2a1a1a,skin:0x9a5a3a,torsoC:0x8a4a2a,lowC:0x6a3a2a,lowM:'n',sleeve:0x9a5a3a,handC:0x7a3a1a,eye:0x8aff4a,weapon:'trident',wMetal:0x5a5a5a,glow:0x8aff4a,pads:true,padC:0x2a2a2a,spikes:true,atk:'thrust',extras:['bwings:0x4a1a1a','tail:0x6a3a2a','aura:0x8aff4a']});
 R('h0D2',{k:1.12,plan:'flyer',skin:0xc8e0f0,skin2:0x8ab8d8,wingC:0x9ac8e8,wingM:'w',eye:0x6affff,crest:0xe8f8ff,neckLen:0.8,tailLen:0.6,wingSpan:1.15,alt:0.4,atk:'bite',extras:['spikes:0xe8f8ff','rings:0x9af0ff'],trail:0x9af0ff});
+// ===================== 召唤物 / 雇佣兵 / 波次怪：多数复用同类兵种配方（A=复制+覆盖），其余单独设计 =====================
+const A=(id,src,o)=>{TKR[id]={...TKR[src],...(o||{})};};
+// --- 召唤物 Summons ---
+R('n001',{k:0.8,plan:'quad',skin:0x3a5a2a,skin2:0x6a8a3a,headType:'wolf',eye:0x8aff4a,legLen:0.28,bodyLen:0.55,tailLen:0.3,claws:true,spikes:true,spikeC:0x8aff4a,atk:'bite'});
+A('n002','n001',{k:0.92,skin:0x5a3a7a,skin2:0x8a5ab0,eye:0xd06aff,spikeC:0xd06aff});
+A('u005','h0CS',{k:1.05,torsoC:0x6a1a1a,lowC:0x4a0a0a,eye:0xff4a2a,glow:0xff6a2a,accent:0xff6a2a,extras:['cape:0x4a0a0a','orbit:0xff6a2a','aura:0xff4a2a']});
+R('n00Q',{k:0.82,plan:'quad',skin:0x8a7a6a,skin2:0xb0a090,headType:'wolf',eye:0xffd02a,legLen:0.28,bodyLen:0.56,tailLen:0.32,tailW:1.4,claws:true,atk:'bite'});
+A('n00R','n00Q',{k:0.92,ghost:true,skin:0xc83a3a,skin2:0xff8a8a,eye:0xffe0a0,mane:true,maneC:0x8a1a1a});
+A('u011','h01R',{k:0.88});
+R('n004',{k:0.72,plan:'quad',skin:0x6a3a8a,skin2:0xb08ad8,headType:'lizard',eye:0xffe04a,legLen:0.22,bodyLen:0.45,tailLen:0.3,claws:true,spikes:true,spikeC:0xd8b0ff,atk:'bite'});
+A('h0AD','h0AE',{k:0.8});
+// --- 雇佣兵 Mercenaries ---
+A('h04O','h09H',{k:0.88});A('h04P','h09W',{k:0.88});A('h04R','h0CI',{k:0.9});A('h04S','h0BF',{k:0.95});
+R('h04Q',{k:0.72,plan:'flyer',skin:0x4a9a3a,skin2:0xd8e0a0,wingC:0x2a6a2a,eye:0xffe04a,neckLen:0.5,headS:1.2,tailLen:0.35,wingSpan:0.85,alt:0.4,atk:'bite'});
+A('h04T','h06O',{k:0.95});
+R('h04U',{k:0.95,plan:'quad',skin:0x4a8a8a,skin2:0xc8d8a0,headType:'lizard',eye:0xffe04a,legLen:0.3,bodyLen:0.7,bodyH:0.3,bw:1.15,tailLen:0.55,tailW:1.6,hump:true,spikes:true,spikeC:0x2a5a8a,claws:true,atk:'bite'});
+R('h04V',{k:1.15,plan:'quad',skin:0x8a7a6a,skin2:0xb0a088,headType:'boar',eye:0xffd02a,legLen:0.32,bodyLen:0.75,bodyH:0.38,bw:1.35,horns:true,hump:true,tailLen:0.12,saddle:0x8a2a2a,rider:0x6a4a2a,riderSkin:0x6a9a3a,riderHelm:0x8a8a8a,atk:'slam'});
+R('h04W',{k:1.0,h:1.0,bw:1.3,torso:'brute',head:'beast',headC:0x8a6a4a,skin:0x8a6a4a,torsoC:0x7a5a3a,legC:0x6a4a2a,sleeve:0x8a6a4a,handC:0x6a4a2a,bootC:0x4a3020,eye:0xffd02a,weapon:'hammer',wood:0x6a4a2a,wMetal:0x6a4a2a,atk:'slam',extras:['belly:0xb09070','bones']});
+A('h04X','h0C8',{k:1.0});A('h04Z','h0BS',{k:1.05});A('h050','h0BE',{k:0.95});A('h051','h0BH',{k:1.0});A('h052','h0BV',{k:1.0});A('h053','h0BG',{k:1.0});A('h056','h06P',{k:1.05});A('h057','h0CY',{k:1.15});
+R('h05M',{k:0.95,plan:'flyer',skin:0x7a7a84,skin2:0x9a9aa4,wingC:0x5a5a64,eye:0xff4a2a,neckLen:0.35,headS:1.2,tailLen:0.45,wingSpan:1.0,alt:0.45,atk:'claw',extras:['spikes:0x4a4a54']});
+A('h059','h07W',{k:1.05});
+R('h05B',{k:1.1,plan:'orb',glow:0x8a6aff,spikes:true,atk:'pulse',extras:['rings:0xb08aff']});
+A('h05A','h047',{k:1.15,torsoC:0x3a4a3a,legC:0x2a3a2a,armC:0x3a4a3a,headC:0x3a4a3a,eye:0x8aff4a,glow:0x8aff4a,extras:['chest:0x8aff4a','flamebody']});
+A('n003','h05A',{k:1.0});
+A('h0BR','h08Q',{k:1.2});
+// --- 波次怪 Wave creeps ---
+A('h000','h07L',{k:0.85});
+R('h005',{k:0.85,plan:'quad',skin:0xb08a3a,skin2:0xd8b060,headType:'lizard',eye:0x2a2a2a,legLen:0.18,bodyLen:0.6,bodyH:0.22,bw:1.3,tailLen:0.5,tailW:1.3,tailC:0x8a6a2a,claws:true,spikes:true,spikeC:0x6a4a1a,atk:'bite'});
+R('h001',{k:0.8,plan:'quad',skin:0x7a5a3a,skin2:0xa08060,headType:'boar',eye:0x2a2a2a,legLen:0.22,bodyLen:0.55,bodyH:0.3,bw:1.2,hump:true,spikes:true,spikeC:0xf0e8d8,tusks:true,tailLen:0.1,atk:'shoot'});
+R('h00I',{k:0.8,plan:'flyer',headType:'bird',skin:0x7a5a3a,skin2:0xe8e0d0,headC:0xf0f0f0,wing:'bird',wingC:0x6a4a2a,beak:0xf0c040,eye:0x2a2a2a,neckLen:0.35,headS:1.2,tailLen:0.25,wingSpan:1.0,alt:0.5,atk:'dive'});
+A('h003','h046',{k:0.92,torsoC:0x8a8a8a,legC:0x6a6a6a,armC:0x7a7a7a,headC:0x7a7a7a,eye:0xffd04a,glow:0xffd04a});
+R('h004',{k:0.98,h:1.0,torso:'default',head:'beast',headC:0x8a5a3a,helm:'horns',hornC:0x2a1a1a,skin:0x9a7ad8,torsoC:0x5a3a7a,legC:0x6a4a3a,legs:'hoof',eye:0xd06aff,weapon:'staff',wood:0x3a2a1a,glow:0xb06aff,atk:'cast',extras:['tail:0x6a4a3a','orbit:0xb06aff']});
+A('h007','h0CF');A('h008','h0CW');
+R('H05I',{k:1.3,h:1.2,bw:1.4,torso:'brute',head:'beast',headC:0x6a7ab8,helm:'crown',accent:0xffd04a,skin:0x6a7ab8,torsoC:0x4a3a7a,legC:0x3a2a5a,sleeve:0x6a7ab8,handC:0x5a6aa8,legs:'hoof',eye:0x8affff,weapon:'staff',wood:0xd8b860,glow:0xb08aff,pads:true,padC:0xd8b860,atk:'cast',extras:['tentacles:0x5a6aa8','tail:0x6a7ab8','aura:0xb08aff','orbit:0xb08aff']});
+A('h00B','h07S',{k:0.95});A('h00C','h07P',{k:1.0});A('h00D','h0BC',{k:1.05});
+R('h00E',{k:1.05,plan:'quad',skin:0x8a5a3a,skin2:0xa8785a,headType:'horse',eye:0x2a2a2a,legLen:0.36,bodyLen:0.64,tailLen:0.32,tailC:0x3a2a1a,mane:true,maneC:0x3a2a1a,rider:0xb8885a,riderSkin:0xc8986a,lance:0x8a8a8a,atk:'thrust'});
+R('h00F',{k:0.95,plan:'quad',skin:0xc8402a,skin2:0xf0a04a,headType:'lizard',eye:0xffe04a,legLen:0.24,bodyLen:0.68,bodyH:0.26,bw:1.15,tailLen:0.55,tailW:1.5,tailC:0xff7a2a,spikes:true,spikeC:0xffd04a,claws:true,atk:'shoot'});
+R('h00G',{k:1.1,h:1.1,bw:1.5,torso:'brute',head:'default',headS:0.8,skin:0xd8a0a0,torsoC:0xc89090,legC:0xa87070,sleeve:0xc89090,handC:0xa87070,bootC:0x5a3a3a,eye:0xffe04a,weapon:'glowfist',off:'glowfist',glow:0xff6a6a,atk:'slam',extras:['stitches','chains','bones']});
+R('h00H',{k:1.0,h:1.0,bw:1.4,torso:'rock',head:'rock',headC:0x5a8a3a,eye:0xffe04a,legs:'human',arms:'rock',torsoC:0x6a9a3a,legC:0x4a7a2a,armC:0x5a8a3a,bootC:0x3a5a2a,glow:0xb0ff4a,atk:'cast',extras:['chest:0xb0ff4a']});
+A('H05J','h07U',{k:1.4,skin:0x3a7a6a,skin2:0xd8c88a,headType:'lizard',hump:true,bodyH:0.32,spikeC:0xe8e0c8,eye:0xff4a2a});
+A('h03P','h08F',{k:0.9});
+R('h03Q',{k:1.15,plan:'quad',skin:0x6a4a2a,skin2:0x8a6a4a,headType:'boar',eye:0x2a2a2a,legLen:0.36,bodyLen:0.75,bodyH:0.38,bw:1.35,tusks:true,hump:true,mane:true,maneC:0x4a3020,tailLen:0.12,atk:'slam'});
+R('h03R',{k:1.1,h:1.05,bw:1.4,torso:'brute',head:'bird',headC:0x8a6a4a,skin:0x7a5a3a,torsoC:0x7a5a3a,legC:0x5a3a20,sleeve:0x7a5a3a,handC:0x5a3a20,legs:'digit',arms:'claw',eye:0xffd02a,helm:'horns',hornC:0xe8dcc0,atk:'claw',extras:['belly:0xc8a878','mane:0x6a4a2a']});
+A('h03T','h0CH',{k:1.05});A('h03U','h06Q',{k:1.0});A('h03S','h07V',{k:1.05});A('h03V','h022',{k:1.05});
+R('h03W',{k:0.95,plan:'tank',skin:0x3a4a3a,skin2:0x1a2a1a,barrels:1,spikes:true,eye:0x8aff4a,barrelC:0x2a3a2a,exhaust:true,atk:'recoil'});
+A('h006','h0D2',{k:1.0});A('H05K','h0BK',{k:1.4});
+A('h05L','h0D0',{k:1.35,skin:0x6a8a3a,torsoC:0x4a6a2a,lowC:0x3a5a2a,headC:0x5a7a2a,sleeve:0x6a8a3a,handC:0x4a6a2a,eye:0xff4a2a,glow:0xff4a2a,extras:['bwings:0x2a3a1a','tail:0x3a5a2a','aura:0x8aff4a','flamebody']});

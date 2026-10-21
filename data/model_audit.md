@@ -1,6 +1,6 @@
 # 模型审核 · Model audit (Legion TD Mega 3.41)
 
-生成：`node tools/gen_audit.mjs`。共 187 个建造兵种 + 11 个召唤物 + 31 波怪。
+生成：`node tools/gen_audit.mjs`。共 187 个建造兵种 + 11 个技能召唤物 + 24 个雇佣兵（派兵）+ 31 波怪。
 
 “旧资源”= models.js 中复用的英雄冲突 HoMM3 精灵（着色）或旧程序化模型；“WC3 模型”= 原图模型文件。严重度：❌ 轮廓/物种完全不对；⚠️ 物种接近但关键特征缺失（坐骑、翅膀、多头、幽灵感等）；✅ 基本相符。
 
@@ -171,12 +171,12 @@
 | h01Q | Skeletor 骷髅勇士 | SkeletonOrc | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01R | Fire Archer 火焰弓箭手 | SkeletonArcher | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01S | Dark Mage 骷髅黑法师 | SkeletonMage | 精灵 lich | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h01T | Carrion Spitter 腐尸吐吐虫 | CryptFiend | 程序化 spider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01U | Nightcrawler 夜行蛛 | NerubianSpiderLord | 程序化 spider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01T | Carrion Spitter 腐尸吐吐虫 | CryptFiend | 程序化 spider | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 spider） |
+| h01U | Nightcrawler 夜行蛛 | NerubianSpiderLord | 程序化 spider | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 spider） |
 | h01V | Gateguard 守门恶魔 | Felgaurd | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01W | Harbinger 先驱者 | FelgaurdBlue | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h01X | Overseer 监视者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01Y | Keeper of Souls 灵魂守护者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01X | Overseer 监视者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 statue） |
+| h01Y | Keeper of Souls 灵魂守护者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 statue） |
 | h01Z | Nightmare 梦魇 | FacelessOne | 精灵 beholder | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h020 | Doppelganger 幻影分身 | FacelessOne | 精灵 beholder | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h021 | Lord of Death 死亡领主 | EredarWarlock | 精灵 efreet | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
@@ -190,16 +190,16 @@
 | h07L | Swamprunner 沼泽奔行者 | MurlocMutant | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07N | Fangtooth 尖牙鱼人 | MurgulReaver | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07M | Defiler 毒牙鱼人 | MurgulBloodGill | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h07O | Egg Sack 蛋壳 | EggSack1 | 程序化 egg | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h07O | Egg Sack 蛋壳 | EggSack1 | 程序化 egg | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 egg） |
 | h07P | Sky Dragon 飞蛇 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
-| h07Q | Bottom Feeder 鳌虾 | Lobstrokkred | 程序化 crab | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07R | King Claw 蟹王 | Lobstrokkgreen | 程序化 crab | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h07Q | Bottom Feeder 鳌虾 | Lobstrokkred | 程序化 crab | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 crab） |
+| h07R | King Claw 蟹王 | Lobstrokkgreen | 程序化 crab | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 crab） |
 | h07S | Mermaid 美人鱼 | NagaSiren | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07T | Highborne 上层精灵 | NagaSummoner | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07U | Komodo 巨蜥 | SnapDragon | 精灵 basilisk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
 | h07V | Trident 三叉戟 | NagaMyrmidon | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07W | Sea Giant 海巨人 | SeaGiantGreen | 精灵 giant | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h07X | Hydra 九头蛇 | Hydra | 精灵 hydra | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h07X | Hydra 九头蛇 | Hydra | 精灵 hydra | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（精灵 hydra） |
 
 ## Beast 野兽
 
@@ -222,19 +222,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h01C | Ent 树人 | Ent | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01D | Guardian 守护古树 | AncientProtector | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01C | Ent 树人 | Ent | 程序化 tree | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 tree） |
+| h01D | Guardian 守护古树 | AncientProtector | 程序化 ancient | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 ancient） |
 | h01E | Ranger 游侠 | Archer | 精灵 woodElf | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01F | Meliai 树精 | Dryad | 精灵 woodElf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01H | Sprite 精灵龙 | FaerieDragon | 精灵 serpentFly | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 | h01G | Thunderbird 雷鸟 | Chimaera | 精灵 griffin | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
-| h01I | Tree of Travel 旅行之树 | AncientOfLore | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01J | Tree of Time 时间之树 | AncientOfWonder | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01I | Tree of Travel 旅行之树 | AncientOfLore | 程序化 ancient | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 ancient） |
+| h01J | Tree of Time 时间之树 | AncientOfWonder | 程序化 ancient | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 ancient） |
 | h01K | Halfbreed 混血熊人 | DruidoftheClaw | 精灵 behemoth | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
 | h01L | Goliath 山岭巨人 | MountainGiant | 精灵 giant | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h01M | Yggdrasil 世界树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01N | Tree of Life 生命之树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01O | Tree of Knowledge 智慧之树 | CorruptedTreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01M | Yggdrasil 世界树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 tree） |
+| h01N | Tree of Life 生命之树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 tree） |
+| h01O | Tree of Knowledge 智慧之树 | CorruptedTreeofLife | 程序化 tree | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 tree） |
 
 ## Undead 亡灵
 
@@ -244,8 +244,8 @@
 | h0CH | Revenant 亡魂 | RevenantOfTheWaves | 精灵 wight | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0CI | Ghoul 食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0CK | Frenzy Ghoul 狂暴食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h0CO | Meat Wagon 绞肉车 | MeatWagon | 程序化 wagon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CP | War Machine 战争机器 | InfernalCannonCannon | 程序化 wagon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0CO | Meat Wagon 绞肉车 | MeatWagon | 程序化 wagon | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 wagon） |
+| h0CP | War Machine 战争机器 | InfernalCannonCannon | 程序化 wagon | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 wagon） |
 | h0CQ | Necromancer 死灵法师 | Necromancer | 精灵 lich | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0CS | Necrolyte 克尔苏加德 | Kelthuzad | 精灵 lich | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0CV | Ghost 幽灵巫妖 | KelThuzadGhost | 精灵 lich | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
@@ -275,79 +275,108 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h0A8 | Small Land Mine 小型地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AT | Medium Land Mine 中型地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AU | Ultra Land Mine 超级地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AB | Machine Turret 机枪塔 | GoblinMobileTurret | 程序化 turret | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AA | Machine Robot 机器人 | GoblinDrillbot3000_A_005 | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0A8 | Small Land Mine 小型地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 mine） |
+| h0AT | Medium Land Mine 中型地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 mine） |
+| h0AU | Ultra Land Mine 超级地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 mine） |
+| h0AB | Machine Turret 机枪塔 | GoblinMobileTurret | 程序化 turret | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 turret） |
+| h0AA | Machine Robot 机器人 | GoblinDrillbot3000_A_005 | 程序化 robot | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 robot） |
 | h0AE | Geomancer 狗头人地卜师 | KoboldGeomancer | 精灵 gremlin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h0AF | Clockwreck 发条机器人 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AH | Flying Machine 飞行器 | Gyrocopter_V1 | 程序化 gyro | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AJ | Helicopter 直升机 | Minicopter | 程序化 copter | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0AF | Clockwreck 发条机器人 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 robot） |
+| h0AH | Flying Machine 飞行器 | Gyrocopter_V1 | 程序化 gyro | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 gyro） |
+| h0AJ | Helicopter 直升机 | Minicopter | 程序化 copter | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 copter） |
 | h0AL | Goblin Alchemist 地精炼金术士 | HeroGoblinAlchemist | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0AO | Goblin Blaster 地精爆破手 | IronGolem | 精灵 stoneGolem | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
-| h0AR | Steamroller 蒸汽压路机 | GoblinSteamRoller | 程序化 roller | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AQ | Assault Tank 突击坦克 | GoblinAssaultTank | 程序化 tank | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0AR | Steamroller 蒸汽压路机 | GoblinSteamRoller | 程序化 roller | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 roller） |
+| h0AQ | Assault Tank 突击坦克 | GoblinAssaultTank | 程序化 tank | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 tank） |
 
 ## Hybrid 混血
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h07D | Morph [Tier 1] 变形体·一阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07E | Morph [Tier 2] 变形体·二阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07G | Morph [Tier 3] 变形体·三阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07F | Morph [Tier 4] 变形体·四阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07H | Morph [Tier 5] 变形体·五阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07I | Morph [Tier 6] 变形体·六阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h07D | Morph [Tier 1] 变形体·一阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
+| h07E | Morph [Tier 2] 变形体·二阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
+| h07G | Morph [Tier 3] 变形体·三阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
+| h07F | Morph [Tier 4] 变形体·四阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
+| h07H | Morph [Tier 5] 变形体·五阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
+| h07I | Morph [Tier 6] 变形体·六阶 | QuestionMark | 程序化 morph | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 morph） |
 
 ## 召唤物 Summons
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| n001 | undefined 恶魔仆从 | felhound | 精灵 hellHound | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| n002 | undefined 狂热者 | FelstalkerPurple | 精灵 hellHound | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| n003 | undefined 地狱火 | Infernal | 精灵 stoneGolem | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| u005 | undefined 恶魔 | Kelthuzad | 精灵 lich | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| n00Q | undefined 狼 | TimberWolf | 精灵 cerberus | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| n00R | undefined 血狼 | Spiritwolf | 精灵 cerberus | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| u011 | undefined 火焰弓箭手 | BurningArcher | 精灵 skeleton | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07Y | undefined 小九头蛇 | Hydra | 精灵 hydra | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| n004 | undefined 小鬼 | zergling | 精灵 imp | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0AD | undefined 狗头人地卜师 | KoboldGeomancer | 精灵 gremlin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0AG | undefined 发条机器人 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| n001 | Fiend 恶魔仆从 | felhound | 精灵 hellHound | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| n002 | Fanatic 狂热者 | FelstalkerPurple | 精灵 hellHound | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| n003 | Infernal 地狱火 | Infernal | 精灵 stoneGolem | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| u005 | Diabolic 恶魔 | Kelthuzad | 精灵 lich | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| n00Q | Wolf 狼 | TimberWolf | 精灵 cerberus | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| n00R | Blood Wolf 血狼 | Spiritwolf | 精灵 cerberus | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| u011 | Fire Archer 火焰弓箭手 | BurningArcher | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07Y | Mini Hydra 小九头蛇 | Hydra | 精灵 hydra | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（精灵 hydra） |
+| n004 | Imp 小鬼 | zergling | 精灵 imp | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0AD | Geomancer 狗头人地卜师 | KoboldGeomancer | 精灵 gremlin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0AG | Clockwreck 发条机器人 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 robot） |
+
+## 雇佣兵 Mercenaries（派兵）
+
+| id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
+|---|---|---|---|---|---|
+| h04O | Militia 民兵 | Militia | 精灵 halberdier | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04P | Bowman 弓手 | HighElfArcher | 精灵 archer | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04R | Ghoul 食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04S | Warrior 兽人勇士 | Grunt | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04Q | Whelp 幼龙 | GreenDragonWelp | 精灵 greenDragon | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h04T | Hermit 隐士 | WitchDoctor | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04U | Dino 恐龙 | ThunderLizard | 精灵 basilisk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h04V | Commander 指挥官 | KotoBeast | 精灵 minotaur | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h04W | Furbolg 熊怪 | Furbolg | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h04X | Wyvern 双足飞龙 | WyvernRider | 精灵 wyvern | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h04Y | Chariot 投石车 | MeatWagon | 程序化 wagon | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 wagon） |
+| h04Z | Blood Orc 血兽人 | ChaosGrunt | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h050 | Frost Wolf 霜狼 | WhiteWolf | 精灵 cerberus | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h051 | Ice Troll 冰巨魔 | IceTroll | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h052 | Warlock 术士 | ChaosWarlockGreen | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h053 | Pandaren 熊猫人 | FurbolgPanda | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h055 | Ballista 弩车 | Ballista | 程序化 ballista | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 ballista） |
+| h056 | Shaman 萨满 | Shaman | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h057 | Pudge 帕吉 | Abomination | 精灵 gog | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h05M | Gargoyle 石像鬼 | Gargoyle | 精灵 stoneGargoyle | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h059 | Behemoth 巨兽 | SeaGiant | 精灵 giant | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h05B | Kraken 海妖 | ForgottenOne | 精灵 hydra | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（orb） |
+| h05A | Infernal 地狱火 | Infernal | 精灵 stoneGolem | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BR | Demon 恶魔大哥 | HeroDemonHunter | 精灵 devil | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 
 ## 波次怪 Wave creeps
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h002 | Crab 螃蟹 | SpiderCrabCreep | 程序化 crab | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h000 | Murloc 鱼人 | MurlocFlesheater_V1 | 精灵 lizardman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h005 | Scorpion 蝎子 | Archnathid | 精灵 manticore | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h001 | Quilbeast 箭猪 | QuillBeast | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00I | Hawk 鹰 | WarEagle | 精灵 griffin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h003 | Rock Golem 岩石傀儡 | RockGolem | 精灵 stoneGolem | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h004 | Satyr 萨特 | satyrhellcaller | 精灵 gnoll | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h007 | Acolyte 侍僧 | Acolyte | 精灵 monk | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h008 | Zombie 僵尸 | Zombie | 精灵 walkingDead | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| H05I | Draenei Chieftain 德莱尼酋长 | DranaiAkama | 精灵 giant | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00A | Clockwerk Goblin 发条地精 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h00B | Siren 海妖 | NagaSiren | 精灵 naga | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h00C | Couatl 羽蛇 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h00D | Tuskar Warrior 海象战士 | tuskar | 精灵 orc | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00E | Centaur 半人马 | Centaur | 精灵 centaur | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h00F | Salamander 火蜥蜴 | ThunderLizardVizier | 精灵 basilisk | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00G | Flesh Golem 血肉傀儡 | FleshGolem | 精灵 stoneGolem | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00H | Sludge Flinger 淤泥投掷者 | SludgeMonster | 精灵 gog | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h00J | Giant Spider 巨型蜘蛛 | Spider | 程序化 spider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| H05J | Dragon Turtle 龙龟 | DragonSeaTurtle | 精灵 basilisk | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h03P | Hippogryph 角鹰兽 | Hippogryph | 精灵 griffin | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h03Q | Mammoth 猛犸 | Mammoth | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h03R | Wildkin 枭兽 | Owlbear | 精灵 minotaur | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h03T | Revenant 亡魂 | Revenant | 精灵 wight | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h03U | Succubus 魅魔 | Demoness | 精灵 medusa | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h03S | Myrmidon 娜迦战士 | NagaMyrmidon | 精灵 naga | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h03V | Doom Guard 末日守卫 | DoomGuard | 精灵 pitFiend | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h03W | Juggernaut 主宰 | InfernalCannonCannon | 精灵 stoneGolem | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h006 | Frost Wyrm 冰霜巨龙 | FrostWyrm | 精灵 boneDragon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| H05K | Magnataur 猛犸人 | Magnataur | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h05L | Legion Lord 军团领主 | Mannoroth | 精灵 devil | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h002 | Crab 螃蟹 | SpiderCrabCreep | 程序化 crab | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 crab） |
+| h000 | Murloc 鱼人 | MurlocFlesheater_V1 | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h005 | Scorpion 蝎子 | Archnathid | 精灵 manticore | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h001 | Quilbeast 箭猪 | QuillBeast | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h00I | Hawk 鹰 | WarEagle | 精灵 griffin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h003 | Rock Golem 岩石傀儡 | RockGolem | 精灵 stoneGolem | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h004 | Satyr 萨特 | satyrhellcaller | 精灵 gnoll | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h007 | Acolyte 侍僧 | Acolyte | 精灵 monk | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h008 | Zombie 僵尸 | Zombie | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| H05I | Draenei Chieftain 德莱尼酋长 | DranaiAkama | 精灵 giant | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h00A | Clockwerk Goblin 发条地精 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 robot） |
+| h00B | Siren 海妖 | NagaSiren | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h00C | Couatl 羽蛇 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h00D | Tuskar Warrior 海象战士 | tuskar | 精灵 orc | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h00E | Centaur 半人马 | Centaur | 精灵 centaur | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h00F | Salamander 火蜥蜴 | ThunderLizardVizier | 精灵 basilisk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h00G | Flesh Golem 血肉傀儡 | FleshGolem | 精灵 stoneGolem | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h00H | Sludge Flinger 淤泥投掷者 | SludgeMonster | 精灵 gog | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h00J | Giant Spider 巨型蜘蛛 | Spider | 程序化 spider | ✅ 基本相符 | 保留：旧资源已与 WC3 模型相符（程序化 spider） |
+| H05J | Dragon Turtle 龙龟 | DragonSeaTurtle | 精灵 basilisk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h03P | Hippogryph 角鹰兽 | Hippogryph | 精灵 griffin | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h03Q | Mammoth 猛犸 | Mammoth | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h03R | Wildkin 枭兽 | Owlbear | 精灵 minotaur | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h03T | Revenant 亡魂 | Revenant | 精灵 wight | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h03U | Succubus 魅魔 | Demoness | 精灵 medusa | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h03S | Myrmidon 娜迦战士 | NagaMyrmidon | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h03V | Doom Guard 末日守卫 | DoomGuard | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h03W | Juggernaut 主宰 | InfernalCannonCannon | 精灵 stoneGolem | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（tank） |
+| h006 | Frost Wyrm 冰霜巨龙 | FrostWyrm | 精灵 boneDragon | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| H05K | Magnataur 猛犸人 | Magnataur | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h05L | Legion Lord 军团领主 | Mannoroth | 精灵 devil | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |

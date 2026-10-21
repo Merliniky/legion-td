@@ -48,10 +48,12 @@ function compile(tb,ghost){const out=[];for(const name of tb.order){const P=tb.p
     else if(ghost&&geos.g){let g=geos.g.clone();g.deleteAttribute('normal');g.deleteAttribute('color');g=mergeVertices(g,1e-3);g.computeVertexNormals();ol=g;}
     out.push({name,parent:P.parent,pivot:P.pivot,geos,ol});}
   return {parts:out,meta:tb.meta};}
+// 只让主体部件投影：手臂/腿/武器等小部件不进阴影 pass，减少手机上的 draw call
+const SHADOW_PARTS=new Set(['root','body','hips','torso','head','wingL','wingR','tread','turret']);
 export function buildTK(id,recipe){let T=TPL.get(id);if(!T){const tb=new TB();const plan=PLANS[recipe.plan]||PLANS.humanoid;plan(tb,recipe);T=compile(tb,!!recipe.ghost);T.meta=Object.assign({atk:recipe.atk||'swing',plan:recipe.plan||'humanoid',ghost:!!recipe.ghost},tb.meta);TPL.set(id,T);}
   const nodes={};const root=new THREE.Group();
   for(const P of T.parts){const g=P.name==='root'?root:new THREE.Group();g.position.set(...P.pivot);nodes[P.name]=g;
-    for(const m in P.geos){const me=new THREE.Mesh(P.geos[m],mat(m));me.castShadow=(m==='n'||m==='w');me.renderOrder=m==='g'||m==='ge'?4:0;g.add(me);}
+    for(const m in P.geos){const me=new THREE.Mesh(P.geos[m],mat(m));me.castShadow=(m==='n'||m==='w')&&SHADOW_PARTS.has(P.name);me.renderOrder=m==='g'||m==='ge'?4:0;g.add(me);}
     if(P.ol){const o=new THREE.Mesh(P.ol,mat(recipe.ghost?'og':'o'));o.renderOrder=recipe.ghost?3:0;g.add(o);}
     if(P.parent)nodes[P.parent].add(g);}
   for(const P of T.parts)nodes[P.name].userData.rest=nodes[P.name].rotation.clone();
