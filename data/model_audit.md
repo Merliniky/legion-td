@@ -30,7 +30,7 @@
 | Ghost 幽魂 | 14 | 1.93 | 1 | 14 |
 | Demi-Human 亚人 | 13 | 1.69 | 1 | 13 |
 | Hybrid 混血 | 6 | 1.00 | 0 | 0 |
-| Marine 海洋 | 14 | 1.43 | 0 | 0 |
+| Marine 海洋 | 14 | 1.43 | 0 | 10 |
 | Arctic 极地 | 12 | 2.00 | 2 | 12 |
 | Elf 精灵 | 13 | 1.85 | 2 | 13 |
 | Goblin 地精 | 13 | 1.15 | 0 | 0 |
@@ -186,19 +186,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h07J | Hatchling 鱼人幼崽 | MurgulSlave | 精灵 lizardman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h07L | Swamprunner 沼泽奔行者 | MurlocMutant | 精灵 lizardman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h07N | Fangtooth 尖牙鱼人 | MurgulReaver | 精灵 lizardman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h07M | Defiler 毒牙鱼人 | MurgulBloodGill | 精灵 lizardman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h07J | Hatchling 鱼人幼崽 | MurgulSlave | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07L | Swamprunner 沼泽奔行者 | MurlocMutant | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07N | Fangtooth 尖牙鱼人 | MurgulReaver | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07M | Defiler 毒牙鱼人 | MurgulBloodGill | 精灵 lizardman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07O | Egg Sack 蛋壳 | EggSack1 | 程序化 egg | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07P | Sky Dragon 飞蛇 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h07P | Sky Dragon 飞蛇 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 | h07Q | Bottom Feeder 鳌虾 | Lobstrokkred | 程序化 crab | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h07R | King Claw 蟹王 | Lobstrokkgreen | 程序化 crab | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07S | Mermaid 美人鱼 | NagaSiren | 精灵 naga | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07T | Highborne 上层精灵 | NagaSummoner | 精灵 naga | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07U | Komodo 巨蜥 | SnapDragon | 精灵 basilisk | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h07V | Trident 三叉戟 | NagaMyrmidon | 精灵 naga | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h07W | Sea Giant 海巨人 | SeaGiantGreen | 精灵 giant | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h07S | Mermaid 美人鱼 | NagaSiren | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07T | Highborne 上层精灵 | NagaSummoner | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07U | Komodo 巨蜥 | SnapDragon | 精灵 basilisk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h07V | Trident 三叉戟 | NagaMyrmidon | 精灵 naga | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h07W | Sea Giant 海巨人 | SeaGiantGreen | 精灵 giant | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h07X | Hydra 九头蛇 | Hydra | 精灵 hydra | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 
 ## Beast 野兽
