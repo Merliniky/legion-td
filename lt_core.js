@@ -333,8 +333,8 @@ const AI={think(g,p,dt){const A=g.ai||(g.ai=[{cd:0,w:-1},{cd:0,w:-1}]);const s=A
     const pw=d=>Math.sqrt(Math.max(1,d.hp)*((d.dmin+d.dmax)/2)/Math.max(0.3,d.cd))*(1+0.15*(d.fx||[]).length)*mm(d);
     const melee=L.units.filter(u=>!u.d.ranged).length,ranged=L.units.length-melee;const wantR=melee>=2&&ranged<melee*0.7;
     const opts=[];
-    for(const u of L.units)for(const to of (u.d.upgrades||[])){const nd=D.units[to];const c=upCost(u.d,nd);if(c>0&&c<=P.gold&&P.food+(nd.food||1)-(u.d.food||1)<=P.foodCap)opts.push({sc:(pw(nd)-pw(u.d))/c*(nd.ranged===wantR?1.1:1),u,to});}
-    for(const id of lines){const d=D.units[id];if(!d||d.gold>P.gold||P.food+(d.food||1)>P.foodCap||has({d},'mine'))continue;opts.push({sc:pw(d)/d.gold*(d.ranged===wantR?1.35:0.85)*(L.units.length<2?1.5:1),id});}
+    for(const u of L.units)for(const to of (u.d.upgrades||[])){const nd=D.units[to];const c=upCost(u.d,nd);if(c>0&&c<=P.gold&&P.food+(nd.food||1)-(u.d.food||1)<=P.foodCap)opts.push({sc:(pw(nd)-pw(u.d))/(c+12*Math.max(0,(nd.food||1)-(u.d.food||1)))*(nd.ranged===wantR?1.1:1),u,to});}
+    for(const id of lines){const d=D.units[id];if(!d||d.gold>P.gold||P.food+(d.food||1)>P.foodCap||has({d},'mine'))continue;opts.push({sc:pw(d)/(d.gold+12*(d.food||1)+18)*(d.ranged===wantR?1.35:0.85)*(L.units.length<2?1.5:1),id});}
     if(!opts.length)return;for(const o of opts)o.sc*=0.85+0.3*R();opts.sort((a,b)=>b.sc-a.sc);const best=opts[0];
     if(best.u)return upgrade(g,p,best.u.id,best.to);
     const id=best.id;const isR=D.units[id].ranged;

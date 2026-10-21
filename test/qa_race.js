@@ -1,7 +1,7 @@
 // headless QA per race: 390x844 phone, race pick via UI, build via UI taps, then AI-assisted play for several waves.
 // usage: RACE=Beast MAXW=6 node test/qa_race.js   → shots/races/<race>_*.png, prints JSON summary
 const { chromium } = require('/workspace/weapon-brawl-test/node_modules/playwright-core');
-const RACE=process.env.RACE||'Beast',MAXW=+process.env.MAXW||6,MODE=process.env.MODE||'X3';const OUT='/workspace/legion-td/shots/races/';
+const BT=+process.env.BUILDT||10;const RACE=process.env.RACE||'Beast',MAXW=+process.env.MAXW||6,MODE=process.env.MODE||'X3';const OUT='/workspace/legion-td/shots/races/';
 const URL=`http://127.0.0.1:8765/index.html?debug&seed=11&mode=${MODE}`;
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
  const ctx=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true});
@@ -23,7 +23,7 @@ const URL=`http://127.0.0.1:8765/index.html?debug&seed=11&mode=${MODE}`;
  let shotB=false,shotL=false;
  for(let i=0;i<900;i++){const s=await st();if(s.over||s.wave>MAXW)break;
    if(s.phase==='battle'&&s.wave>=3&&!shotB){await p.evaluate(()=>{__lt.G.speed=1;});await p.waitForTimeout(5000);await p.screenshot({path:OUT+RACE+'_3battle.png'});shotB=true;}
-   await p.evaluate(()=>{__lt.G.speed=4;const g=__lt.G.g;if(g.phase==='build'&&g.timer>3)g.timer=3;});
+   await p.evaluate((BT)=>{__lt.G.speed=4;const g=__lt.G.g;if(g.phase==="build"&&g.timer>BT)g.timer=BT;},BT);
    if(s.wave===MAXW&&s.phase==='battle'&&!shotL){await p.evaluate(()=>{__lt.G.speed=1;});await p.waitForTimeout(3500);await p.screenshot({path:OUT+RACE+'_4late.png'});shotL=true;}
    await p.waitForTimeout(400);}
  const s=await st();const fx=await p.evaluate(()=>{const o={};for(const L of __lt.G.g.lanes)for(const k in (L.fxc||{}))o[k]=(o[k]||0)+L.fxc[k];return o;});const ev=await p.evaluate(()=>__ev);
