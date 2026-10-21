@@ -28,7 +28,7 @@
 | Nature 自然 | 13 | 1.31 | 1 | 0 |
 | Element 元素 | 12 | 1.58 | 2 | 12 |
 | Ghost 幽魂 | 14 | 1.93 | 1 | 14 |
-| Demi-Human 亚人 | 13 | 1.69 | 1 | 0 |
+| Demi-Human 亚人 | 13 | 1.69 | 1 | 13 |
 | Hybrid 混血 | 6 | 1.00 | 0 | 0 |
 | Marine 海洋 | 14 | 1.43 | 0 | 0 |
 | Arctic 极地 | 12 | 2.00 | 2 | 12 |
@@ -131,19 +131,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h06J | Goblin Scientist 地精科学家 | GoblinSapper | 精灵 goblin | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h078 | Dwarven Engineer 矮人工程师 | MortarTeam | 精灵 dwarf | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06I | Mutant 变异炼金师 | HeroGoblinAlchemist | 精灵 hobgoblin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06K | Servant 苦工 | Peon | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h06L | Slavemaster 奴隶主 | WolfRider | 精灵 wolfRider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h06M | Tribesman 部落人 | HeadHunter | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06N | Alpha Male 头狼猎手 | HeadHunter_V1 | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06O | Medicine Man 巫医 | WitchDoctor | 精灵 goblin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06P | Oracle 先知萨满 | Shaman | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h06Q | Harlot 魅魔 | Demoness | 精灵 medusa | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06R | Mistress 魔女 | DemonessBlue | 精灵 medusa | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h06S | Minotaur 牛头人 | Tauren | 精灵 minotaur | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h06T | Bigfoot 大脚怪 | Sasquatch | 精灵 minotaur | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h06J | Goblin Scientist 地精科学家 | GoblinSapper | 精灵 goblin | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h078 | Dwarven Engineer 矮人工程师 | MortarTeam | 精灵 dwarf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06I | Mutant 变异炼金师 | HeroGoblinAlchemist | 精灵 hobgoblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06K | Servant 苦工 | Peon | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06L | Slavemaster 奴隶主 | WolfRider | 精灵 wolfRider | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h06M | Tribesman 部落人 | HeadHunter | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06N | Alpha Male 头狼猎手 | HeadHunter_V1 | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06O | Medicine Man 巫医 | WitchDoctor | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06P | Oracle 先知萨满 | Shaman | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06Q | Harlot 魅魔 | Demoness | 精灵 medusa | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06R | Mistress 魔女 | DemonessBlue | 精灵 medusa | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06S | Minotaur 牛头人 | Tauren | 精灵 minotaur | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h06T | Bigfoot 大脚怪 | Sasquatch | 精灵 minotaur | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 
 ## Orc 兽人
 
