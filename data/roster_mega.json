@@ -9391,7 +9391,8 @@
    "boss": false,
    "model": "units\\creeps\\SpiderCrabCreep\\SpiderCrabCreep.mdl",
    "modelScale": 0.7,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 2,
@@ -9417,7 +9418,8 @@
    "boss": false,
    "model": "units\\creeps\\MurlocFlesheater\\MurlocFlesheater_V1.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 3,
@@ -9443,7 +9445,8 @@
    "boss": false,
    "model": "Units\\Creeps\\Archnathid\\Archnathid.mdl",
    "modelScale": 0.6,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 4,
@@ -9469,7 +9472,8 @@
    "boss": false,
    "model": "Units\\Creeps\\QuillBeast\\QuillBeast.mdl",
    "modelScale": 1.25,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 5,
@@ -9495,7 +9499,8 @@
    "boss": false,
    "model": "units\\creeps\\WarEagle\\WarEagle.mdl",
    "modelScale": 0.8,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 6,
@@ -9521,7 +9526,8 @@
    "boss": false,
    "model": "units\\creeps\\RockGolem\\RockGolem.mdl",
    "modelScale": 0.7,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 7,
@@ -9547,7 +9553,8 @@
    "boss": false,
    "model": "units\\creeps\\satyrhellcaller\\satyrhellcaller.mdl",
    "modelScale": 0.7,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 8,
@@ -9573,7 +9580,8 @@
    "boss": false,
    "model": "units\\undead\\Acolyte\\Acolyte.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 9,
@@ -9599,7 +9607,8 @@
    "boss": false,
    "model": "units\\creeps\\Zombie\\Zombie.mdl",
    "modelScale": 1.25,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 10,
@@ -9627,6 +9636,13 @@
    "modelScale": 1.8,
    "abilities": [
     "Boss Unit"
+   ],
+   "fx": [
+    {
+     "k": "bossnote",
+     "name": "Boss Unit",
+     "note": "首领：眩晕时间按30%计算，体型更大不易被推开"
+    }
    ]
   },
   {
@@ -9653,7 +9669,8 @@
    "boss": false,
    "model": "Units\\Creeps\\HeroTinkerRobot\\HeroTinkerRobot.mdl",
    "modelScale": 1.15,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 12,
@@ -9679,7 +9696,8 @@
    "boss": false,
    "model": "Units\\Naga\\NagaSiren\\NagaSiren.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 13,
@@ -9705,7 +9723,8 @@
    "boss": false,
    "model": "units\\naga\\WindSerpent\\WindSerpent.mdl",
    "modelScale": 0.6,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 14,
@@ -9731,7 +9750,8 @@
    "boss": false,
    "model": "Units\\Creeps\\tuskar\\tuskar.mdl",
    "modelScale": 0.9,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 15,
@@ -9757,7 +9777,8 @@
    "boss": false,
    "model": "units\\creeps\\Centaur\\Centaur.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 16,
@@ -9783,7 +9804,8 @@
    "boss": false,
    "model": "units\\creeps\\ThunderLizardVizier\\ThunderLizardVizier.mdl",
    "modelScale": 0.8,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 17,
@@ -9809,7 +9831,8 @@
    "boss": false,
    "model": "units\\other\\FleshGolem\\FleshGolem.mdl",
    "modelScale": 0.8,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 18,
@@ -9835,7 +9858,8 @@
    "boss": false,
    "model": "units\\creeps\\SludgeMonster\\SludgeMonster.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 19,
@@ -9861,7 +9885,8 @@
    "boss": false,
    "model": "units\\creeps\\Spider\\Spider.mdl",
    "modelScale": 0.8,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 20,
@@ -9890,7 +9915,27 @@
    "abilities": [
     "Torrent",
     "Boss Unit"
-   ]
+   ],
+   "fx": [
+    {
+     "k": "bouncenote",
+     "name": "Torrent",
+     "targets": 2,
+     "loss": 0.3,
+     "src": "map+book",
+     "note": "Book: 攻击弹射一次（同 Oceanus 的 Deluge），伤害衰减30%（武器 mbounce 数据）"
+    },
+    {
+     "k": "bossnote",
+     "name": "Boss Unit",
+     "note": "首领：眩晕时间按30%计算，体型更大不易被推开"
+    }
+   ],
+   "bounce": {
+    "targets": 2,
+    "range": 300,
+    "loss": 0.3
+   }
   },
   {
    "wave": 21,
@@ -9916,7 +9961,8 @@
    "boss": false,
    "model": "units\\nightelf\\Hippogryph\\Hippogryph.mdl",
    "modelScale": 0.8,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 22,
@@ -9942,7 +9988,8 @@
    "boss": false,
    "model": "Units\\Creeps\\Mammoth\\Mammoth.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 23,
@@ -9968,7 +10015,8 @@
    "boss": false,
    "model": "units\\creeps\\Owlbear\\Owlbear.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 24,
@@ -9996,6 +10044,14 @@
    "modelScale": 1,
    "abilities": [
     "Lightning Attack"
+   ],
+   "fx": [
+    {
+     "k": "visual",
+     "name": "Lightning Attack",
+     "note": "Alit 攻击特效（DataA1=0.25 含义未确认，不计入数值）",
+     "est": true
+    }
    ]
   },
   {
@@ -10022,7 +10078,8 @@
    "boss": false,
    "model": "units\\demon\\Demoness\\Demoness.mdl",
    "modelScale": 1.2,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 26,
@@ -10048,7 +10105,8 @@
    "boss": false,
    "model": "units\\naga\\NagaMyrmidon\\NagaMyrmidon.mdl",
    "modelScale": 0.9,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 27,
@@ -10074,7 +10132,8 @@
    "boss": false,
    "model": "units\\demon\\DoomGuard\\DoomGuard.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 28,
@@ -10100,7 +10159,8 @@
    "boss": false,
    "model": "units\\creeps\\InfernalCannonCannon\\InfernalCannonCannon.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 29,
@@ -10126,7 +10186,8 @@
    "boss": false,
    "model": "units\\undead\\FrostWyrm\\FrostWyrm.mdl",
    "modelScale": 0.6,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   },
   {
    "wave": 30,
@@ -10157,7 +10218,24 @@
     "Magnataur's Shockwave",
     "Boss Unit"
    ],
-   "abilitiesNote": "Magnataur Shockwave: 100 dmg line, cd 20, range 700"
+   "abilitiesNote": "Magnataur Shockwave: 100 dmg line, cd 20, range 700",
+   "fx": [
+    {
+     "k": "lineshock",
+     "name": "Magnataur's Shockwave",
+     "dmg": 100,
+     "len": 800,
+     "w": 250,
+     "cd": 20,
+     "rng": 700,
+     "src": "map"
+    },
+    {
+     "k": "bossnote",
+     "name": "Boss Unit",
+     "note": "首领：眩晕时间按30%计算，体型更大不易被推开"
+    }
+   ]
   },
   {
    "wave": 31,
@@ -10183,7 +10261,8 @@
    "boss": false,
    "model": "units\\demon\\Mannoroth\\Mannoroth.mdl",
    "modelScale": 1,
-   "abilities": []
+   "abilities": [],
+   "fx": []
   }
  ],
  "summons": [
@@ -11139,7 +11218,7 @@
    "gold": 50,
    "food": 1,
    "max": 7,
-   "harvest": "每次2木 / 10秒 (Awha DataA1=2, DataB1=10；字段含义按WC3小精灵采集推断)",
+   "harvest": "每次2木（Awha DataA1=2），间隔按《Mega Book》收入数据校准为约3秒/次（第5关25-35收入、第10关110-120收入）",
    "est": true
   },
   "lumberjack": {

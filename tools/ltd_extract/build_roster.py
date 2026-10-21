@@ -44,6 +44,16 @@ for w in raw['waves']:
       'hp':st['hp'],'armor':st['armor'],'armorType':st['armorType'],'attackType':st['attackType'],'dmg':[st['dmgMin'],st['dmgMax']],'cd':st['cooldown'],'range':st['range'],'move':st['move'],'fly':st['movetp']=='fly','boss':w['unit'].startswith('H'),'model':st['model'],'modelScale':st['modelScale'],
       'abilities':[a['name'] for a in st['abilities'] if a['name']]})
 R['waves'][29]['abilitiesNote']='Magnataur Shockwave: 100 dmg line, cd 20, range 700'
+for w,rw in zip(R['waves'],raw['waves']):
+    st=rw['stats'];w['fx']=[]
+    if st['weapon']=='mbounce': w['bounce']={'targets':st.get('targCount1'),'range':st.get('Farea1'),'loss':st.get('damageLoss1')}
+    if st['weapon']=='msplash': w['splash']={k:st.get(k) for k in ('Farea1','Harea1','Qarea1','Hfact1','Qfact1') if st.get(k) is not None}
+    for a in st['abilities']:
+        if a['name']=='Torrent': w['fx'].append({'k':'bouncenote','name':'Torrent','targets':st.get('targCount1'),'loss':st.get('damageLoss1'),'src':'map+book','note':'Book: 攻击弹射一次（同 Oceanus 的 Deluge），伤害衰减30%（武器 mbounce 数据）'})
+        if a['code']=='AOsh': w['fx'].append({'k':'lineshock','name':"Magnataur's Shockwave",'dmg':a['DataA1'],'len':a['DataC1'],'w':a['DataD1'],'cd':a['Cool1'],'rng':a['Rng1'],'src':'map'})
+        if a['name']=='Lightning Attack': w['fx'].append({'k':'visual','name':'Lightning Attack','note':'Alit 攻击特效（DataA1=0.25 含义未确认，不计入数值）','est':True})
+        if a['name']=='Boss Unit': w['fx'].append({'k':'bossnote','name':'Boss Unit','note':'首领：眩晕时间按30%计算，体型更大不易被推开'})
+
 R['summons']=[]
 for grp,lst in raw['summons'].items():
     for s in lst:
@@ -56,7 +66,7 @@ k=raw['king'];R['king']={'id':'h00K','hp':k['hp'],'mana':k['mana'],'regen':k['re
              'regen':{'lumber':80,'income':3,'max':20,'perLevel':'+5 HP/秒 (R002 rhpr base 5 mod 5)'}},
  'note':'国王击杀漏怪的赏金平分给本队玩家。另有 R006/R007 (国王护甲/攻速) 由脚本在特定时点+2，触发条件未完全确认'}
 R['economy']={'startGold':270,'startLumber':90,'startNote':'JASS: x3模式(默认 -aphgggmmcbx3) 开局270金/90木；非x3模式100金/30木','upgradeCost':'单位所列金币为总价值，升级时支付差价（与Mega Book出兵顺序吻合）','startFood':'Town 7 (h023 fmade)','foodCeiling':200,
- 'wisp':{'gold':50,'food':1,'max':7,'harvest':'每次2木 / 10秒 (Awha DataA1=2, DataB1=10；字段含义按WC3小精灵采集推断)','est':True},
+ 'wisp':{'gold':50,'food':1,'max':7,'harvest':'每次2木（Awha DataA1=2），间隔按《Mega Book》收入数据校准为约3秒/次（第5关25-35收入、第10关110-120收入）','est':True},
  'lumberjack':{'R003':'等级1-8: 金/木 60+20×(n-1)，每级每次采集+1木','R00H':'等级9-15: 200金/200木，每级+1木'},
  'farm':{'gold':24,'lumber':80,'food':8,'levels':10,'note':'农场可连续升级10次，每级+8人口'},
  'income':'每回合结束: 关卡奖励 bonusGold(Yv, 第10/20关×2) + 收入(ox: 购买的召唤兵/国王升级累计 income)；击杀赏金即时获得',

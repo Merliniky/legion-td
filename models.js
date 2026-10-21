@@ -1,0 +1,141 @@
+// 军团战争 · 模型映射：每个兵种/怪物/召唤物 → 复用「英雄冲突」HD 精灵（着色+缩放+3D装饰）或程序化卡通模型（机械/树木/元素等原素材里没有的造型）
+// 字段：s=精灵基础类型 t=着色 k=缩放 d=装饰列表 p=程序化模型 c=程序化主色 c2=副色 fly=悬浮
+// 装饰：crown 金冠 · halo 光环圈 · aura:色 脚下光环 · orb:色 环绕法球 · fire:色 身上冒火/粒子 · ghost 半透明幽灵 · eyes:色 发光眼 · spikes 尖刺肩甲 · shield 盾 · banner 背旗
+// 升级单位一律更大（k↑）且装饰更多，体现兵种特点（见 data/roster_mega.md「模型」一节）
+export const MODELS={
+// ===== 机械 Mech =====
+h00M:{s:'swordsman',t:0xc8d0e0,k:0.9},                         h00T:{s:'swordsman',t:0xe8eeff,k:1.12,d:['shield','banner']},
+h00O:{s:'marksman',t:0xb8c4d8,k:0.92},                         h00X:{s:'marksman',t:0x9fc8ff,k:1.12,d:['orb:0x6ad0ff','aura:0x4aa8ff']},
+h00Y:{s:'marksman',t:0xff9a6a,k:1.12,d:['fire:0xff7a2a','aura:0xff6a2a']},
+h00P:{s:'crusader',t:0xd8d0ff,k:0.95,d:['banner']},            h00Z:{s:'champion',t:0xe0e8ff,k:1.18,d:['banner','crown']},
+h00N:{p:'airship',c:0x8a6a4a,c2:0xd8c090,k:0.95,fly:1},        h00U:{p:'airship',c:0x3a4a5a,c2:0x6a8ab8,k:1.25,fly:1,d:['orb:0x9ad0ff','banner']},
+h00Q:{s:'stoneGolem',t:0xc0c8d8,k:0.9},                        h00W:{s:'stoneGolem',t:0x9aa8c8,k:1.2,d:['eyes:0xff3a2a','spikes']},
+h00S:{p:'tank',c:0x6a7a5a,c2:0x3a4a3a,k:0.95},                 h00V:{p:'tank',c:0x5a5a6a,c2:0xff4a2a,k:1.25,d:['fire:0xff5a2a']},
+// ===== 野兽 Beast =====
+h010:{s:'gnoll',k:0.92},                                       h011:{s:'gnoll',t:0xffc890,k:1.12,d:['spikes','aura:0x8aff4a']},
+h012:{s:'ogre',k:0.95},                                        h013:{s:'ogre',t:0xffb070,k:1.2,d:['spikes','crown']},
+h014:{s:'harpy',k:0.95},                                       h015:{s:'medusa',t:0xd8ffb8,k:1.12,d:['aura:0x8aff6a']},
+h016:{s:'troglodyte',t:0x9ad8a0,k:1.0},                        h017:{s:'troglodyte',t:0x6ac8ff,k:1.2,d:['spikes','banner']},
+h018:{s:'behemoth',t:0xb08a6a,k:0.62},                         h019:{s:'behemoth',t:0xd8d0c8,k:0.78,d:['aura:0xffe06a','spikes']},
+h01A:{s:'lizardman',t:0x8ac0ff,k:1.05,d:['fire:0x6ac8ff']},     h01B:{s:'redDragon',k:0.95,d:['fire:0xff6a2a','crown']},
+// ===== 暗影 Shadow =====
+h01P:{s:'skeleton',k:0.95},                                    h01Q:{s:'skeleton',t:0xffd0a0,k:1.15,d:['spikes','aura:0xff4a4a']},
+h01R:{s:'skeleton',t:0xffa060,k:1.1,d:['fire:0xff7a2a']},       h01S:{s:'lich',t:0x9a7aff,k:1.05,d:['orb:0xb06aff']},
+h01T:{p:'spider',c:0x5a6a3a,c2:0xa0c060,k:0.85},               h01U:{p:'spider',c:0x3a3a5a,c2:0x9a6aff,k:1.15,d:['eyes:0xff3aff']},
+h01V:{s:'pitFiend',t:0xa0ff90,k:0.82},                         h01W:{s:'pitFiend',t:0x8ab0ff,k:1.0,d:['fire:0x6a8aff','crown']},
+h01X:{p:'statue',c:0x3a3a4a,c2:0x8a6aff,k:0.9},                h01Y:{p:'statue',c:0x2a2a3a,c2:0x6ad0ff,k:1.2,fly:1,d:['orb:0x6ad0ff','aura:0x6ad0ff']},
+h01Z:{s:'beholder',t:0x9a8aff,k:0.95},                         h020:{s:'beholder',t:0xff8aff,k:1.15,d:['ghost','orb:0xff8aff']},
+h021:{s:'efreet',t:0xd8a0ff,k:0.95,d:['orb:0xb06aff']},         h022:{s:'devil',t:0xff8a7a,k:1.2,d:['fire:0xff3a2a','crown','aura:0xff3a2a']},
+// ===== 自然 Nature =====
+h01C:{p:'tree',c:0x7a5a3a,c2:0x4aa83a,k:0.95},                 h01D:{p:'ancient',c:0x6a4a2a,c2:0x3a9a3a,k:1.15,d:['aura:0x8aff6a']},
+h01E:{s:'woodElf',k:0.95},                                     h01F:{s:'woodElf',t:0xd8ffb0,k:1.15,d:['aura:0x8aff6a','halo']},
+h01H:{s:'serpentFly',t:0xb0c8ff,k:1.0},                        h01G:{s:'griffin',t:0x90a0ff,k:1.2,d:['orb:0x8ad0ff','fire:0x8ad0ff']},
+h01I:{p:'ancient',c:0x7a6a4a,c2:0x6ac86a,k:0.95},              h01J:{p:'ancient',c:0x6a5a7a,c2:0xb08aff,k:1.2,d:['aura:0xb08aff','orb:0xb08aff']},
+h01K:{s:'behemoth',t:0xa08060,k:0.6},                          h01L:{s:'giant',t:0xb8c8a0,k:1.0,d:['spikes']},
+h01M:{p:'tree',c:0x8a6a3a,c2:0x7ae05a,k:1.0,d:['aura:0x7affa0']},
+h01N:{p:'tree',c:0x9a7a4a,c2:0x9aff6a,k:1.25,d:['aura:0x7affa0','orb:0xfff0a0']},
+h01O:{p:'tree',c:0x5a3a5a,c2:0xb04aff,k:1.25,d:['aura:0xb04aff','fire:0xb04aff']},
+// ===== 元素 Element =====
+h040:{p:'wisp',c:0x8affff,k:0.8,fly:1},                        h041:{p:'wisp',c:0xff8aff,k:1.15,fly:1,d:['halo']},
+h042:{p:'water',c:0x4aa8ff,k:0.9},                             h043:{p:'water',c:0x2a6aff,k:1.25,d:['aura:0x4ac8ff','crown']},
+h044:{s:'griffin',t:0xd8c8a0,k:0.85},                          h045:{s:'harpy',t:0xd8a0ff,k:1.15,d:['orb:0xd08aff','fire:0xd08aff']},
+h046:{s:'stoneGolem',t:0xa08a6a,k:0.85},                       h047:{s:'stoneGolem',t:0xd89080,k:1.15,d:['spikes']},
+h048:{s:'mage',k:0.95},                                        h049:{s:'mage',t:0xd8f0ff,k:1.15,d:['ghost','halo','orb:0xffffff']},
+h04A:{s:'blackDragon',t:0x9a8aff,k:0.8},                       h04B:{s:'redDragon',t:0xffd06a,k:1.0,d:['fire:0xffb02a','aura:0xffb02a']},
+// ===== 幽魂 Ghost =====
+h05N:{s:'wight',t:0xd0e0ff,k:0.95,d:['ghost']},                 h05O:{s:'wight',t:0xa0c0ff,k:1.1,d:['ghost','eyes:0x6ad0ff']},
+h05P:{s:'wight',t:0x6ae0ff,k:1.25,d:['ghost','aura:0x6ad0ff','crown']},
+h05S:{s:'vampire',t:0xc0c8ff,k:0.95,d:['ghost']},               h062:{s:'champion',t:0xd8e8ff,k:1.15,d:['ghost','halo']},
+h05T:{s:'archangel',t:0x8a6aaa,k:1.1,d:['ghost','orb:0xb06aff']},
+h05R:{s:'beholder',t:0x8a6aff,k:0.9,d:['ghost']},               h05U:{s:'beholder',t:0xff6aaa,k:1.15,d:['ghost','fire:0xff4a8a']},
+h05V:{s:'blackKnight',t:0xa0b8ff,k:0.9,d:['ghost']},            h05W:{s:'blackKnight',t:0x6ac8d8,k:1.15,d:['ghost','aura:0x4ad8c8','spikes']},
+h05X:{s:'wyvern',t:0xa0d8ff,k:0.9,d:['ghost']},                 h05Y:{s:'wyvern',t:0x6affd8,k:1.15,d:['ghost','aura:0x6affd8']},
+h05Z:{s:'monk',t:0x9a8ac8,k:0.95},                             h060:{s:'monk',t:0xb0f0ff,k:1.15,d:['ghost','halo','aura:0x8ad0ff']},
+// ===== 亚人 Demi-Human =====
+h06J:{s:'goblin',t:0xe0c890,k:0.95,d:['fire:0xffa02a']},        h078:{s:'dwarf',t:0xd8c0a0,k:1.1,d:['banner']},
+h06I:{s:'hobgoblin',t:0x9aff6a,k:1.25,d:['aura:0x9aff4a','fire:0x9aff4a']},
+h06K:{s:'orc',t:0xd8b890,k:0.85},                              h06L:{s:'wolfRider',t:0xffd0a0,k:1.15,d:['banner']},
+h06M:{s:'troglodyte',t:0xc8a070,k:0.95},                       h06N:{s:'troglodyte',t:0xffb070,k:1.15,d:['spikes','aura:0xffa040']},
+h06O:{s:'goblin',t:0xa0d0a0,k:1.0,d:['orb:0x7affa0']},          h06P:{s:'orc',t:0xb0d8ff,k:1.1,d:['halo','aura:0x7affa0']},
+h06Q:{s:'medusa',t:0xffb0d0,k:0.95},                           h06R:{s:'medusa',t:0xb0a0ff,k:1.15,d:['aura:0xff6ad0','crown']},
+h06S:{s:'minotaur',k:0.95},                                    h06T:{s:'minotaur',t:0xe8e8ff,k:1.25,d:['spikes']},
+// ===== 混血 Hybrid (变形体：建造后随机变成同阶的任意兵种) =====
+h07D:{p:'morph',c:0xb06aff,k:0.8},h07E:{p:'morph',c:0x8a6aff,k:0.9},h07G:{p:'morph',c:0x6a8aff,k:1.0},h07F:{p:'morph',c:0x6ad0ff,k:1.1},h07H:{p:'morph',c:0x6affb0,k:1.2},h07I:{p:'morph',c:0xffd06a,k:1.3},
+// ===== 海洋 Marine =====
+h07J:{s:'lizardman',t:0x8ad0a0,k:0.8},                         h07L:{s:'lizardman',t:0x6ad0d0,k:1.0},
+h07N:{s:'lizardman',t:0xffa07a,k:1.2,d:['spikes','aura:0xff6a4a']},h07M:{s:'lizardman',t:0xa0ff6a,k:1.2,d:['fire:0x8aff4a']},
+h07O:{p:'egg',c:0xd8c8a0,c2:0x8ab070,k:0.9},                   h07P:{s:'serpentFly',t:0x8ac8ff,k:1.4,d:['aura:0x6ad0ff']},
+h07Q:{p:'crab',c:0xd8503a,k:1.0},                              h07R:{p:'crab',c:0x3aa86a,k:1.3,d:['crown']},
+h07S:{s:'naga',k:0.95},                                        h07T:{s:'naga',t:0xd8c0ff,k:1.15,d:['orb:0x6ad0ff','halo']},
+h07U:{s:'basilisk',t:0x8ad0a0,k:0.9},                          h07V:{s:'naga',t:0x8affd0,k:1.2,d:['spikes','shield']},
+h07W:{s:'giant',t:0x8ad0c0,k:0.92},                            h07X:{s:'hydra',k:1.0,d:['aura:0x6ad0ff']},
+// ===== 极地 Arctic =====
+h0BC:{s:'orc',t:0xb8d8ff,k:0.92},                              h0BD:{s:'orc',t:0x9ac8ff,k:1.12,d:['spikes']},
+h0BE:{s:'cerberus',t:0xe8f4ff,k:0.95},                         h0BG:{s:'behemoth',t:0xfff0e0,k:0.7,d:['banner']},
+h0BH:{s:'troglodyte',t:0x9ad8ff,k:1.0,d:['orb:0x9ae8ff']},      h0BI:{s:'troglodyte',t:0x6ab8ff,k:1.2,d:['orb:0x9ae8ff','aura:0x9ae8ff','halo']},
+h0BJ:{s:'behemoth',t:0xf0f8ff,k:0.66},                         h0BK:{s:'behemoth',t:0x9ac0ff,k:0.85,d:['aura:0x9ad8ff','spikes']},
+h0BM:{s:'gog',t:0xd8e8ff,k:1.0},                               h0BL:{s:'gog',t:0xa0d8ff,k:1.25,d:['orb:0x9ae8ff','crown']},
+h0BO:{s:'greenDragon',t:0x9ad0ff,k:0.7},                       h0BP:{s:'greenDragon',t:0x6aa8ff,k:0.95,d:['aura:0x9ad8ff','fire:0xc8f0ff']},
+// ===== 精灵 Elf =====
+h08F:{s:'griffin',t:0xd8c8a8,k:0.85},                          h08I:{s:'royalGriffin',t:0xd0e0ff,k:1.05,d:['banner']},
+h08H:{s:'woodElf',t:0xe0d0b0,k:0.9},                           h08L:{s:'crusader',t:0xffd0a0,k:1.15,d:['shield','banner']},
+h08N:{s:'woodElf',t:0xb8b0ff,k:0.95},                          h08P:{s:'woodElf',t:0x9a8aff,k:1.15,d:['aura:0x9a8aff','orb:0xc8b0ff']},
+h08Q:{s:'blackKnight',t:0x9aff8a,k:0.95,d:['eyes:0x6aff4a']},   h08S:{s:'wyvern',t:0xff9a6a,k:1.0,d:['fire:0xff7a2a','banner']},
+h08V:{s:'woodElf',t:0x8ab0ff,k:0.95,d:['orb:0x8ad0ff']},        h08Y:{s:'mage',t:0xffb0ff,k:1.15,d:['halo','aura:0xff8aff']},
+h08Z:{s:'zealot',t:0xff9a7a,k:1.15,d:['fire:0xff6a2a']},
+h090:{s:'zealot',t:0xc8d0ff,k:0.95},                           h093:{s:'zealot',t:0x9a9aff,k:1.25,d:['crown','aura:0x9a8aff']},
+// ===== 地精 Goblin =====
+h0A8:{p:'mine',c:0x6a6a6a,k:0.6},h0AT:{p:'mine',c:0x7a6a4a,k:0.8},h0AU:{p:'mine',c:0x8a3a2a,k:1.0,d:['aura:0xff4a2a']},
+h0AB:{p:'turret',c:0x8a7a5a,c2:0x5a5a5a,k:0.9},                h0AA:{p:'robot',c:0x9a8a5a,c2:0x4a4a4a,k:1.15,d:['eyes:0xff4a2a']},
+h0AE:{s:'gremlin',t:0xd8b070,k:0.95},                          h0AF:{p:'robot',c:0xb0a080,c2:0x3a5a8a,k:1.15,d:['spikes']},
+h0AH:{p:'gyro',c:0xb08a4a,c2:0x6a6a6a,k:0.9,fly:1},             h0AJ:{p:'copter',c:0x4a7a4a,c2:0xd8d0a0,k:1.15,fly:1},
+h0AL:{s:'goblin',t:0x9aff8a,k:1.05,d:['orb:0x9aff4a']},          h0AO:{s:'stoneGolem',t:0xd8a060,k:1.15,d:['fire:0xffa02a','eyes:0xffd02a']},
+h0AR:{p:'roller',c:0x8a6a3a,c2:0x5a5a5a,k:1.0},                h0AQ:{p:'tank',c:0xa08a4a,c2:0x5a4a3a,k:1.2,d:['banner']},
+// ===== 圣骑士 Paladin =====
+h09L:{s:'pikeman',t:0xe0c8a0,k:0.85},                          h09H:{s:'halberdier',t:0xd8d0c0,k:1.0},
+h09W:{s:'archer',k:0.95},                                      h09M:{s:'marksman',t:0xd8ffd0,k:1.15,d:['halo','aura:0x8aff8a']},
+h09N:{s:'swordsman',k:0.95},                                   h09O:{s:'crusader',k:1.15,d:['shield','banner']},
+h09R:{s:'monk',t:0xfff0d0,k:0.95},                             h09S:{s:'monk',t:0xffffff,k:1.15,d:['halo','aura:0xffe08a']},
+h09T:{s:'cavalier',k:0.95},                                    h09U:{s:'champion',t:0xffe8b0,k:1.15,d:['crown','banner']},
+h0A3:{s:'serpentFly',t:0x8affa0,k:1.0},                        h0A0:{s:'royalGriffin',t:0xffe8a0,k:1.15,d:['crown','orb:0x8ad0ff']},
+// ===== 兽人 Orc =====
+h0BF:{s:'orc',k:0.9},                                          h0BS:{s:'orc',t:0xff9a8a,k:1.08,d:['aura:0xff3a2a']},
+h0BU:{s:'orc',t:0xff6a5a,k:1.25,d:['spikes','fire:0xff3a2a']},
+h0BV:{s:'goblin',t:0x9aff8a,k:1.0,d:['orb:0x6aff4a']},          h0BW:{s:'goblin',t:0xff7a6a,k:1.2,d:['orb:0xff4a2a','fire:0xff4a2a']},
+h0BX:{s:'wolfRider',k:0.95},                                   h0C0:{s:'wolfRider',t:0xff9a8a,k:1.15,d:['spikes','aura:0xff4a2a']},
+h0C4:{s:'hobgoblin',t:0xffb08a,k:0.95,d:['orb:0xff8a4a']},      h0C2:{s:'hobgoblin',t:0xd0a0ff,k:1.2,d:['orb:0xb06aff','halo']},
+h0C5:{s:'wyvern',k:0.9},                                       h0C8:{s:'wyvern',t:0xffe890,k:1.12,d:['banner']},
+h0C9:{s:'orc',t:0xd8a0a0,k:1.2,d:['spikes','banner']},          h0CC:{s:'orc',t:0x8ac8ff,k:1.4,d:['crown','orb:0x8ad0ff','aura:0x8ad0ff']},
+// ===== 亡灵 Undead =====
+h0CF:{s:'monk',t:0x8a8aa8,k:0.9},                              h0CH:{s:'wight',t:0x8ad0ff,k:1.12,d:['ghost','aura:0x6ad0ff']},
+h0CI:{s:'walkingDead',t:0xd0c8b0,k:0.95},                      h0CK:{s:'walkingDead',t:0xff9a8a,k:1.12,d:['eyes:0xff3a2a','spikes']},
+h0CO:{p:'wagon',c:0x6a5a4a,c2:0xa0b080,k:0.95},                h0CP:{p:'wagon',c:0x4a4a5a,c2:0xff6a2a,k:1.2,d:['fire:0xff6a2a']},
+h0CQ:{s:'lich',t:0xd8c8ff,k:0.92},                             h0CS:{s:'lich',t:0x8ad0ff,k:1.15,d:['orb:0x8ad0ff','crown']},
+h0CV:{s:'lich',t:0x6affd0,k:1.15,d:['ghost','aura:0x6affd0']},
+h0CW:{s:'walkingDead',t:0xa0d890,k:0.95},                      h0CY:{s:'gog',t:0xc8e0a0,k:1.3,d:['spikes','aura:0x9aff4a']},
+h0D0:{s:'pitFiend',t:0xa0a0c8,k:1.0},                          h0D2:{s:'boneDragon',t:0xc8e8ff,k:1.0,d:['aura:0x9ad8ff']},
+// ===== 怪物波次 Waves =====
+h002:{p:'crab',c:0xd88a5a,k:0.55},  h000:{s:'lizardman',t:0x8ab0d0,k:0.8}, h005:{s:'manticore',t:0xc8a060,k:0.62}, h001:{s:'behemoth',t:0xa07a5a,k:0.42,d:['spikes']},
+h00I:{s:'griffin',t:0xd8b08a,k:0.42}, h003:{s:'stoneGolem',t:0xa09a8a,k:0.9}, h004:{s:'gnoll',t:0xb08aff,k:0.95,d:['fire:0xb06aff']}, h007:{s:'monk',t:0x7a7a9a,k:0.9},
+h008:{s:'walkingDead',t:0x9ad08a,k:0.95}, H05I:{s:'giant',t:0xb0a0ff,k:1.25,d:['crown','aura:0xb08aff']}, h00A:{p:'robot',c:0x9a9a8a,c2:0x6a4a2a,k:0.7},
+h00B:{s:'naga',t:0xa0d8c8,k:0.9}, h00C:{s:'serpentFly',t:0x6affc8,k:1.1}, h00D:{s:'orc',t:0xa8c8e8,k:1.0,d:['spikes']}, h00E:{s:'centaur',t:0xd8c0a0,k:0.95},
+h00F:{s:'basilisk',t:0xff8a5a,k:0.75,d:['fire:0xff6a2a']}, h00G:{s:'stoneGolem',t:0xe0a090,k:1.05}, h00H:{s:'gog',t:0x9ac86a,k:1.0,d:['aura:0x8aff4a']},
+h00J:{p:'spider',c:0x3a3a3a,c2:0xd04a2a,k:1.05}, H05J:{s:'basilisk',t:0x6ac88a,k:1.4,d:['crown','spikes']}, h03P:{s:'griffin',t:0xe8d8c0,k:0.55},
+h03Q:{s:'behemoth',t:0xb0a090,k:0.7}, h03R:{s:'minotaur',t:0xb08ad8,k:1.05}, h03T:{s:'wight',t:0x8ab0d8,k:1.05,d:['ghost']}, h03U:{s:'medusa',t:0xff8ac8,k:1.0},
+h03S:{s:'naga',t:0x6ad8a0,k:1.05,d:['spikes']}, h03V:{s:'pitFiend',t:0xff9a8a,k:0.95,d:['fire:0xff4a2a']}, h03W:{s:'stoneGolem',t:0x7a8aa8,k:1.25,d:['eyes:0xff4a2a','spikes']},
+h006:{s:'boneDragon',t:0x9ad8ff,k:0.9,d:['fire:0xc8f0ff']}, H05K:{s:'behemoth',t:0x7aa0ff,k:1.1,d:['crown','aura:0x9ad8ff']}, h05L:{s:'devil',t:0x8aff6a,k:1.25,d:['fire:0x6aff4a','crown']},
+// ===== 派兵 Summons =====
+h04O:{s:'halberdier',t:0xc8c0b0,k:0.85}, h04P:{s:'archer',t:0xd8e8c8,k:0.85}, h04R:{s:'walkingDead',t:0xd0c8b0,k:0.85}, h04S:{s:'orc',k:0.9},
+h04Q:{s:'greenDragon',k:0.42}, h04T:{s:'goblin',t:0xa0d0a0,k:0.95,d:['orb:0x7affa0']}, h04U:{s:'basilisk',t:0x8ab06a,k:0.8}, h04V:{s:'minotaur',t:0xd8c890,k:1.0,d:['banner']},
+h04W:{s:'behemoth',t:0x9a7a5a,k:0.55}, h04X:{s:'wyvern',k:1.0}, h04Y:{p:'wagon',c:0x7a5a3a,c2:0xb0a080,k:0.9}, h04Z:{s:'orc',t:0xff8a7a,k:1.05,d:['aura:0xff3a2a']},
+h050:{s:'cerberus',t:0xe8f4ff,k:0.95}, h051:{s:'troglodyte',t:0x9ad8ff,k:1.0}, h052:{s:'goblin',t:0x9aff8a,k:1.0,d:['orb:0x6aff4a']}, h053:{s:'behemoth',t:0xfff0e0,k:0.65},
+h055:{p:'ballista',c:0x8a6a3a,c2:0xc0c0c0,k:1.0}, h056:{s:'orc',t:0xb0d8ff,k:1.0,d:['halo']}, h057:{s:'gog',t:0xd0e0b0,k:1.2,d:['spikes']}, h05M:{s:'stoneGargoyle',k:1.0},
+h059:{s:'giant',t:0x8ad0c0,k:1.0}, h05B:{s:'hydra',t:0x8a6aff,k:1.1,d:['aura:0x8a6aff']}, h05A:{s:'stoneGolem',t:0x8aff6a,k:1.2,d:['fire:0x6aff4a']}, h0BR:{s:'devil',t:0xd0b0ff,k:1.15,d:['fire:0x8aff6a','crown']},
+// ===== 技能召唤物 Summoned =====
+n001:{s:'hellHound',t:0xa0ff90,k:0.8}, n002:{s:'hellHound',t:0xb08aff,k:0.95,d:['fire:0xb06aff']}, n003:{s:'stoneGolem',t:0x8aff6a,k:1.05,d:['fire:0x6aff4a']},
+u005:{s:'lich',t:0xff8a6a,k:1.1,d:['fire:0xff4a2a']}, n00Q:{s:'cerberus',t:0xb0a090,k:0.7}, n00R:{s:'cerberus',t:0xff8a7a,k:0.8,d:['ghost']},
+u011:{s:'skeleton',t:0xffa060,k:0.85,d:['fire:0xff7a2a']}, h07Y:{s:'hydra',k:0.65}, n004:{s:'imp',k:0.8}, h0AD:{s:'gremlin',t:0xd8b070,k:0.9}, h0AG:{p:'robot',c:0xb0a080,c2:0x3a5a8a,k:1.0},
+};
+// 国王
+MODELS.king={s:'giant',t:0xdce8ff,k:1.55,d:['crown','aura:0x6ac8ff']};
+export function modelOf(id){return MODELS[id]||{s:'gnoll',t:0xff00ff,k:1};}

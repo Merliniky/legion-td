@@ -24,14 +24,14 @@ function conv(o){// WC3 record -> engine spec (tiles, seconds)
 function load(J){
   TBL={};for(const k of ['magic','normal','pierce','siege','chaos','spells','hero'])TBL[k]=J.damageTable[k];
   for(const id in J.units)D.units[id]=conv(J.units[id]);
-  D.races=J.races;D.waves=[null].concat(J.waves.map(w=>Object.assign(conv(w),{fx:[]})));
+  D.races=J.races;D.waves=[null].concat(J.waves.map(w=>conv(w)));
   D.summons=J.summons.map(conv);D.summonById={};for(const s of D.summons)D.summonById[s.id]=s;
   for(const id in J.summoned){const s=J.summoned[id];D.summoned[id]=conv({...s,dmg:[s.dmgMin,s.dmgMax],attackType:s.attackType,armorType:s.armorType,cd:s.cooldown,fx:s.fx||[]});}
   D.king=J.king;D.eco=J.economy;D.modes=J.modes||{X3:{countMul:1,bountyMul:1}};
   LINE_POOL={};for(const r of RACES){const R=D.races[r];if(!R||!R.lines||r==='Hybrid')continue;R.lines.forEach((id,i)=>{(LINE_POOL[i+1]=LINE_POOL[i+1]||[]).push(id);});}
   api.loaded=true;return api;}
 // ---------------- economy (3.41) ----------------
-const ECO={gold:270,lumber:90,food:7,wispGold:50,wispMax:7,wispLumber:2,wispInt:10,farmGold:24,farmLumber:80,farmFood:8,farmMax:10,
+const ECO={gold:270,lumber:90,food:7,wispGold:50,wispMax:7,wispLumber:2,wispInt:3,farmGold:24,farmLumber:80,farmFood:8,farmMax:10,
   kingUpLumber:80,kingUpIncome:3,
   bonus:[0,11,12,13,14,16,18,20,23,26,30,35,40,45,50,55,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,200],
   prep:w=>40+Math.floor(w/2)};
@@ -124,7 +124,7 @@ function friends(L,e){return e.side==='u'||e.side==='s'?L.units.concat(L.summ):L
 function foes(L,e){return e.side==='u'||e.side==='s'||e.side==='k'?L.creeps:L.units.concat(L.summ);}
 function recalcAuras(L){const all=L.units.concat(L.summ,L.creeps);
   for(const e of all){e.au={as:0,ms:0,arm:0,dmg:0,regen:0,ls:0,rdmg:0,thorns:0,burn:0,hpburn:0,mregen:0};}
-  for(const s of all){if(!s.alive)continue;for(const f of fxOf(s)){if(f.k!=='aura')continue;const r=f.r/TILE;
+  for(const s of all){if(!s.alive)continue;for(const f of fxOf(s)){if(f.k!=='aura')continue;const r=f.r/TILE;fxCount(L,'aura:'+f.st);
       const tg=f.who==='ally'?friends(L,s):foes(L,s);
       for(const e of tg){if(!e.alive||dist(e,s)>r)continue;if(f.melee&&(e.d&&e.d.ranged))continue;const a=e.au;
         switch(f.st){case 'as':a.as=Math.max(a.as,f.v);if(f.ms)a.ms=Math.max(a.ms,f.ms);break;case 'ms':if(f.v<0)a.ms=Math.min(a.ms,f.v);else a.ms=Math.max(a.ms,f.v);break;
@@ -189,6 +189,7 @@ function attack(g,L,e,t,st){const T=L.t;e.atkT=st.cd/atkSpeedK(e,T);const wind=s
     else if(f.k==='spree'&&g.rnd()<f.ch){e.st.spree={dmg:f.dmg,until:T+f.dur};}
     else if(f.k==='focus'){dmg+=Math.floor(e.mana/f.per);}
     else if(f.k==='finisher'&&(f.dmg?!t.isKing:!t.boss&&!t.isKing)&&g.rnd()<f.ch){dmg=f.dmg?f.dmg*(0.95+g.rnd()*0.1):t.hp*10;crit=true;}}
+  if(crit||stun)for(const f of fx)if(['crit','bash','bonus','finisher','spree','fury','insanity','focus'].includes(f.k))fxCount(L,f.k);
   if(st.ranged&&e.au&&e.au.rdmg)dmg*=1+e.au.rdmg;dmg*=dmgK(e,T);
   L.events.push({k:'atk',e,t,ranged:st.ranged,wind,travel});
   const hit={t:wind+travel,src:e,tgt:t,dmg,atk:st.atk,crit,stun,melee:!st.ranged};L.pend.push(hit);
@@ -199,7 +200,7 @@ function applyHit(g,L,h){const t=h.tgt,e=h.src;if(!t.alive)return;const T=L.t;
   if(v>0&&e&&!e.isKing){const d=e.d;// on-hit effects
     if(h.stun&&!has(t,'immune')){t.st.stun=Math.max(t.st.stun||0,T+h.stun);L.events.push({k:'stun',e:t});}
     let ls=(e.au?e.au.ls:0);const lsf=has(e,'ls');if(lsf)ls+=lsf.v;if(ls>0&&e.alive){e.hp=Math.min(e.maxHp,e.hp+v*ls);}
-    for(const f of fxOf(e)){
+    for(const f of fxOf(e)){if(['poison','armred','cripple','mark','aftershock','feast','procbolt','procslow','pulverize','shrapnel','bleed'].includes(f.k))fxCount(L,f.k);
       if(f.k==='poison'&&(!f.air||t.fly)){const cur=t.st.poison;const live=cur&&cur.until>T;const dps=f.stack==='dps'||f.stack===true?(live?(cur.dps||0)+f.dps:f.dps):f.dps;const ms=f.stack==='ms'&&live?Math.min(0.8,(cur.ms||0)+f.ms):f.ms;t.st.poison={ms,as:f.as,dps,until:T+f.dur,src:e};}
       else if(f.k==='armred'){t.st.armred={v:f.v,until:T+f.dur};}
       else if(f.k==='procbolt'&&g.rnd()<f.ch){dealDamage(g,L,e,t,f.dmg,{atk:'spells'});if(!t.boss)t.st.stun=Math.max(t.st.stun||0,T+f.stun);L.events.push({k:'bolt',e:t,src:e});}
@@ -218,10 +219,14 @@ function applyHit(g,L,h){const t=h.tgt,e=h.src;if(!t.alive)return;const T=L.t;
         L.events.push({k:'splash',x:t.x,y:t.y,r:Math.max(0.4,R),src:e});}}
     if(d.bounce&&!h.bounced){const B=d.bounce;let cur=t,dm=h.dmg,hitS=new Set([t]);const n=(B.targets||2)-1,rr=(B.range||300)/TILE;
       for(let i=0;i<n;i++){dm*=1-(B.loss||0.15);const nx=nearest(cur,foes(L,e),rr,o=>!hitS.has(o));if(!nx)break;hitS.add(nx);L.pend.push({t:0.12*(i+1),src:e,tgt:nx,dmg:dm,atk:h.atk,bounced:true,melee:false});L.events.push({k:'bounce',a:cur,b:nx,src:e});cur=nx;}}}}
+function fxCount(L,k){const c=L.fxc||(L.fxc={});c[k]=(c[k]||0)+1;}
 function castAbilities(g,L,e,dt){const T=L.t,d=e.d;if(d.manaRegen)e.mana=Math.min(d.manaMax||0,e.mana+(d.manaRegen+(e.au?e.au.mregen*(d.manaMax||0):0))*dt);
   const fx=fxOf(e);if(!fx.length)return;const enemies=foes(L,e);const engaged=e.tgt&&e.tgt.alive&&dist(e,e.tgt)<(d.rng+3);
-  for(const f of fx){const ready=!(e.cds[f.k]>T);
+  for(const f of fx){const ready=!(e.cds[f.k]>T);const m0=e.mana,c0=e.cds[f.k],n0=L.summ.length,a0=e.alive;
     switch(f.k){
+      case 'lineshock':if(ready&&e.tgt&&e.tgt.alive&&dist(e,e.tgt)<f.rng/TILE+0.5){e.cds[f.k]=T+f.cd;const t=e.tgt,dx=t.x-e.x,dy=t.y-e.y,dl=Math.hypot(dx,dy)||1,ux=dx/dl,uy=dy/dl;
+          for(const o of enemies){if(!o.alive||o.fly)continue;const px=o.x-e.x,py=o.y-e.y,al=px*ux+py*uy,pp=Math.abs(px*uy-py*ux);if(al>0&&al<f.len/TILE&&pp<f.w/TILE/2+o.radius)dealDamage(g,L,e,o,f.dmg,{atk:'spells'});}
+          L.events.push({k:'wavefx',x:e.x,y:e.y,ux,uy,len:f.len/TILE,c:'earth'});}break;
       case 'summon':if(ready&&engaged&&e.mana>=(d.manaMax||60)-0.01){e.mana=0;e.cds[f.k]=T+f.cd;const sd=D.summoned[f.u];if(sd)for(let i=0;i<f.n;i++)spawnSummon(g,L,e,sd,f.dur);}break;
       case 'selfbuff':if(ready&&engaged){e.st.buff={as:f.as||0,ms:f.ms||0,dmg:f.dmg||0,arm:f.arm||0,until:T+f.dur,drain:f.drain||0};e.cds[f.k]=T+f.dur+(f.cd>1?f.cd:0);L.events.push({k:'buff',e,c:'rage'});}break;
       case 'massheal':if(e.mana>=f.mana){const ls=friends(L,e).filter(o=>o.alive&&o.hp<o.maxHp-f.v*0.5&&dist(o,e)<f.r/TILE).sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp).slice(0,f.n);
@@ -250,7 +255,8 @@ function castAbilities(g,L,e,dt){const T=L.t,d=e.d;if(d.manaRegen)e.mana=Math.mi
       case 'mindwarp':if(ready&&engaged){const o=friends(L,e).filter(o=>o.alive&&o!==e&&!(o.st.oc&&o.st.oc.until>T)&&dist(o,e)<5).sort((a,b)=>b.d.dmax-a.d.dmax)[0];if(o){e.cds[f.k]=T+10;o.st.oc={as:f.as,until:T+10};L.events.push({k:'buff',e:o,c:'haste'});}}break;
       case 'seduce':if(ready&&engaged&&e.tgt){const t=e.tgt;e.cds[f.k]=T+f.cd;for(const o of enemies)if(o.alive&&dist(o,t)<f.r/TILE+0.5)o.st.miss={v:f.miss,until:T+f.dur};L.events.push({k:'nova',x:t.x,y:t.y,r:f.r/TILE+0.5,c:'haunt'});}break;
       case 'mine':if(e.tgt&&e.tgt.alive&&dist(e,e.tgt)<0.75){for(const o of enemies)if(o.alive&&!o.fly&&dist(o,e)<f.r/TILE)dealDamage(g,L,e,o,f.dmg,{atk:'spells'});L.events.push({k:'nova',x:e.x,y:e.y,r:f.r/TILE,c:'fire'});e.hp=0;e.alive=false;L.events.push({k:'die',e,src:e});}break;
-    }}}
+    }
+    if(e.mana<m0-0.01||e.cds[f.k]!==c0||L.summ.length>n0||(a0&&!e.alive))fxCount(L,f.k);}}
 // ---------------- lane simulation ----------------
 function stepLane(g,L,dt){if(L.cleared)return;L.t+=dt;const T=L.t;
   // spawn queue (creeps trickle in at 0.1s each, summons from the opponent follow)
@@ -322,14 +328,16 @@ const AI={think(g,p,dt){const A=g.ai||(g.ai=[{cd:0,w:-1},{cd:0,w:-1}]);const s=A
     const lines=raceLines(g,p);
     if(P.race==='Prophet'&&P.rerolls<2&&g.wave===3&&P.gold>=60&&P.lumber>=60)return rollProphet(g,p);
     if(P.value>=rec*1.15&&g.timer>6)return;   // enough army: bank gold
-    // upgrades are the most value-efficient (WC3 charges only the difference): cheapest affordable first
-    const ups=[];for(const u of L.units)for(const to of (u.d.upgrades||[])){const nd=D.units[to];const c=upCost(u.d,nd);if(c<=P.gold&&P.food+(nd.food||1)-(u.d.food||1)<=P.foodCap)ups.push({u,to,c});}
-    const melee=L.units.filter(u=>!u.d.ranged).length,ranged=L.units.length-melee;
-    if(ups.length&&(L.units.length>=3+Math.floor(g.wave/2)||R()<0.5)){ups.sort((a,b)=>a.c-b.c+(R()-0.5)*20);const x=ups[0];return upgrade(g,p,x.u.id,x.to);}
-    const aff=lines.filter(id=>{const d=D.units[id];return d.gold<=P.gold&&P.food+(d.food||1)<=P.foodCap&&!has({d},'mine');});if(!aff.length)return;
-    const wantR=melee>=2&&ranged<melee*0.8;
-    let pool=aff.filter(id=>D.units[id].ranged===wantR);if(!pool.length)pool=aff;
-    const id=pool[Math.max(0,pool.length-1-(R()<0.3?1:0))];const isR=D.units[id].ranged;
+    // choose the most efficient purchase (power gained per gold) among upgrades and new placements
+    const wv=D.waves[Math.min(nextW,MAXW)]||{};const mm=d=>wv.atk?Math.pow(mult(d.atk==='unknown'?'spells':d.atk,wv.arm),1.5)/Math.pow(mult(wv.atk,d.arm),1.5):1;
+    const pw=d=>Math.sqrt(Math.max(1,d.hp)*((d.dmin+d.dmax)/2)/Math.max(0.3,d.cd))*(1+0.15*(d.fx||[]).length)*mm(d);
+    const melee=L.units.filter(u=>!u.d.ranged).length,ranged=L.units.length-melee;const wantR=melee>=2&&ranged<melee*0.7;
+    const opts=[];
+    for(const u of L.units)for(const to of (u.d.upgrades||[])){const nd=D.units[to];const c=upCost(u.d,nd);if(c>0&&c<=P.gold&&P.food+(nd.food||1)-(u.d.food||1)<=P.foodCap)opts.push({sc:(pw(nd)-pw(u.d))/c*(nd.ranged===wantR?1.1:1),u,to});}
+    for(const id of lines){const d=D.units[id];if(!d||d.gold>P.gold||P.food+(d.food||1)>P.foodCap||has({d},'mine'))continue;opts.push({sc:pw(d)/d.gold*(d.ranged===wantR?1.35:0.85)*(L.units.length<2?1.5:1),id});}
+    if(!opts.length)return;for(const o of opts)o.sc*=0.85+0.3*R();opts.sort((a,b)=>b.sc-a.sc);const best=opts[0];
+    if(best.u)return upgrade(g,p,best.u.id,best.to);
+    const id=best.id;const isR=D.units[id].ranged;
     const rows=isR?[8,9,7,10,6,11,5]:[4,5,3,6,2,7,8,9,10,11];
     for(const r of rows)for(const c of ACOLS)if(cellFree(L,c,r))return place(g,p,id,c,r);}};
 // ---------------- ability text (Simplified Chinese, generated from the structured specs) ----------------
@@ -338,7 +346,7 @@ const STZ={as:'攻击速度',ms:'移动速度',arm:'护甲',dmg:'攻击力',rege
 function fxText(f){const r=f.r?`（范围${f.r}）`:'';switch(f.k){
   case 'poison':return `攻击${f.air?'(仅对空)':''}使目标${f.ms?'移速-'+pc(f.ms):''}${f.as?' 攻速-'+pc(f.as):''}${f.dps?' 每秒'+f.dps+'毒伤':''}，持续${f.dur}秒${f.stack?'（可叠加）':''}`;
   case 'crit':return `${f.ch>=1?'每次攻击':pc(f.ch)+'几率'}造成${f.x}倍伤害${f.air?'（仅对空中单位）':''}`;
-  case 'bash':return `${pc(f.ch)}几率${f.x?f.x+'倍伤害':'额外'+f.dmg+'伤害'}并击晕${f.stun}秒（首领减免）`;
+  case 'bash':return `${pc(f.ch)}几率${f.x?f.x+'倍伤害':f.dmg?'额外'+f.dmg+'伤害':''}${f.x||f.dmg?'并':''}击晕${f.stun}秒（首领减免）`;
   case 'evade':return `${pc(f.ch)}几率闪避攻击`;
   case 'aura':{const s=STZ[f.st]||f.st;const v=f.st==='arm'||f.st==='regen'||f.st==='burn'?(f.v>0?'+':'')+f.v:(f.v>0?'+':'')+pc(f.v);
     if(f.who==='enemy')return `光环：附近敌人${s}${f.st==='burn'?'每秒'+f.v:f.st==='hpburn'?'流失'+pc(f.v):v}${r}`;return `光环：附近${f.melee?'近战':''}友军${s}${v}${f.ms&&f.st==='as'?' 移速+'+pc(f.ms):''}${r}`;}
@@ -373,6 +381,9 @@ function fxText(f){const r=f.r?`（范围${f.r}）`:'';switch(f.k){
   case 'feast':return `盛宴：每${f.every}次攻击回复${f.v}生命`;case 'withdraw':return `退缩：生命低于10%时无敌${f.dur}秒（每关一次）`;
   case 'delicacy':return `美味佳肴：出售返还${pc(f.v)}`;case 'submerge':return `潜水：首次受到攻击时下潜无敌${f.dur}秒`;
   case 'slavetrade':return `奴隶贸易：每关结束时若存活额外获得${f.v}金（估计值）`;case 'bleed':return `流血：自身生命低于${pc(f.below)}时攻击造成每秒${f.dps}流血并降低攻速${pc(f.as)}`;
+  case 'lineshock':return `震荡波：直线对地面敌人造成${f.dmg}伤害（长${f.len}，宽${f.w}，冷却${f.cd}秒）`;case 'bouncenote':return `激流：攻击弹射${(f.targets||2)-1}次，每次伤害-${pc(f.loss||0.3)}`;case 'visual':return f.note||'攻击特效';case 'bossnote':return f.note||'首领单位';
+  case 'immolation':return `永久献祭：每秒对周围地面敌人造成${f.dps}伤害`;case 'shockwave':return `震荡波：直线${f.dmg}伤害（消耗${f.mana}法力，冷却${f.cd}秒）`;case 'warstomp':return `战争践踏：周围${f.dmg}伤害并击晕${f.stun}秒（消耗${f.mana}法力）`;
+  case 'kaura':return f.st==='dmg'?`光环：友军攻击力+${Math.round(f.v*100)}%`:f.st==='arm'?`光环：友军护甲+${f.v}`:`光环：友军攻速+${Math.round(f.v*100)}% 移速+${Math.round((f.ms||0)*100)}%`;
   case 'shrapnel':return `弹片：${pc(f.ch)}几率对周围${f.n}个敌人造成${f.dmg}伤害`;case 'focus':return `聚能：每${f.per}点法力+1攻击力`;case 'kingx':return '对国王造成双倍伤害';case 'immune':return '魔法免疫';case 'regen':return `额外生命恢复`;}
   return f.name||f.k;}
 const api={W,H,BUILD,KING_POS,LEAK_Y,TILE,MAXW,ATK,ARM,COLS,RACES,ECO,KUP_MAX,D,load,newGame,place,canPlace,upgrade,sell,sellValue,buyWisp,buyFarm,buyLumberjack,ljCost,kingUpgrade,sendSummon,rollProphet,

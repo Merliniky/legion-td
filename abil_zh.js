@@ -1,0 +1,15 @@
+// 技能名称中文对照（技能说明由 lt_core.js 的 fxText 根据结构化数据生成）
+export const ABZ={'Leadership':'领导力','Superiority':'优势','Shrapnel':'弹片','Vital Slice':'致命切割','Gnoll Poison':'豺狼人毒药','Deadly Poison':'致命毒药','Club Smash':'棍棒重击','Knock Out':'击昏','Envenom':'淬毒','Enchanted Poison':'魔化毒药',
+'Adrenaline Rush':'肾上腺素','Battle Cry':'战斗怒吼','Killing Spree':'杀戮狂潮','Flaming Arrows':'火焰箭','Mind Warp':'心灵扭曲','Sticky Webs':'黏网','Conjure Fiend':'召唤恶魔仆从','Conjure Fanatic':'召唤狂热者','Blood Thirst':'嗜血',
+'Sound of Madness':'疯狂之音','Shadow Walker':'暗影行者','Fatality':'致命一击','Invoke Inferno':'召唤地狱火','Diablo':'召唤恶魔','Entangle':'缠绕','Vulture Eye':'秃鹫之眼','Precision':'精准','Mark Target':'标记目标','Faerie Luck':'仙灵幸运',
+'Aftershock':'余震','Helping Hand':'援手','Chrono Trigger':'时间扳机','Reassurance':'安抚','Natural Armor':'天然护甲','Sacred Blessing':'神圣祝福','Water of Life':'生命之水','Forbidden Fruit':'禁果','Blue Wind':'蓝色之风','Mana Burst':'法力爆发',
+'Amplify Magic':'魔法增幅','Energy Shield':'能量护盾','Focus Energy':'聚能','Phase Out':'相位消失','Disturb':'扰乱','Traumatize':'创伤','Violate':'侵犯','Silent Scream':'无声尖啸','Cacophony':'刺耳噪音','Insanity':'疯狂',
+'Sickness Aura':'疾病光环','Despair Aura':'绝望光环','Haunting':'缠绕灵魂','Ghost Essence':'幽魂精华','Catastrophe':'灾难','Slave Trade':'奴隶贸易','Throw Net':'投网','Fury':'狂怒','Mend':'治疗波','Guardian Spirit':'守护之灵',
+'Seduce':'魅惑','Tremor':'震颤','Fissure':'裂地','Feast':'盛宴','Biotoxin':'生物毒素','Withdraw':'退缩','Brawl':'斗殴','Delicacy':'美味佳肴','Sphere':'水之护球','Storm Geyser':'风暴喷泉','Submerge':'潜水','Concussion':'震荡',
+'Mitosis':'分裂','Triple Attack':'三重攻击','+12 damage':'+12伤害','Ice Spear':'冰矛','Bleeding':'流血','Frost Nova':'霜冻新星','Frost Shield':'冰霜护盾','Cold Attack':'寒冰攻击','Ice Shield':'冰盾','Bash':'重击','Frost Aura':'霜冻光环',
+'Critical Strike':'致命一击','Evasion':'闪避','Breath of Frost':'冰霜吐息',"Azure's Armor":'蓝龙之甲','Magic Missile':'魔法飞弹','Mirage':'幻象','Wrath of Nature':'自然之怒','Faerie Fire':'精灵之火','Enchant Fire':'附魔火焰',
+'Fan of Knives':'刀扇','Coup De Grace':'致命打击','Kaboom!':'自爆！','Cluster Rockets':'集束火箭','Telescope':'望远镜','Advanced Telescope':'高级望远镜','Chemical Rage':'化学狂暴','Overclocking':'超频','Goblin Driver':'地精驾驶员',
+'Multishot':'多重射击','Defend':'防御','Heal':'治疗','Greater Heal':'强效治疗','Harden Armor':'硬化护甲','Frenzy':'狂热','Finishing Blow!':'终结一击！','Berserk':'狂暴','Cripple':'残废','Corruption':'腐蚀','Summon Wolf':'召唤狼',
+'Summon Blood Wolf':'召唤血狼','Healing Aura':'治疗光环','Greater Healing Aura':'强效治疗光环','Envenomed Spears':'毒矛','Pulverize':'粉碎','Storm Bolt':'风暴之锤','Life Steal':'吸血','Raise Dead':'复活死者','Heartstopper Aura':'心脏骤停光环',
+'Infectious diseases':'传染病','Plague':'瘟疫','Maul':'猛击','Battle Drums':'战鼓','Resilience Aura':'坚韧光环','Double damage vs. King':'对国王双倍伤害','Hotblood':'热血','Blood Rush':'血之冲锋','Fresh Meat':'新鲜血肉','Spell Immunity':'魔法免疫',
+'Kraken Poison':'海妖之毒','Immolation':'献祭','Swiftness Aura':'迅捷光环','Command Aura':'命令光环','Raise Imp':'召唤小鬼','Permanent Immolation':'永久献祭','Shockwave':'震荡波','War Stomp':'战争践踏','Devotion Aura':'专注光环','Endurance Aura':'耐久光环'};
