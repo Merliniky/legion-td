@@ -31,7 +31,7 @@
 | Demi-Human 亚人 | 13 | 1.69 | 1 | 0 |
 | Hybrid 混血 | 6 | 1.00 | 0 | 0 |
 | Marine 海洋 | 14 | 1.43 | 0 | 0 |
-| Arctic 极地 | 12 | 2.00 | 2 | 0 |
+| Arctic 极地 | 12 | 2.00 | 2 | 12 |
 | Elf 精灵 | 13 | 1.85 | 2 | 0 |
 | Goblin 地精 | 13 | 1.15 | 0 | 0 |
 | Paladin 圣骑士 | 12 | 1.25 | 0 | 0 |
@@ -96,18 +96,18 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h0BC | Tuskarr 海象人 | tuskar | 精灵 orc | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BD | Tuskarr Spearman 海象人投矛手 | tuskarRanged | 精灵 orc | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BE | Frost Wolf 霜狼 | WhiteWolf | 精灵 cerberus | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BG | Pandaren 熊猫人 | FurbolgPanda | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BH | Ice Troll 冰巨魔 | IceTrollShadowPriest | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BI | Ice Troll Shaman 冰巨魔萨满 | WitchDoctor | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BJ | Polar Bear 北极熊 | PolarBear | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BK | Magnataur 猛犸人 | MagnataurBlue | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BM | Wandigoo 温迪戈 | Wendigo | 精灵 gog | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BL | Ancient Wandigoo 远古温迪戈 | WendigoShaman | 精灵 gog | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BO | Young Frost Dragon 冰霜幼龙 | AzureDragonWelp | 精灵 greenDragon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0BP | Azure Dragon 蓝龙 | AzureDragon | 精灵 greenDragon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0BC | Tuskarr 海象人 | tuskar | 精灵 orc | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BD | Tuskarr Spearman 海象人投矛手 | tuskarRanged | 精灵 orc | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BE | Frost Wolf 霜狼 | WhiteWolf | 精灵 cerberus | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0BG | Pandaren 熊猫人 | FurbolgPanda | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BH | Ice Troll 冰巨魔 | IceTrollShadowPriest | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BI | Ice Troll Shaman 冰巨魔萨满 | WitchDoctor | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BJ | Polar Bear 北极熊 | PolarBear | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0BK | Magnataur 猛犸人 | MagnataurBlue | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0BM | Wandigoo 温迪戈 | Wendigo | 精灵 gog | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BL | Ancient Wandigoo 远古温迪戈 | WendigoShaman | 精灵 gog | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BO | Young Frost Dragon 冰霜幼龙 | AzureDragonWelp | 精灵 greenDragon | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h0BP | Azure Dragon 蓝龙 | AzureDragon | 精灵 greenDragon | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 
 ## Elf 精灵
 
