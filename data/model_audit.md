@@ -25,7 +25,7 @@
 | Mech 机械 | 13 | 2.31 | 7 | 13 |
 | Beast 野兽 | 12 | 1.42 | 1 | 12 |
 | Shadow 暗影 | 14 | 1.43 | 2 | 10 |
-| Nature 自然 | 13 | 1.31 | 1 | 0 |
+| Nature 自然 | 13 | 1.31 | 1 | 6 |
 | Element 元素 | 12 | 1.58 | 2 | 12 |
 | Ghost 幽魂 | 14 | 1.93 | 1 | 14 |
 | Demi-Human 亚人 | 13 | 1.69 | 1 | 13 |
@@ -224,14 +224,14 @@
 |---|---|---|---|---|---|
 | h01C | Ent 树人 | Ent | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01D | Guardian 守护古树 | AncientProtector | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01E | Ranger 游侠 | Archer | 精灵 woodElf | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01F | Meliai 树精 | Dryad | 精灵 woodElf | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h01H | Sprite 精灵龙 | FaerieDragon | 精灵 serpentFly | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h01G | Thunderbird 雷鸟 | Chimaera | 精灵 griffin | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h01E | Ranger 游侠 | Archer | 精灵 woodElf | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01F | Meliai 树精 | Dryad | 精灵 woodElf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01H | Sprite 精灵龙 | FaerieDragon | 精灵 serpentFly | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h01G | Thunderbird 雷鸟 | Chimaera | 精灵 griffin | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 | h01I | Tree of Travel 旅行之树 | AncientOfLore | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01J | Tree of Time 时间之树 | AncientOfWonder | 程序化 ancient | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01K | Halfbreed 混血熊人 | DruidoftheClaw | 精灵 behemoth | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01L | Goliath 山岭巨人 | MountainGiant | 精灵 giant | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01K | Halfbreed 混血熊人 | DruidoftheClaw | 精灵 behemoth | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h01L | Goliath 山岭巨人 | MountainGiant | 精灵 giant | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01M | Yggdrasil 世界树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01N | Tree of Life 生命之树 | TreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01O | Tree of Knowledge 智慧之树 | CorruptedTreeofLife | 程序化 tree | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
