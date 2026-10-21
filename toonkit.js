@@ -215,6 +215,7 @@ const EXTRA={
   halo:(B,o,h,d)=>{B.add('head','tor',[0.12*h,0.015*h,6,20],[0,0.3*h,0],d.col??0xfff0a0,{r:[Math.PI/2,0,0],m:'e'});},
   ears:(B,o,h,d)=>{const hs=h*(o.headS||1);for(const s of [-1,1])B.add('head','cone',[0.025*hs,0.16*hs,4],[s*0.12*hs,0.12*hs,-0.01*hs],d.col??o.headC??o.skin??0xe8b88a,{r:[0.3,0,-s*1.25]});},
   blindfold:(B,o,h,d)=>{const hs=h*(o.headS||1);B.add('head','cyl',[0.108*hs,0.108*hs,0.035*hs,10],[0,0.12*hs,0],d.col??0x2a8a3a);},
+  tentacles:(B,o,h,d)=>{const hs=h*(o.headS||1);for(let i=0;i<5;i++){const x=(i-2)*0.035*hs;B.add('head','cone',[0.022*hs,0.16*hs,4],[x,0.0,0.11*hs],d.col??o.headC??0x5a3a6a,{r:[Math.PI-0.25+Math.abs(i-2)*0.05,0,(i-2)*0.15]});}},
   bones:(B,o,h,d)=>{for(let i=0;i<3;i++)B.add('torso','box',[d.tW*0.9,0.025*h,0.03*h],[0,d.tH*(0.35+i*0.18),d.tD*0.5],0xe8e0c8);},
 };
 function wings(B,o,h,d,kind){const c=d.col??o.wingC??(kind==='bat'?0x5a3a5a:kind==='energy'?0x9ad8ff:0xf0f0f0);const sp=o.wingSpan||1;

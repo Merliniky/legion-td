@@ -24,7 +24,7 @@
 |---|---|---|---|---|
 | Mech 机械 | 13 | 2.31 | 7 | 13 |
 | Beast 野兽 | 12 | 1.42 | 1 | 0 |
-| Shadow 暗影 | 14 | 1.43 | 2 | 0 |
+| Shadow 暗影 | 14 | 1.43 | 2 | 10 |
 | Nature 自然 | 13 | 1.31 | 1 | 0 |
 | Element 元素 | 12 | 1.58 | 2 | 12 |
 | Ghost 幽魂 | 14 | 1.93 | 1 | 14 |
@@ -167,20 +167,20 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h01P | Bone Warrior 骷髅战士 | Skeleton | 精灵 skeleton | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01Q | Skeletor 骷髅勇士 | SkeletonOrc | 精灵 skeleton | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01R | Fire Archer 火焰弓箭手 | SkeletonArcher | 精灵 skeleton | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01S | Dark Mage 骷髅黑法师 | SkeletonMage | 精灵 lich | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h01P | Bone Warrior 骷髅战士 | Skeleton | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01Q | Skeletor 骷髅勇士 | SkeletonOrc | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01R | Fire Archer 火焰弓箭手 | SkeletonArcher | 精灵 skeleton | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01S | Dark Mage 骷髅黑法师 | SkeletonMage | 精灵 lich | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01T | Carrion Spitter 腐尸吐吐虫 | CryptFiend | 程序化 spider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01U | Nightcrawler 夜行蛛 | NerubianSpiderLord | 程序化 spider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01V | Gateguard 守门恶魔 | Felgaurd | 精灵 pitFiend | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01W | Harbinger 先驱者 | FelgaurdBlue | 精灵 pitFiend | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01V | Gateguard 守门恶魔 | Felgaurd | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01W | Harbinger 先驱者 | FelgaurdBlue | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h01X | Overseer 监视者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h01Y | Keeper of Souls 灵魂守护者 | ObsidianStatue | 程序化 statue | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01Z | Nightmare 梦魇 | FacelessOne | 精灵 beholder | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h020 | Doppelganger 幻影分身 | FacelessOne | 精灵 beholder | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h021 | Lord of Death 死亡领主 | EredarWarlock | 精灵 efreet | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h022 | Hades 冥王 | DoomGuard | 精灵 devil | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h01Z | Nightmare 梦魇 | FacelessOne | 精灵 beholder | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h020 | Doppelganger 幻影分身 | FacelessOne | 精灵 beholder | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h021 | Lord of Death 死亡领主 | EredarWarlock | 精灵 efreet | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h022 | Hades 冥王 | DoomGuard | 精灵 devil | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 
 ## Marine 海洋
 
