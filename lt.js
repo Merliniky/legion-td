@@ -158,9 +158,9 @@ const PROC={
     for(const s of[-1,1]){for(let i=0;i<3;i++){const l=mk(CYL(0.03,0.02,0.32,5),c,s*0.38,0.15,-0.1+i*0.12);l.rotation.z=s*0.9;g.add(l);legs.push(l);}
       const cl=new THREE.Group();cl.position.set(s*0.3,0.3,0.32);cl.add(mk(SPH(0.13),c,0,0,0.05));cl.add(mk(CONE(0.07,0.2,6),c,s*0.04,0.05,0.2)).rotation.x=1.5;g.add(cl);legs.push(cl);
       g.add(mk(SPH(0.05),0x111111,s*0.1,0.42,0.22));}g.userData.legs=legs;return g;},
-  tree(c,c2){const g=new THREE.Group();g.add(mk(CYL(0.12,0.2,0.9,8),c,0,0.45));for(const s of[-1,1]){const a=mk(CYL(0.05,0.08,0.45,6),c,s*0.2,0.6);a.rotation.z=-s*0.9;g.add(a);g.add(mk(CYL(0.05,0.09,0.3,5),c,s*0.18,0.1,0.05)).rotation.z=s*0.6;}
-    const cr=new THREE.Group();cr.position.y=1.05;for(const [x,y,z,r] of [[0,0.15,0,0.42],[0.28,0,0.05,0.3],[-0.28,0,0,0.3],[0,-0.05,0.25,0.28],[0,0.05,-0.25,0.3]])cr.add(mk(new THREE.IcosahedronGeometry(r,0),c2,x,y,z));g.add(cr);
-    g.add(mk(SPH(0.04),0xffe08a,0.06,0.72,0.12,1));g.add(mk(SPH(0.04),0xffe08a,-0.06,0.72,0.12,1));g.userData.crown=cr;return g;},
+  tree(c,c2){const g=new THREE.Group();g.add(mk(CYL(0.11,0.22,1.05,8),c,0,0.52));for(const s of[-1,1]){const a=mk(CYL(0.04,0.07,0.5,6),c,s*0.24,0.72);a.rotation.z=-s*1.0;g.add(a);g.add(mk(SPH(0.12,8,6),c2,s*0.45,0.9));g.add(mk(CYL(0.05,0.09,0.32,5),c,s*0.18,0.1,0.05)).rotation.z=s*0.7;}
+    const cr=new THREE.Group();cr.position.y=1.25;for(const [x,y,z,r] of [[0,0.12,0,0.3],[0.22,0,0.05,0.2],[-0.22,0,0,0.2],[0,-0.04,0.18,0.18],[0,0.04,-0.2,0.2]])cr.add(mk(new THREE.IcosahedronGeometry(r,0),c2,x,y,z));g.add(cr);
+    g.add(mk(new THREE.BoxGeometry(0.16,0.04,0.02),0x2a1a0a,0,0.62,0.17));g.add(mk(SPH(0.045),0xffe08a,0.06,0.78,0.15,1));g.add(mk(SPH(0.045),0xffe08a,-0.06,0.78,0.15,1));g.userData.crown=cr;return g;},
   ancient(c,c2){const g=PROC.tree(c,c2);g.scale.set(1.15,1,1.15);for(let i=0;i<4;i++){const a=i*1.57+0.6;g.add(mk(CONE(0.07,0.4,5),c,Math.cos(a)*0.22,0.15,Math.sin(a)*0.22)).rotation.set(Math.sin(a)*0.7,0,-Math.cos(a)*0.7);}return g;},
   wisp(c){const g=new THREE.Group();g.add(mk(SPH(0.16),0xffffff,0,0.7,0,1));g.add(glowSpr(c,1.1,0,0.7));g.add(glowSpr(0xffffff,0.45,0,0.7));g.userData.glow=true;g.userData.trail=c;return g;},
   water(c){const g=new THREE.Group();const m=new THREE.MeshToonMaterial({color:c,gradientMap:ramp,transparent:true,opacity:0.85,emissive:c,emissiveIntensity:0.25});
