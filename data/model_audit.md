@@ -33,7 +33,7 @@
 | Marine 海洋 | 14 | 1.43 | 0 | 10 |
 | Arctic 极地 | 12 | 2.00 | 2 | 12 |
 | Elf 精灵 | 13 | 1.85 | 2 | 13 |
-| Goblin 地精 | 13 | 1.15 | 0 | 0 |
+| Goblin 地精 | 13 | 1.15 | 0 | 3 |
 | Paladin 圣骑士 | 12 | 1.25 | 0 | 0 |
 | Orc 兽人 | 13 | 1.54 | 2 | 13 |
 | Undead 亡灵 | 13 | 1.31 | 1 | 0 |
@@ -280,12 +280,12 @@
 | h0AU | Ultra Land Mine 超级地雷 | GoblinLandMine | 程序化 mine | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0AB | Machine Turret 机枪塔 | GoblinMobileTurret | 程序化 turret | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0AA | Machine Robot 机器人 | GoblinDrillbot3000_A_005 | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AE | Geomancer 狗头人地卜师 | KoboldGeomancer | 精灵 gremlin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h0AE | Geomancer 狗头人地卜师 | KoboldGeomancer | 精灵 gremlin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0AF | Clockwreck 发条机器人 | HeroTinkerRobot | 程序化 robot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0AH | Flying Machine 飞行器 | Gyrocopter_V1 | 程序化 gyro | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0AJ | Helicopter 直升机 | Minicopter | 程序化 copter | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0AL | Goblin Alchemist 地精炼金术士 | HeroGoblinAlchemist | 精灵 goblin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0AO | Goblin Blaster 地精爆破手 | IronGolem | 精灵 stoneGolem | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0AL | Goblin Alchemist 地精炼金术士 | HeroGoblinAlchemist | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0AO | Goblin Blaster 地精爆破手 | IronGolem | 精灵 stoneGolem | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0AR | Steamroller 蒸汽压路机 | GoblinSteamRoller | 程序化 roller | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0AQ | Assault Tank 突击坦克 | GoblinAssaultTank | 程序化 tank | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 
