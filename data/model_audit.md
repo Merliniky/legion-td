@@ -23,7 +23,7 @@
 | 种族 | 兵种数 | 平均不符度 | 严重 | 已重做 |
 |---|---|---|---|---|
 | Mech 机械 | 13 | 2.31 | 7 | 13 |
-| Beast 野兽 | 12 | 1.42 | 1 | 0 |
+| Beast 野兽 | 12 | 1.42 | 1 | 12 |
 | Shadow 暗影 | 14 | 1.43 | 2 | 10 |
 | Nature 自然 | 13 | 1.31 | 1 | 0 |
 | Element 元素 | 12 | 1.58 | 2 | 12 |
@@ -205,18 +205,18 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h010 | Gnoll Warrior 豺狼人战士 | Gnoll | 精灵 gnoll | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h011 | Gnoll Savage 豺狼人野蛮人 | Gnoll | 精灵 gnoll | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h012 | Ogre Basher 食人魔棒槌手 | Ogre | 精灵 ogre | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h013 | Ogre Pulverizer 食人魔粉碎者 | OgreLord | 精灵 ogre | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h014 | Harpy 鹰身人 | Harpy | 精灵 harpy | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h015 | Medusa 美杜莎 | HarpyWitch | 精灵 medusa | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h016 | Troll Fighter 巨魔斗士 | ForestTroll | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h017 | Troll Champion 巨魔勇士 | ForestTrollTrapper | 精灵 troglodyte | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h018 | Grizzly 灰熊 | GrizzlyBear | 精灵 behemoth | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h019 | Greymane 灰鬃熊德 | DruidoftheClaw | 精灵 behemoth | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01A | Spawn of Dragon 龙人 | DragonSpawnBlue | 精灵 lizardman | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h01B | Dragon Aspect 红龙守护者 | RedDragon | 精灵 redDragon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h010 | Gnoll Warrior 豺狼人战士 | Gnoll | 精灵 gnoll | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h011 | Gnoll Savage 豺狼人野蛮人 | Gnoll | 精灵 gnoll | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h012 | Ogre Basher 食人魔棒槌手 | Ogre | 精灵 ogre | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h013 | Ogre Pulverizer 食人魔粉碎者 | OgreLord | 精灵 ogre | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h014 | Harpy 鹰身人 | Harpy | 精灵 harpy | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h015 | Medusa 美杜莎 | HarpyWitch | 精灵 medusa | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h016 | Troll Fighter 巨魔斗士 | ForestTroll | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h017 | Troll Champion 巨魔勇士 | ForestTrollTrapper | 精灵 troglodyte | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h018 | Grizzly 灰熊 | GrizzlyBear | 精灵 behemoth | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h019 | Greymane 灰鬃熊德 | DruidoftheClaw | 精灵 behemoth | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h01A | Spawn of Dragon 龙人 | DragonSpawnBlue | 精灵 lizardman | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h01B | Dragon Aspect 红龙守护者 | RedDragon | 精灵 redDragon | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 
 ## Nature 自然
 

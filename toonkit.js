@@ -98,7 +98,7 @@ const lt=(c,k=0.35)=>{_c.setHex(c);_c.lerp(new THREE.Color(1,1,1),k);return _c.g
 const PLANS={};
 // humanoid: h=height scale, bw=bulk, kind of head/torso/legs, weapon, offhand, extras list
 PLANS.humanoid=(B,o)=>{const h=o.h||1,bw=o.bw||1,sk=o.skin??0xe8b88a,cl=o.cloth??0x5a6aa0,mt=o.metal??0xa8b0bc,ac=o.accent??0xd8a83a;
-  const legL=o.legs==='none'?0:(o.legLen||0.36)*h,hipY=o.legs==='none'?(o.floatY||0.45)*h:legL+0.04*h;const tH=(o.torsoH||0.36)*h,tW=0.3*bw*h,tD=0.2*bw*h;
+  const legL=o.legs==='none'?0:(o.legLen||0.36)*h,hipY=(o.legs==='none'?(o.floatY||0.45)*h:legL+0.04*h)+(o.lift||0)*h;const tH=(o.torsoH||0.36)*h,tW=0.3*bw*h,tD=0.2*bw*h;
   B.part('hips','body',[0,hipY,0]).part('torso','hips',[0,0,0]);
   // legs
   if(o.legs!=='none'){for(const [n,s] of [['legL',1],['legR',-1]]){B.part(n,'hips',[s*0.09*bw*h,0,0]);const lc=o.legC??dk(cl,0.75);
@@ -150,7 +150,7 @@ PLANS.humanoid=(B,o)=>{const h=o.h||1,bw=o.bw||1,sk=o.skin??0xe8b88a,cl=o.cloth?
       if(o.arms==='claw')for(const dx of [-0.025,0,0.025])B.add(n,'cone',[0.015*h,0.09*h,4],[dx*h,-aL-0.04*h,0.03*h],0xf0e8d0,{r:[2.6,0,0]});}
     if(o.pads)B.add(n,'sph',[0.085*h*bw,8,6,0,Math.PI*2,0,Math.PI/2],[s*0.01,0.02,0],o.padC??mt,{s:[1.1,0.8,1.1]});
     if(o.spikes&&o.pads)B.add(n,'cone',[0.025*h,0.1*h,4],[s*0.02,0.09*h,0],0xd8d8d8);}
-  B.meta.armSpread=o.armSpread??0.08;B.meta.hover=o.legs==='none';B.meta.stride=o.stride;
+  B.meta.armSpread=o.armSpread??0.08;B.meta.hover=o.legs==='none'||!!o.lift;B.meta.stride=o.stride;
   const hy=-aL;// hand position in arm space
   weapon(B,'armR',o.weapon,o,h,hy);weapon(B,'armL',o.off,o,h,hy,true);
   // extras
