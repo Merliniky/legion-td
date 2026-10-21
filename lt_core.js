@@ -219,6 +219,14 @@ function applyHit(g,L,h){const t=h.tgt,e=h.src;if(!t.alive)return;const T=L.t;
         L.events.push({k:'splash',x:t.x,y:t.y,r:Math.max(0.4,R),src:e});}}
     if(d.bounce&&!h.bounced){const B=d.bounce;let cur=t,dm=h.dmg,hitS=new Set([t]);const n=(B.targets||2)-1,rr=(B.range||300)/TILE;
       for(let i=0;i<n;i++){dm*=1-(B.loss||0.15);const nx=nearest(cur,foes(L,e),rr,o=>!hitS.has(o));if(!nx)break;hitS.add(nx);L.pend.push({t:0.12*(i+1),src:e,tgt:nx,dmg:dm,atk:h.atk,bounced:true,melee:false});L.events.push({k:'bounce',a:cur,b:nx,src:e});cur=nx;}}}}
+// collision weights (WC3-like): a unit that is standing still / attacking / stunned is immovable; only the unit that is walking
+// gets displaced (so it slides around the obstacle or stops). Two walking units share the correction (bosses barely yield);
+// a walking fighter is never pushed toward its own king by a creep (handled in the separation loop).
+function steer(m,nx,ny,ov){const t=m.tgt;let gx,gy;if(t&&t.alive){gx=t.x-m.x;gy=t.y-m.y;}else if(m.side==='u'){gx=m.c+0.5-m.x;gy=m.r+0.5-m.y;}else{gx=KING_POS.x-m.x;gy=KING_POS.y-m.y;}
+  let tx=-ny,ty=nx;if(tx*gx+ty*gy<0){tx=-tx;ty=-ty;}const k=Math.min(0.06,ov*1.2);
+  if(m.side!=='c'&&ty>0&&m.tgt&&m.tgt.side==='c')ty=0;m.x+=tx*k;m.y+=ty*k;}
+function sepW(a,b){let wa=a.moving?1:0,wb=b.moving?1:0;if(!wa&&!wb)return [0,0];
+  if(wa&&wb){if(a.boss)wa*=0.15;if(b.boss)wb*=0.15;}return [wa,wb];}
 function fxCount(L,k){const c=L.fxc||(L.fxc={});c[k]=(c[k]||0)+1;}
 function castAbilities(g,L,e,dt){const T=L.t,d=e.d;if(d.manaRegen)e.mana=Math.min(d.manaMax||0,e.mana+(d.manaRegen+(e.au?e.au.mregen*(d.manaMax||0):0))*dt);
   const fx=fxOf(e);if(!fx.length)return;const enemies=foes(L,e);const engaged=e.tgt&&e.tgt.alive&&dist(e,e.tgt)<(d.rng+3);
@@ -272,11 +280,15 @@ function stepLane(g,L,dt){if(L.cleared)return;L.t+=dt;const T=L.t;
     if(e.side==='s'&&e.until<T&&e.alive){e.alive=false;L.events.push({k:'die',e,expire:true});}}
   // fighters + summoned allies
   for(const u of mine){if(!u.alive)continue;const st=statsOf(u);u.atkT-=dt;castAbilities(g,L,u,dt);if(!u.alive)continue;u.moving=false;if(stunned(u,T))continue;
-    const acq=Math.max(st.rng+0.8,3.9);if(!u.tgt||!u.tgt.alive||(T%0.5<dt)){const n=nearest(u,L.creeps,acq);u.tgt=n||(u.tgt&&u.tgt.alive&&dist(u,u.tgt)<acq+2?u.tgt:null);}
+    const acq=Math.max(st.rng+0.8,3.9);if(!u.tgt||!u.tgt.alive||(T%0.5<dt)){const n=nearest(u,L.creeps,acq,o=>!(u.skipT>T&&o===u.skip));u.tgt=n||(u.tgt&&u.tgt.alive&&dist(u,u.tgt)<acq+2?u.tgt:null);}
     if(!u.tgt&&u.side==='s'){u.tgt=nearest(u,L.creeps,99);}
     const t=u.tgt;
     if(!t){if(u.side==='u'){const hx=u.c+0.5,hy=u.r+0.5,d=Math.hypot(hx-u.x,hy-u.y);if(d>0.1){const s=Math.min(d,st.spd*moveK(u,T)*dt||u.d.spd*dt);u.x+=(hx-u.x)/d*s;u.y+=(hy-u.y)/d*s;u.moving=true;}}continue;}
-    const d=dist(u,t)-t.radius;if(d>st.rng){const s=u.d.spd*moveK(u,T)*dt,D2=dist(u,t)||1;u.x+=(t.x-u.x)/D2*s;u.y+=(t.y-u.y)/D2*s;u.moving=true;}
+    const d=dist(u,t)-t.radius;if(d>st.rng){const s=u.d.spd*moveK(u,T)*dt,D2=dist(u,t)||1;
+      // body-blocked (target ringed by planted allies): if the gap is not closing, give up on this target for a moment and pick another
+      if(u.lastD!=null&&u.lastTgt===t&&u.lastD-d<s*0.25){u.blk=(u.blk||0)+dt;}else u.blk=Math.max(0,(u.blk||0)-dt);u.lastD=d;u.lastTgt=t;
+      if(u.blk>0.6){u.blk=0;u.skip=t;u.skipT=T+2;const n=nearest(u,L.creeps,acq,o=>o!==t);if(n){u.tgt=n;continue;}}
+      u.x+=(t.x-u.x)/D2*s;u.y+=(t.y-u.y)/D2*s;u.moving=true;}
     else if(u.atkT<=0&&!has(u,'mine'))attack(g,L,u,t,st);u.face=Math.atan2(t.x-u.x,t.y-u.y);}
   // creeps (and the opponent's summons)
   for(const c of L.creeps){if(!c.alive)continue;const st=statsOf(c);c.atkT-=dt;if(c.d.fx&&c.d.fx.length)castAbilities(g,L,c,dt);c.moving=false;if(stunned(c,T))continue;
@@ -298,7 +310,13 @@ function stepLane(g,L,dt){if(L.cleared)return;L.t+=dt;const T=L.t;
         L.events.push({k:'wavefx',x:k.x,y:k.y,ux,uy,len:f.len/TILE,c:'earth'});}}}
   // separation (ground units only)
   const all=mine.concat(L.creeps).filter(e=>e.alive&&!e.fly);for(let i=0;i<all.length;i++){const a=all[i];for(let j=i+1;j<all.length;j++){const b=all[j];const dx=b.x-a.x,dy=b.y-a.y,rr=a.radius+b.radius,d2=dx*dx+dy*dy;
-      if(d2<rr*rr&&d2>1e-6){const d=Math.sqrt(d2),push=(rr-d)*0.5;const nx=dx/d,ny=dy/d;const wa=a.boss?0.15:1,wb=b.boss?0.15:1;a.x-=nx*push*wa;a.y-=ny*push*wa;b.x+=nx*push*wb;b.y+=ny*push*wb;}}}
+      if(d2<rr*rr&&d2>1e-6){const d=Math.sqrt(d2),ov=rr-d;const nx=dx/d,ny=dy/d;const [wa,wb]=sepW(a,b);if(!wa&&!wb)continue;const s=ov/(wa+wb);
+        let ax=-nx*s*wa,ay=-ny*s*wa,bx=nx*s*wb,by=ny*s*wb;
+        // a fighter is never shoved toward its king by a creep: that part of the correction goes to the creep instead
+        if(a.side!=='c'&&b.side==='c'&&ay>0){by-=ay;ay=0;}else if(b.side!=='c'&&a.side==='c'&&by>0){ay-=by;by=0;}
+        // walking into a planted unit: also slide sideways around it (toward the side of the mover's goal) instead of stalling
+        if(wa&&!wb)steer(a,-nx,-ny,ov);else if(wb&&!wa)steer(b,nx,ny,ov);
+        a.x+=ax;a.y+=ay;b.x+=bx;b.y+=by;}}}
   for(const e of mine.concat(L.creeps)){if(!e.alive)continue;e.x=Math.max(0.3,Math.min(W-0.3,e.x));if(e.side!=='c')e.y=Math.max(-1,Math.min(H-0.5,e.y));}
   if(L.summ.length>40)L.summ=L.summ.filter(s=>s.alive);
   if(!L.spawnQ.length&&!L.creeps.some(c=>c.alive)&&!L.pend.length){L.cleared=true;L.events.push({k:'cleared',t:L.t,leaks:L.leaks});}
