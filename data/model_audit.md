@@ -34,7 +34,7 @@
 | Arctic 极地 | 12 | 2.00 | 2 | 12 |
 | Elf 精灵 | 13 | 1.85 | 2 | 13 |
 | Goblin 地精 | 13 | 1.15 | 0 | 3 |
-| Paladin 圣骑士 | 12 | 1.25 | 0 | 0 |
+| Paladin 圣骑士 | 12 | 1.25 | 0 | 12 |
 | Orc 兽人 | 13 | 1.54 | 2 | 13 |
 | Undead 亡灵 | 13 | 1.31 | 1 | 0 |
 
@@ -258,18 +258,18 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h09L | Peasant 农民 | Peasant | 精灵 pikeman | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09H | Militia 民兵 | Militia | 精灵 halberdier | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09W | Archer 弓箭手 | HighElfArcher | 精灵 archer | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09M | Elite Archer 神弓 | SylvanusWindrunner | 精灵 marksman | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h09N | Footman 步兵 | Footman | 精灵 swordsman | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09O | Guard 近卫军 | TheCaptain | 精灵 crusader | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09R | Priest 牧师 | Priest_V1 | 精灵 monk | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09S | High Priest 高阶牧师 | HumanMage | 精灵 monk | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h09T | Knight 骑士 | Knight | 精灵 cavalier | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h09U | Cavalier 骑兵统帅 | LordGarithos | 精灵 champion | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0A3 | Dragon Hawk 龙鹰 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0A0 | Royal Griffin 皇家狮鹫 | GryphonRider | 精灵 royalGriffin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h09L | Peasant 农民 | Peasant | 精灵 pikeman | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09H | Militia 民兵 | Militia | 精灵 halberdier | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09W | Archer 弓箭手 | HighElfArcher | 精灵 archer | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09M | Elite Archer 神弓 | SylvanusWindrunner | 精灵 marksman | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09N | Footman 步兵 | Footman | 精灵 swordsman | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09O | Guard 近卫军 | TheCaptain | 精灵 crusader | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09R | Priest 牧师 | Priest_V1 | 精灵 monk | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09S | High Priest 高阶牧师 | HumanMage | 精灵 monk | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h09T | Knight 骑士 | Knight | 精灵 cavalier | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h09U | Cavalier 骑兵统帅 | LordGarithos | 精灵 champion | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0A3 | Dragon Hawk 龙鹰 | WindSerpent | 精灵 serpentFly | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h0A0 | Royal Griffin 皇家狮鹫 | GryphonRider | 精灵 royalGriffin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 
 ## Goblin 地精
 
