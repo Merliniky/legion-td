@@ -36,7 +36,7 @@
 | Goblin 地精 | 13 | 1.15 | 0 | 3 |
 | Paladin 圣骑士 | 12 | 1.25 | 0 | 12 |
 | Orc 兽人 | 13 | 1.54 | 2 | 13 |
-| Undead 亡灵 | 13 | 1.31 | 1 | 0 |
+| Undead 亡灵 | 13 | 1.31 | 1 | 11 |
 
 ## Mech 机械
 
@@ -240,19 +240,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h0CF | Acolyte 侍僧 | Acolyte | 精灵 monk | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CH | Revenant 亡魂 | RevenantOfTheWaves | 精灵 wight | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0CI | Ghoul 食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CK | Frenzy Ghoul 狂暴食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0CF | Acolyte 侍僧 | Acolyte | 精灵 monk | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CH | Revenant 亡魂 | RevenantOfTheWaves | 精灵 wight | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CI | Ghoul 食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CK | Frenzy Ghoul 狂暴食尸鬼 | Ghoul | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 | h0CO | Meat Wagon 绞肉车 | MeatWagon | 程序化 wagon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
 | h0CP | War Machine 战争机器 | InfernalCannonCannon | 程序化 wagon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CQ | Necromancer 死灵法师 | Necromancer | 精灵 lich | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CS | Necrolyte 克尔苏加德 | Kelthuzad | 精灵 lich | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CV | Ghost 幽灵巫妖 | KelThuzadGhost | 精灵 lich | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0CW | Zombie 僵尸 | Zombie | 精灵 walkingDead | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CY | The Butcher 屠夫 | AbominationCIN | 精灵 gog | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0D0 | Guardian of Death 死亡守护者 | PitLord | 精灵 pitFiend | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0D2 | Death Dragon 骨龙 | FrostWyrm | 精灵 boneDragon | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0CQ | Necromancer 死灵法师 | Necromancer | 精灵 lich | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CS | Necrolyte 克尔苏加德 | Kelthuzad | 精灵 lich | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CV | Ghost 幽灵巫妖 | KelThuzadGhost | 精灵 lich | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CW | Zombie 僵尸 | Zombie | 精灵 walkingDead | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CY | The Butcher 屠夫 | AbominationCIN | 精灵 gog | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0D0 | Guardian of Death 死亡守护者 | PitLord | 精灵 pitFiend | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0D2 | Death Dragon 骨龙 | FrostWyrm | 精灵 boneDragon | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
 
 ## Paladin 圣骑士
 
