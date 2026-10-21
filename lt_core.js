@@ -322,7 +322,7 @@ const AI={think(g,p,dt){const A=g.ai||(g.ai=[{cd:0,w:-1},{cd:0,w:-1}]);const s=A
     if(P.lumber-keep>=80&&L.king.hp<L.king.maxHp*0.7){const k=['hp','regen','attack'][Math.floor(R()*3)];const r=kingUpgrade(g,p,k);if(r.ok)return r;}
     if(g.wave>=3&&P.lumber-keep>=40&&R()<0.6){const opts=D.summons.filter(x=>x.lumber<=P.lumber-keep&&P.stock[x.id].n>0);if(opts.length){const t=opts[Math.max(0,opts.length-1-Math.floor(R()*2))];return sendSummon(g,p,t.id);}}
     if(!bt)return;
-    const wispGoal=Math.min(ECO.wispMax,3+g.wave);const need=rec*0.7;
+    const wispGoal=Math.min(ECO.wispMax,3+g.wave);const need=rec*(g.wave<6?0.92:0.7);
     if(P.value>=need&&P.wisps<wispGoal&&P.gold>=ECO.wispGold&&foodFree>=1)return buyWisp(g,p);
     if(P.value>=rec*0.85&&P.lj<15&&P.wisps>=5&&g.wave>=4){const c=ljCost(P.lj+1);if(P.gold>=c.g&&P.lumber>=c.l+keep&&R()<0.5)return buyLumberjack(g,p);}
     const lines=raceLines(g,p);
