@@ -32,7 +32,7 @@
 | Hybrid 混血 | 6 | 1.00 | 0 | 0 |
 | Marine 海洋 | 14 | 1.43 | 0 | 0 |
 | Arctic 极地 | 12 | 2.00 | 2 | 12 |
-| Elf 精灵 | 13 | 1.85 | 2 | 0 |
+| Elf 精灵 | 13 | 1.85 | 2 | 13 |
 | Goblin 地精 | 13 | 1.15 | 0 | 0 |
 | Paladin 圣骑士 | 12 | 1.25 | 0 | 0 |
 | Orc 兽人 | 13 | 1.54 | 2 | 0 |
@@ -113,19 +113,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h08F | Colt 幼角鹰 | Hippogryph | 精灵 griffin | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h08I | Rider 角鹰骑士 | RiddenHippogryph | 精灵 royalGriffin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08H | Novice 见习者 | HighElfPeasant | 精灵 woodElf | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08L | Crusader 十字军 | BloodElfLieutenant | 精灵 crusader | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h08N | Sentry 哨兵 | watcher | 精灵 woodElf | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08P | Nightsaber 夜刃女猎手 | Huntress | 精灵 woodElf | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08Q | Prisoner 囚徒 | IllidanEvilCaged | 精灵 blackKnight | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08S | Maverick 龙鹰浪人 | BloodElfDragonHawk | 精灵 wyvern | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08V | Druid 德鲁伊 | DruidoftheTalon | 精灵 woodElf | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h08Y | Ascendant 升腾者 | Sorceress_V1 | 精灵 mage | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h08Z | Sword Mage 剑法师 | BloodElfSpellThief | 精灵 zealot | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h090 | Moon Guard 月之守卫 | assassin | 精灵 zealot | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h093 | Warden 守望者典狱长 | herowarden | 精灵 zealot | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
+| h08F | Colt 幼角鹰 | Hippogryph | 精灵 griffin | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h08I | Rider 角鹰骑士 | RiddenHippogryph | 精灵 royalGriffin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h08H | Novice 见习者 | HighElfPeasant | 精灵 woodElf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08L | Crusader 十字军 | BloodElfLieutenant | 精灵 crusader | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08N | Sentry 哨兵 | watcher | 精灵 woodElf | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08P | Nightsaber 夜刃女猎手 | Huntress | 精灵 woodElf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h08Q | Prisoner 囚徒 | IllidanEvilCaged | 精灵 blackKnight | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08S | Maverick 龙鹰浪人 | BloodElfDragonHawk | 精灵 wyvern | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h08V | Druid 德鲁伊 | DruidoftheTalon | 精灵 woodElf | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08Y | Ascendant 升腾者 | Sorceress_V1 | 精灵 mage | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h08Z | Sword Mage 剑法师 | BloodElfSpellThief | 精灵 zealot | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h090 | Moon Guard 月之守卫 | assassin | 精灵 zealot | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h093 | Warden 守望者典狱长 | herowarden | 精灵 zealot | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 
 ## Demi-Human 亚人
 
