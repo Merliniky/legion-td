@@ -37,7 +37,7 @@ for name,b in raw['builders'].items():
     R['races'][name]={'zh':zr,'builder':b['id'],'desc':b['desc'],'lines':lines}
 R['races']['Hybrid']['rule']='变形体: 建造后在每阶的16个种族基础兵中随机变形为其一(详见tooltip)'
 for u in SUMMONS:
-    st=extract.stats(u);st['zh']=U.get(st['name'],st['name']);st.update(S(u));R.setdefault('summoned',{})[u]=st
+    st=extract.stats(u);st['zh']=U.get(st['name'],st['name']);st.update(S(u));st['fx']=A.get(u,[]);R.setdefault('summoned',{})[u]=st
 R['waves']=[]
 for w in raw['waves']:
     st=w['stats'];R['waves'].append({'wave':w['wave'],'id':w['unit'],'en':w['name'],'zh':WAVE.get(w['name'],w['name']),'count':w['count'],'bounty':w['bounty_each'],'bonusGold':w['waveBonusGold'],'recommendedValue':w['recommendedValue'],
@@ -55,7 +55,7 @@ k=raw['king'];R['king']={'id':'h00K','hp':k['hp'],'mana':k['mana'],'regen':k['re
              'attack':{'lumber':80,'income':3,'max':30,'perLevel':'+10 攻击 (A05O AIat 10/20/30…300)'},
              'regen':{'lumber':80,'income':3,'max':20,'perLevel':'+5 HP/秒 (R002 rhpr base 5 mod 5)'}},
  'note':'国王击杀漏怪的赏金平分给本队玩家。另有 R006/R007 (国王护甲/攻速) 由脚本在特定时点+2，触发条件未完全确认'}
-R['economy']={'startGold':300,'startLumber':97,'startFood':'Town 7 (h023 fmade)','foodCeiling':200,
+R['economy']={'startGold':270,'startLumber':90,'startNote':'JASS: x3模式(默认 -aphgggmmcbx3) 开局270金/90木；非x3模式100金/30木','upgradeCost':'单位所列金币为总价值，升级时支付差价（与Mega Book出兵顺序吻合）','startFood':'Town 7 (h023 fmade)','foodCeiling':200,
  'wisp':{'gold':50,'food':1,'max':7,'harvest':'每次2木 / 10秒 (Awha DataA1=2, DataB1=10；字段含义按WC3小精灵采集推断)','est':True},
  'lumberjack':{'R003':'等级1-8: 金/木 60+20×(n-1)，每级每次采集+1木','R00H':'等级9-15: 200金/200木，每级+1木'},
  'farm':{'gold':24,'lumber':80,'food':8,'levels':10,'note':'农场可连续升级10次，每级+8人口'},
@@ -81,6 +81,19 @@ SUMFX={'h04S':[{'k':'bash','ch':0.2,'dmg':0,'stun':1,'name':'Maul'}],'h04T':[{'k
  'h05A':[{'k':'bash','ch':0.25,'dmg':120,'stun':1,'name':'Bash'},{'k':'aura','st':'burn','v':10,'r':400,'who':'enemy','name':'Immolation'},{'k':'immune','name':'Spell Immunity'}],
  'h0BR':[{'k':'aura','st':'ms','v':0.15,'r':600,'who':'ally','name':'Swiftness Aura'},{'k':'aura','st':'dmg','v':0.10,'r':600,'who':'ally','name':'Command Aura'},{'k':'immune','name':'Spell Immunity'}],
  'h04R':[],'h04Z':[]}
+
+R['king']['abilities']=[
+ {'k':'immolation','wave':5,'dps':12,'r':300,'name':'Permanent Immolation','zh':'永久献祭','src':'book'},
+ {'k':'shockwave','wave':9,'dmg':90,'w':150,'len':800,'mana':200,'cd':12,'name':'Shockwave','zh':'震荡波','src':'book','est':True},
+ {'k':'warstomp','wave':13,'dmg':45,'stun':1.25,'r':300,'mana':250,'cd':10,'name':'War Stomp','zh':'战争践踏','src':'book','est':True},
+ {'k':'kaura','wave':17,'st':'dmg','v':0.15,'r':900,'name':'Command Aura','zh':'命令光环','src':'book'},
+ {'k':'kaura','wave':21,'st':'arm','v':5,'r':900,'name':'Devotion Aura','zh':'专注光环','src':'book'},
+ {'k':'kaura','wave':25,'st':'as','v':0.10,'ms':0.15,'r':900,'name':'Endurance Aura','zh':'耐久光环','src':'book'}]
+R['king']['abilityNote']='《Legion TD Mega Book 3.41》: 国王在第5关获得第一个技能，之后随游戏进行获得其余技能；具体解锁关卡未能从地图脚本确认（技能来自法术书A051/A052），此处按每4关解锁一个估计。满级国王约18750HP、364-374攻击、~100回复。'
+R['king']['lateGame']={'asPerWave':0.03,'armPerWave':0.2,'from':6,'note':'R006/R007 由脚本随时间提升国王护甲/攻速；Book称后期攻速约0.4，此处按每关+3%攻速、+0.2护甲估计','est':True}
+R['modes']={'X3':{'countMul':1,'bountyMul':1,'zh':'X3（原版常用：每关36只螃蟹等）','src':'map JASS + book'},
+            'X1':{'countMul':1/3,'bountyMul':3,'zh':'X1（数量1/3，赏金×3 以保持经济，赏金倍率为估计）','est':True}}
+R['bookNotes']={'creepHpDiff':'Book 列出的前期怪物HP略高于物体数据（如螃蟹34 vs 30、蝎子63 vs 55），疑为难度/HP修正科技(R004)所致；本作采用地图物体数据。'}
 for s in R['summons']: s['fx']=SUMFX.get(s['id'],[])
 json.dump(R,open('/workspace/legion-td/data/roster_mega.json','w'),ensure_ascii=False,indent=1)
 print('summons patched')

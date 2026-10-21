@@ -647,7 +647,16 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "shrapnel",
+     "ch": 0.4,
+     "dmg": 50,
+     "n": 3,
+     "name": "Shrapnel",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 263-305\nSpeed: 2.1\nRange: 250\nHit Points: 1420\nAttack Type: Siege\nDefense Type: Heavy \nAbility:  Sharpnel",
    "from": "h00N",
    "upgrades": []
@@ -1437,7 +1446,16 @@
    "manaRegen": null,
    "hpRegen": 6,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "spree",
+     "ch": 0.3,
+     "dmg": 0.33,
+     "dur": 4,
+     "name": "Killing Spree",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 33-39\nSpeed: 0.9\nRange: 100\nHit Points: 485\nAttack Type: Normal \nDefense Type: Medium \nAbility:  Frenzy, Killing Spree",
    "from": "h01P",
    "upgrades": []
@@ -1521,7 +1539,14 @@
    "manaRegen": 1,
    "hpRegen": 3.75,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "mindwarp",
+     "as": 0.3,
+     "name": "Mind Warp",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 27-31\nSpeed: 1\nRange: 350\nHit Points: 375\nAttack Type: Magic\nDefense Type: Light\nAbility:  Frenzy, Mindwarp",
    "from": "h01P",
    "upgrades": []
@@ -2207,6 +2232,14 @@
      "ch": 0.33,
      "x": 1.6,
      "name": "Precision"
+    },
+    {
+     "k": "mark",
+     "v": 0.25,
+     "dur": 5,
+     "name": "Mark Target",
+     "src": "book",
+     "est": true
     }
    ],
    "tooltip": "Damage: 40-43\nSpeed: 0.9\nRange: 750\nHit Points: 335\nAttack Type: Pierce\nDefense Type: Medium \nAbility:  Precision, Mark Target",
@@ -2297,7 +2330,14 @@
      "tip": ""
     }
    ],
-   "fx": [],
+   "fx": [
+    {
+     "k": "aftershock",
+     "dmg": 40,
+     "name": "Aftershock",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 120-132\nSpeed: 1.8\nRange: 300\nHit Points: 955\nAttack Type: Magic\nDefense Type: Heavy \nAbility:  Aftershock",
    "from": "h01H",
    "upgrades": []
@@ -3225,6 +3265,12 @@
      "ratio": 4,
      "pct": 0.9,
      "name": "Energy Shield"
+    },
+    {
+     "k": "focus",
+     "per": 3,
+     "name": "Focus Energy",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 193-205\nSpeed: 0.98\nRange: 400\nHit Points: 1700\nAttack Type: Magic\nDefense Type: Medium \nAbility:  Energy Shield, Focus Energy",
@@ -4101,7 +4147,15 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "slavetrade",
+     "v": 3,
+     "per": 2,
+     "name": "Slave Trade",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 65-75\nSpeed: 1\nRange: 100\nHit Points: 770\nAttack Type: Normal \nDefense Type: Medium \nAbility:  Slave Trade",
    "from": "h06K",
    "upgrades": []
@@ -4193,11 +4247,12 @@
     },
     {
      "k": "fury",
+     "ch": 0.2,
      "as": 0.6,
      "dur": 3,
-     "cd": 1,
+     "cd": 0,
      "name": "Fury",
-     "est": true
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 56-67\nSpeed: 0.8\nRange: 325\nHit Points: 900\nAttack Type: Pierce\nDefense Type: Medium \nAbility:  Throw Net, Fury",
@@ -4287,9 +4342,10 @@
    "fx": [
     {
      "k": "guardian",
+     "v": 0.33,
+     "r": 200,
      "name": "Guardian Spirit",
-     "note": "数据: 6个守护灵, 冷却600秒——细节未能从地图确认",
-     "est": true
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 87-109\nSpeed: 1.4\nRange: 500\nHit Points: 935\nAttack Type: Magic\nDefense Type: Light\nAbility:  Guardian Spirit",
@@ -4360,7 +4416,18 @@
    "manaRegen": 2,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "seduce",
+     "miss": 0.15,
+     "r": 250,
+     "dur": 7,
+     "cd": 12,
+     "name": "Seduce",
+     "src": "book",
+     "est": true
+    }
+   ],
    "tooltip": "Damage: 153-169\nSpeed: 1.05\nRange: 100\nHit Points: 1580\nAttack Type: Pierce\nDefense Type: Heavy \nAbility:  Seduce",
    "from": "h06Q",
    "upgrades": []
@@ -4818,7 +4885,15 @@
      "tip": ""
     }
    ],
-   "fx": [],
+   "fx": [
+    {
+     "k": "feast",
+     "v": 25,
+     "every": 5,
+     "name": "Feast",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 51-57\nSpeed: 0.8\nRange: 90\nHit Points: 660\nAttack Type: Chaos\nDefense Type: Unarmored\nAbility:  Feast",
    "from": "h07L",
    "upgrades": []
@@ -4864,10 +4939,11 @@
      "k": "poison",
      "ms": 0.2,
      "as": 0.2,
-     "dps": 3,
+     "dps": 0,
      "dur": 5,
+     "stack": "ms",
      "name": "Biotoxin",
-     "est": true
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 65-69\nSpeed: 1.1\nRange: 90\nHit Points: 690\nAttack Type: Normal \nDefense Type: Unarmored\nAbility:  Biotoxin",
@@ -4903,7 +4979,14 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "withdraw",
+     "dur": 1.5,
+     "name": "Withdraw",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 16-18\nSpeed: 1\nRange: 400\nHit Points: 260\nAttack Type: Magic\nDefense Type: Fortified\nAbility:  Withdraw",
    "upgrades": [
     "h07P"
@@ -4987,7 +5070,14 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "delicacy",
+     "v": 0.9,
+     "name": "Delicacy",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 41-46\nSpeed: 1.2\nRange: 180\nHit Points: 400\nAttack Type: Siege\nDefense Type: Heavy \nAbility:  Delicacy",
    "upgrades": [
     "h07R"
@@ -5022,7 +5112,14 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "delicacy",
+     "v": 0.9,
+     "name": "Delicacy",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 102-118\nSpeed: 1.2\nRange: 180\nHit Points: 1000\nAttack Type: Siege\nDefense Type: Heavy \nAbility:  Delicacy",
    "from": "h07Q",
    "upgrades": []
@@ -5176,7 +5273,14 @@
      "tip": "Stuff"
     }
    ],
-   "fx": [],
+   "fx": [
+    {
+     "k": "submerge",
+     "dur": 1.5,
+     "name": "Submerge",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 63-74\nSpeed: 0.8\nRange: 100\nHit Points: 880\nAttack Type: Normal \nDefense Type: Medium \nAbility:  Submerge",
    "upgrades": [
     "h07V"
@@ -5299,10 +5403,16 @@
     {
      "k": "deathspawn",
      "u": "h07Y",
-     "n": 2,
-     "name": "Hydra Heads",
-     "est": true,
-     "note": "JASS: 死亡时生成 h07Y（数量按WC3九头蛇分裂估计为2）"
+     "n": 3,
+     "name": "Mitosis",
+     "src": "book"
+    },
+    {
+     "k": "triple",
+     "n": 3,
+     "x": 0.8,
+     "name": "Triple Attack",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 178-275\nSpeed: 1.05\nRange: 325\nHit Points: 1660\nAttack Type: Magic\nDefense Type: Heavy \nAbility:  Triple Attack, Mitosis",
@@ -5434,7 +5544,16 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "bleed",
+     "dps": 5,
+     "as": 0.25,
+     "below": 0.3,
+     "name": "Bleeding",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 21-22\nSpeed: 1.5\nRange: 100\nHit Points: 200\nAttack Type: Normal\nDefense Type: Medium\nAbility:  Bleeding",
    "upgrades": [
     "h0BG"
@@ -5960,8 +6079,10 @@
     {
      "k": "frostarmor",
      "arm": 3,
+     "ms": 0.3,
+     "as": 0.3,
      "name": "Azure's Armor",
-     "est": true
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 232-247\nSpeed: 1.6\nRange: 360\nHit Points: 2195\nAttack Type: Magic\nDefense Type: Unarmored\nAbility:  Azure’s Breath, Azure's Armor",
@@ -6323,12 +6444,14 @@
    ],
    "fx": [
     {
-     "k": "procbolt",
-     "ch": 0.15,
+     "k": "wrath",
      "dmg": 100,
-     "stun": 1,
-     "est": true,
-     "name": "Wrath of Nature"
+     "jumps": 5,
+     "decay": 0.15,
+     "cd": 8,
+     "name": "Wrath of Nature",
+     "src": "book",
+     "est": true
     }
    ],
    "tooltip": "Damage: 76-84\nSpeed: 1\nRange: 500\nHit Points: 815\nAttack Type: Magic\nDefense Type: Unarmored\nAbility:  Wrath of Nature",
@@ -6577,11 +6700,10 @@
    "fx": [
     {
      "k": "mine",
-     "dmg": 50,
+     "dmg": 30,
      "r": 200,
      "name": "Kaboom!",
-     "note": "自爆: 中心50 / 外圈30",
-     "est": true
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 1-1\nSpeed: 1\nRange: 10\nHit Points: 20\nAttack Type: Normal\nDefense Type: Unarmored\nAbility:  Kaboom!",
@@ -6628,9 +6750,10 @@
    "fx": [
     {
      "k": "mine",
-     "dmg": 75,
+     "dmg": 60,
      "r": 300,
-     "name": "Kaboom!"
+     "name": "Kaboom!",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 1-1\nSpeed: 1\nRange: 10\nHit Points: 50\nAttack Type: Normal\nDefense Type: Unarmored\nAbility:  Kaboom!",
@@ -6678,9 +6801,10 @@
    "fx": [
     {
      "k": "mine",
-     "dmg": 100,
+     "dmg": 90,
      "r": 400,
-     "name": "Kaboom!"
+     "name": "Kaboom!",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 1-1\nSpeed: 1\nRange: 10\nHit Points: 90\nAttack Type: Normal\nDefense Type: Unarmored\nAbility:  Kaboom!",
@@ -6840,12 +6964,12 @@
    "fx": [
     {
      "k": "rockets",
-     "dmg": 105,
-     "r": 100,
+     "dmg": 0,
+     "r": 150,
      "stun": 1,
      "cd": 20,
-     "est": true,
-     "name": "Cluster Rockets"
+     "name": "Cluster Rockets",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 76-84\nSpeed: 1\nRange: 100\nHit Points: 770\nAttack Type: Normal\nDefense Type: Fortified\nAbility:  Cluster Rockets",
@@ -6993,11 +7117,10 @@
     {
      "k": "selfbuff",
      "as": 1.0,
-     "ms": 1.0,
-     "dur": 15,
-     "cd": 45,
-     "est": true,
-     "name": "Chemical Rage"
+     "dur": 999,
+     "cd": 0,
+     "name": "Chemical Rage",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 40-45\nSpeed: 1\nRange: 120\nHit Points: 900\nAttack Type: Normal\nDefense Type: Light\nAbility:  Chemical Rage",
@@ -7043,11 +7166,13 @@
    ],
    "fx": [
     {
-     "k": "overclock",
-     "as": 0.4,
-     "dur": 18,
-     "cd": 30,
-     "name": "Overclocking"
+     "k": "selfbuff",
+     "as": 0.2,
+     "ms": 0.4,
+     "dur": 999,
+     "cd": 0,
+     "name": "Overclocking",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 140-160\nSpeed: 1\nRange: 180\nHit Points: 1850\nAttack Type: Normal\nDefense Type: Heavy\nAbility:  Overclocking",
@@ -7083,7 +7208,15 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "deathspawn",
+     "u": "h0AD",
+     "n": 1,
+     "name": "Goblin Driver",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 130-150\nSpeed: 1\nRange: 180\nHit Points: 1350\nAttack Type: Siege\nDefense Type: Fortified\nAbility:  Goblin Driver",
    "upgrades": [
     "h0AQ"
@@ -7118,7 +7251,15 @@
    "manaRegen": null,
    "hpRegen": null,
    "abilitiesRaw": [],
-   "fx": [],
+   "fx": [
+    {
+     "k": "deathspawn",
+     "u": "h0AG",
+     "n": 1,
+     "name": "Goblin Driver",
+     "src": "book"
+    }
+   ],
    "tooltip": "Damage: 252-268\nSpeed: 1\nRange: 325\nHit Points: 2300\nAttack Type: Siege\nDefense Type: Fortified\nAbility:  Goblin Driver",
    "from": "h0AR",
    "upgrades": []
@@ -7703,9 +7844,10 @@
      "k": "selfbuff",
      "as": 0.3,
      "drain": 5,
-     "dur": 30,
-     "cd": 1,
-     "name": "Frenzy"
+     "dur": 999,
+     "cd": 0,
+     "name": "Frenzy",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 50-50\nSpeed: 1\nRange: 100\nHit Points: 500\nAttack Type: Normal \nDefense Type: Unarmored\nAbility:  Frenzy",
@@ -7754,7 +7896,14 @@
     {
      "k": "finisher",
      "ch": 0.05,
-     "name": "Finishing Blow!"
+     "dmg": 4000,
+     "name": "Finishing Blow!",
+     "src": "book"
+    },
+    {
+     "k": "berserk",
+     "name": "Berserk",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 54-66\nSpeed: 0.6\nRange: 100\nHit Points: 1050\nAttack Type: Chaos\nDefense Type: Unarmored\nAbility:  Berserk, Finishing Blow",
@@ -7799,13 +7948,11 @@
    ],
    "fx": [
     {
-     "k": "procslow",
-     "ch": 0.15,
-     "ms": 0.5,
-     "as": 0.25,
-     "dur": 3,
-     "est": true,
-     "name": "Cripple"
+     "k": "cripple",
+     "v": 0.1,
+     "dur": 2,
+     "name": "Cripple",
+     "src": "book"
     }
    ],
    "tooltip": "Damage: 42-46\nSpeed: 1.5\nRange: 350\nHit Points: 260\nAttack Type: Magic\nDefense Type: Light\nAbility:  Cripple",
@@ -8237,12 +8384,13 @@
    ],
    "fx": [
     {
-     "k": "procbolt",
-     "ch": 0.15,
-     "dmg": 100,
-     "stun": 2,
-     "est": true,
-     "name": "Storm Bolt"
+     "k": "stormbolt",
+     "dmg": 300,
+     "stun": 3,
+     "cd": 9,
+     "name": "Storm Bolt",
+     "src": "book",
+     "est": true
     }
    ],
    "tooltip": "Damage: 252-268\nSpeed: 1\nRange: 180\nHit Points: 2500\nAttack Type: Chaos\nDefense Type: Fortified\nAbility:  Storm Bolt",
@@ -8858,7 +9006,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "n002": {
    "id": "n002",
@@ -8887,7 +9036,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "n003": {
    "id": "n003",
@@ -8916,7 +9066,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "u005": {
    "id": "u005",
@@ -8960,7 +9111,18 @@
    "manaMax": 50,
    "mana0": 50,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": [
+    {
+     "k": "summon",
+     "u": "n004",
+     "n": 4,
+     "dur": 15,
+     "cd": 999,
+     "name": "Raise Imp",
+     "src": "data"
+    }
+   ]
   },
   "n00Q": {
    "id": "n00Q",
@@ -8989,7 +9151,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "n00R": {
    "id": "n00R",
@@ -9018,7 +9181,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "u011": {
    "id": "u011",
@@ -9047,7 +9211,8 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": 1
+   "hpRegen": 1,
+   "fx": []
   },
   "h07Y": {
    "id": "h07Y",
@@ -9076,7 +9241,129 @@
    "manaMax": null,
    "mana0": null,
    "manaRegen": null,
-   "hpRegen": null
+   "hpRegen": null,
+   "fx": []
+  },
+  "n004": {
+   "id": "n004",
+   "name": "Imp",
+   "hp": 350,
+   "mana": null,
+   "regen": 10,
+   "armor": 3,
+   "armorType": "unarmored",
+   "move": 522,
+   "range": 100,
+   "attackType": "chaos",
+   "weapon": "normal",
+   "cooldown": 0.8,
+   "dmgMin": 30,
+   "dmgMax": 33,
+   "targets": "enemies",
+   "acquire": 500,
+   "model": "Units\\Critters\\zergling\\zergling.mdl",
+   "modelScale": 0.8,
+   "movetp": "foot",
+   "level": 5,
+   "targCount1": 1,
+   "abilities": [],
+   "zh": "Imp",
+   "manaMax": null,
+   "mana0": null,
+   "manaRegen": null,
+   "hpRegen": 10,
+   "fx": []
+  },
+  "h0AD": {
+   "id": "h0AD",
+   "name": "Geomancer",
+   "hp": 200,
+   "mana": null,
+   "regen": null,
+   "armor": 3,
+   "armorType": "medium",
+   "move": 270,
+   "range": 90,
+   "attackType": "normal",
+   "weapon": "normal",
+   "cooldown": 0.8,
+   "dmgMin": 15,
+   "dmgMax": 17,
+   "targets": "enemies",
+   "acquire": 500,
+   "model": "units\\creeps\\KoboldGeomancer\\KoboldGeomancer.mdl",
+   "modelScale": 1.3,
+   "movetp": "foot",
+   "level": 2,
+   "targCount1": 1,
+   "abilities": [],
+   "zh": "狗头人地卜师",
+   "manaMax": null,
+   "mana0": null,
+   "manaRegen": null,
+   "hpRegen": null,
+   "fx": []
+  },
+  "h0AG": {
+   "id": "h0AG",
+   "name": "Clockwreck",
+   "hp": 770,
+   "mana": 20,
+   "regen": null,
+   "armor": 3,
+   "armorType": "fortified",
+   "move": 270,
+   "range": 100,
+   "attackType": "normal",
+   "weapon": "normal",
+   "cooldown": 1,
+   "dmgMin": 76,
+   "dmgMax": 84,
+   "targets": "enemies",
+   "acquire": 500,
+   "model": "Units\\Creeps\\HeroTinkerRobot\\HeroTinkerRobot.mdl",
+   "modelScale": 1.3,
+   "movetp": "foot",
+   "level": 2,
+   "targCount1": 1,
+   "abilities": [
+    {
+     "id": "A08F",
+     "name": "Cluster Rockets(goblin)",
+     "tip": "Bombards an area with rockets, dealing up to 10 damage to nearby enemy units and stunning them for 1 second.\",\"Bombards an area with rockets, dealing up to 65 damage to nearby enemy land units and stunning them for <ANcs,Dur2> second.\",\"Bombards an area with rockets, dealing up to 100 damage to nearby enemy land units and stunning them for <ANcs,Dur3> second.",
+     "code": "ANcs",
+     "levels": 1,
+     "DataA1": 2.5,
+     "DataB1": 0.25,
+     "DataC1": 6,
+     "DataD1": 105,
+     "DataE1": 1,
+     "Area1": 100,
+     "Dur1": 1.01,
+     "HeroDur1": 1.01,
+     "Cool1": 20,
+     "Rng1": 300,
+     "Cost1": 20,
+     "targs1": "air,enemies,ground",
+     "BuffID1": "B04A"
+    }
+   ],
+   "zh": "发条机器人",
+   "manaMax": 20,
+   "mana0": 20,
+   "manaRegen": 1,
+   "hpRegen": null,
+   "fx": [
+    {
+     "k": "rockets",
+     "dmg": 0,
+     "r": 150,
+     "stun": 1,
+     "cd": 20,
+     "name": "Cluster Rockets",
+     "src": "book"
+    }
+   ]
   }
  },
  "waves": [
@@ -10763,11 +11050,89 @@
     "perLevel": "+5 HP/秒 (R002 rhpr base 5 mod 5)"
    }
   },
-  "note": "国王击杀漏怪的赏金平分给本队玩家。另有 R006/R007 (国王护甲/攻速) 由脚本在特定时点+2，触发条件未完全确认"
+  "note": "国王击杀漏怪的赏金平分给本队玩家。另有 R006/R007 (国王护甲/攻速) 由脚本在特定时点+2，触发条件未完全确认",
+  "abilities": [
+   {
+    "k": "immolation",
+    "wave": 5,
+    "dps": 12,
+    "r": 300,
+    "name": "Permanent Immolation",
+    "zh": "永久献祭",
+    "src": "book"
+   },
+   {
+    "k": "shockwave",
+    "wave": 9,
+    "dmg": 90,
+    "w": 150,
+    "len": 800,
+    "mana": 200,
+    "cd": 12,
+    "name": "Shockwave",
+    "zh": "震荡波",
+    "src": "book",
+    "est": true
+   },
+   {
+    "k": "warstomp",
+    "wave": 13,
+    "dmg": 45,
+    "stun": 1.25,
+    "r": 300,
+    "mana": 250,
+    "cd": 10,
+    "name": "War Stomp",
+    "zh": "战争践踏",
+    "src": "book",
+    "est": true
+   },
+   {
+    "k": "kaura",
+    "wave": 17,
+    "st": "dmg",
+    "v": 0.15,
+    "r": 900,
+    "name": "Command Aura",
+    "zh": "命令光环",
+    "src": "book"
+   },
+   {
+    "k": "kaura",
+    "wave": 21,
+    "st": "arm",
+    "v": 5,
+    "r": 900,
+    "name": "Devotion Aura",
+    "zh": "专注光环",
+    "src": "book"
+   },
+   {
+    "k": "kaura",
+    "wave": 25,
+    "st": "as",
+    "v": 0.1,
+    "ms": 0.15,
+    "r": 900,
+    "name": "Endurance Aura",
+    "zh": "耐久光环",
+    "src": "book"
+   }
+  ],
+  "abilityNote": "《Legion TD Mega Book 3.41》: 国王在第5关获得第一个技能，之后随游戏进行获得其余技能；具体解锁关卡未能从地图脚本确认（技能来自法术书A051/A052），此处按每4关解锁一个估计。满级国王约18750HP、364-374攻击、~100回复。",
+  "lateGame": {
+   "asPerWave": 0.03,
+   "armPerWave": 0.2,
+   "from": 6,
+   "note": "R006/R007 由脚本随时间提升国王护甲/攻速；Book称后期攻速约0.4，此处按每关+3%攻速、+0.2护甲估计",
+   "est": true
+  }
  },
  "economy": {
-  "startGold": 300,
-  "startLumber": 97,
+  "startGold": 270,
+  "startLumber": 90,
+  "startNote": "JASS: x3模式(默认 -aphgggmmcbx3) 开局270金/90木；非x3模式100金/30木",
+  "upgradeCost": "单位所列金币为总价值，升级时支付差价（与Mega Book出兵顺序吻合）",
   "startFood": "Town 7 (h023 fmade)",
   "foodCeiling": 200,
   "wisp": {
@@ -10878,5 +11243,22 @@
  },
  "waveAttackArmorLists": {
   "note": "JASS 波次说明字符串中的攻击/护甲类型列表，与SLK一致"
+ },
+ "modes": {
+  "X3": {
+   "countMul": 1,
+   "bountyMul": 1,
+   "zh": "X3（原版常用：每关36只螃蟹等）",
+   "src": "map JASS + book"
+  },
+  "X1": {
+   "countMul": 0.3333333333333333,
+   "bountyMul": 3,
+   "zh": "X1（数量1/3，赏金×3 以保持经济，赏金倍率为估计）",
+   "est": true
+  }
+ },
+ "bookNotes": {
+  "creepHpDiff": "Book 列出的前期怪物HP略高于物体数据（如螃蟹34 vs 30、蝎子63 vs 55），疑为难度/HP修正科技(R004)所致；本作采用地图物体数据。"
  }
 }
