@@ -20,7 +20,7 @@ for(const [rk,r] of Object.entries(D.races)){
   for(const [u,d] of rows){P(`| ${u.tier}${d?'→'.repeat(d):''} | **${u.zh}** ${u.en} | ${u.gold}金/${u.food} | ${u.hp} / ${u.armor} ${AR[u.armorType]||u.armorType} | ${u.dmg.join('-')} ${AT[u.attackType]||u.attackType} | ${u.range<=150?'近战':u.range} / ${u.cd}s | ${abil(u)} | ${(u.upgrades||[]).map(x=>D.units[x]?D.units[x].zh+'(+'+LT.upCost(u,D.units[x])+'金)':x).join('、')||'—'} | ${mdl(u.id)} |`);}
   P('');}
 P(`## 召唤物（由兵种技能产生）\n\n| id | 名称 | 生命/护甲 | 攻击 | 模型 |\n|---|---|---|---|---|`);
-for(const [id,s] of Object.entries(D.summoned))P(`| ${id} | ${s.zh||({'Mini Hydra':'小九头蛇','Imp':'小鬼'})[s.name]||s.name} ${s.name} | ${s.hp} / ${s.armor??'—'} ${AR[s.armorType]||s.armorType||''} | ${s.dmgMin}-${s.dmgMax} ${AT[s.attackType]||s.attackType||''} | ${mdl(id)} |`);
+for(const [id,s] of Object.entries(D.summoned))P(`| ${id} | ${s.zh} ${s.name} | ${s.hp} / ${s.armor??'—'} ${AR[s.armorType]||s.armorType||''} | ${s.dmgMin}-${s.dmgMax} ${AT[s.attackType]||s.attackType||''} | ${mdl(id)} |`);
 P(`\n## 31 关怪物\n\n| 关 | 怪物 | 数量(X3) | 生命/护甲 | 攻击 | 赏金/关卡奖励 | 推荐价值 | 能力 | 模型 |\n|---|---|---|---|---|---|---|---|---|`);
 for(const w of D.waves)if(w)P(`| ${w.wave}${w.boss?' 👑BOSS':''} | ${w.zh} ${w.en} | ${w.count} | ${w.hp} / ${w.armor} ${AR[w.armorType]||w.armorType} | ${w.dmg.join('-')} ${AT[w.attackType]||w.attackType}${w.fly?' 飞行':''} | ${w.bounty}/${w.bonusGold??'—'} | ${w.recommendedValue} | ${(w.fx||[]).map(f=>LT.fxText(f)+est(f)).join('<br>')||[...new Set(w.abilities||[])].map(a=>ABZ[a]||a).join('、')||'—'} | ${mdl(w.id)} |`);
 P(`\n## 派兵（佣兵 / Summons）\n派出后下一波进攻对手，并永久增加收入。\n\n| 兵种 | 商店 | 木材 | +收入 | 生命 | 攻击 | 库存/恢复 | 能力 | 模型 |\n|---|---|---|---|---|---|---|---|---|`);

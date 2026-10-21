@@ -37,7 +37,7 @@ for name,b in raw['builders'].items():
     R['races'][name]={'zh':zr,'builder':b['id'],'desc':b['desc'],'lines':lines}
 R['races']['Hybrid']['rule']='变形体: 建造后在每阶的16个种族基础兵中随机变形为其一(详见tooltip)'
 for u in SUMMONS:
-    st=extract.stats(u);st['zh']=U.get(st['name'],st['name']);st.update(S(u));st['fx']=A.get(u,[]);R.setdefault('summoned',{})[u]=st
+    st=extract.stats(u);st['zh']=U.get(st['name'],{'Mini Hydra':'小九头蛇','Imp':'小鬼'}.get(st['name'],st['name']));st.update(S(u));st['fx']=A.get(u,[]);R.setdefault('summoned',{})[u]=st
 R['waves']=[]
 for w in raw['waves']:
     st=w['stats'];R['waves'].append({'wave':w['wave'],'id':w['unit'],'en':w['name'],'zh':WAVE.get(w['name'],w['name']),'count':w['count'],'bounty':w['bounty_each'],'bonusGold':w['waveBonusGold'],'recommendedValue':w['recommendedValue'],

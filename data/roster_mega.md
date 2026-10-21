@@ -194,7 +194,7 @@ Cannot be randomed or drafted*
 | 5 | **巨蜥** Komodo | 180金/1 | 880 / 3 中甲 | 63-74 普通 | 近战 / 0.8s | 潜水：首次受到攻击时下潜无敌1.5秒 〔Book〕 | 三叉戟(+70金) | 精灵:basilisk 着色#8ad0a0 ×0.9 |
 | 5→ | **三叉戟** Trident | 250金/3 | 1770 / 3 中甲 | 140-160 普通 | 近战 / 1s | 震荡：20%几率2倍伤害并击晕2秒（首领减免） | — | 精灵:naga 着色#8affd0 ×1.2 +spikes/shield |
 | 6 | **海巨人** Sea Giant | 280金/2 | 1380 / 3 重甲 | 119-131 普通 | 180 / 0.95s | — | 九头蛇(+60金) | 精灵:giant 着色#8ad0c0 ×0.92 |
-| 6→ | **九头蛇** Hydra | 340金/4 | 1660 / 3 重甲 | 178-205 魔法 | 325 / 1.05s | 分裂：死亡时生成3个Mini Hydra（800血） 〔Book〕<br>三重攻击：同时攻击3个目标（副目标80%伤害） 〔Book〕 | — | 精灵:hydra ×1 +aura:0x6ad0ff |
+| 6→ | **九头蛇** Hydra | 340金/4 | 1660 / 3 重甲 | 178-205 魔法 | 325 / 1.05s | 分裂：死亡时生成3个小九头蛇（800血） 〔Book〕<br>三重攻击：同时攻击3个目标（副目标80%伤害） 〔Book〕 | — | 精灵:hydra ×1 +aura:0x6ad0ff |
 
 ### 极地（Arctic）
 
@@ -332,8 +332,8 @@ Cannot be randomed or drafted*
 | n00Q | 狼 Wolf | 145 / 3 重甲 | 14-17 混乱 | 精灵:cerberus 着色#b0a090 ×0.7 |
 | n00R | 血狼 Blood Wolf | 470 / 3 重甲 | 40-47 混乱 | 精灵:cerberus 着色#ff8a7a ×0.8 +ghost |
 | u011 | 火焰弓箭手 Fire Archer | 100 / 3 轻甲 | 10-10 穿刺 | 精灵:skeleton 着色#ffa060 ×0.85 +fire:0xff7a2a |
-| h07Y | Mini Hydra Mini Hydra | 800 / 3 无甲 | 55-65 魔法 | 精灵:hydra ×0.65 |
-| n004 | Imp Imp | 350 / 3 无甲 | 30-33 混乱 | 精灵:imp ×0.8 |
+| h07Y | 小九头蛇 Mini Hydra | 800 / 3 无甲 | 55-65 魔法 | 精灵:hydra ×0.65 |
+| n004 | 小鬼 Imp | 350 / 3 无甲 | 30-33 混乱 | 精灵:imp ×0.8 |
 | h0AD | 狗头人地卜师 Geomancer | 200 / 3 中甲 | 15-17 普通 | 精灵:gremlin 着色#d8b070 ×0.9 |
 | h0AG | 发条机器人 Clockwreck | 770 / 3 城甲 | 76-84 普通 | 程序化:robot ×1 |
 

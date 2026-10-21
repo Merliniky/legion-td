@@ -498,9 +498,10 @@ function syncViews(){const L=laneV();const want=new Set();
   for(const v of views.values())if(v.kind==='u'&&v.type!==v.e.type){dropView(v);makeView(v.e);}}
 // ---------- showcase (?showcase=<race>|waves|summons): every model of a race laid out with names ----------
 function showcase(key){const items=[];let title='';
-  if(key==='waves'){title='怪物波次 · 31波';LT.D.waves.slice(1).forEach(w=>items.push({id:w.id,zh:w.zh,sub:'第'+w.wave+'波',boss:w.boss,fly:w.fly}));}
+  if(key==='waves'){title='怪物波次 · 31波';LT.D.waves.slice(1).forEach(w=>items.push({id:w.id,zh:w.zh,sub:'第'+w.wave+'波'+(w.boss?' 👑首领':''),boss:w.boss,fly:w.fly}));}
   else if(key==='summons'){title='派兵 · 24种';LT.D.summons.forEach(s=>items.push({id:s.id,zh:s.zh,sub:'🌲'+s.lumber}));for(const id in LT.D.summoned)items.push({id,zh:LT.D.summoned[id].zh,sub:'技能召唤',fly:LT.D.summoned[id].fly});}
   else{const race=LT.RACES.find(r=>r.toLowerCase()===key.toLowerCase())||'Beast';const R=LT.D.races[race];title=`种族展示 · ${R.zh}（${race}）`;
+    if(race==='Prophet'){const pool=LT.RACES.filter(r=>r!=='Prophet'&&r!=='Hybrid');for(let i=0;i<6;i++)for(let j=0;j<3;j++){const rr=pool[(i*3+j*5)%pool.length],id=LT.D.races[rr].lines[i],u=U(id);items.push({id,zh:u.zh,sub:`${i+1}阶候选 · ${LT.D.races[rr].zh}`,row:i,col:j,fly:u.fly});}title='种族展示 · 先知（每阶随机候选示例）';}
     const ls=race==='Prophet'?[]:R.lines;ls.forEach((id,i)=>{const walk=(x,dep)=>{const u=U(x);items.push({id:x,zh:u.zh,sub:`${i+1}阶${dep?' · 升级'+dep:''}`,row:i,col:dep,fly:u.fly});(u.upgrades||[]).forEach((y,j)=>walk(y,dep+1+j*0));};walk(id,0);});
     // branching upgrades share depth 1: spread them into columns 1 and 2
     const byRow={};for(const it of items)(byRow[it.row]=byRow[it.row]||[]).push(it);for(const r in byRow)byRow[r].forEach((it,j)=>{it.col=j;});}
@@ -508,7 +509,7 @@ function showcase(key){const items=[];let title='';
   const cols=key==='waves'||key==='summons'?5:Math.max(1,...items.map(it=>(it.col||0)+1));const lab=$('labels');lab.innerHTML='';const ents=[];
   items.forEach((it,i)=>{const r=it.row!=null?it.row:Math.floor(i/cols),c=it.row!=null?it.col:i%cols;const rowsN=it.row!=null?6:Math.ceil(items.length/cols);
     const x=(c+0.5)*(W/cols),y=0.9+(r+0.75)*((H-1.6)/rowsN);const d=U(it.id)||LT.D.waves.find(w=>w&&w.id===it.id)||LT.D.summonById[it.id]||LT.D.summoned[it.id];
-    const e={id:9000+i,side:it.row!=null?'u':'c',type:it.id,d,x,y,c:Math.floor(x),r:Math.floor(y),hp:1,maxHp:1,alive:true,moving:false,fly:!!it.fly,boss:!!it.boss};ents.push(e);
+    const e={id:9000+i,side:it.row!=null?'u':'c',type:it.id,d,x,y,c:Math.floor(x),r:Math.floor(y),hp:1,maxHp:1,alive:true,moving:false,fly:!!it.fly,boss:false};ents.push(e);
     const v=makeView(e);v.yaw=v.proc?0.75:0;const el=document.createElement('div');el.className='lb';el.innerHTML=`${it.zh}<small>${it.sub}</small>`;lab.appendChild(el);v.label=el;});
   G.show=ents;return ents.length;}
 function placeLabels(){for(const v of views.values()){if(!v.label)continue;const p=v.g.position;const [sx,sy]=toScreen(p.x,0,p.z+0.32);v.label.style.left=sx+'px';v.label.style.top=sy+'px';}}
