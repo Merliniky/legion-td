@@ -35,7 +35,7 @@
 | Elf 精灵 | 13 | 1.85 | 2 | 13 |
 | Goblin 地精 | 13 | 1.15 | 0 | 0 |
 | Paladin 圣骑士 | 12 | 1.25 | 0 | 0 |
-| Orc 兽人 | 13 | 1.54 | 2 | 0 |
+| Orc 兽人 | 13 | 1.54 | 2 | 13 |
 | Undead 亡灵 | 13 | 1.31 | 1 | 0 |
 
 ## Mech 机械
@@ -149,19 +149,19 @@
 
 | id | 兵种 | WC3 模型 | 旧资源 | 旧资源符合度 | 处理 |
 |---|---|---|---|---|---|
-| h0BF | Orc Warrior 兽人战士 | Grunt | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0BS | Blood Orc Warrior 血兽人战士 | ChaosGrunt | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0BU | Wolverine 金刚狼 | ChaosOrcRange | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0BV | Orc Warlock 兽人术士 | ChaosWarlockGreen | 精灵 goblin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BW | Blood Orc Warlock 血兽人术士 | ChaosWarlock | 精灵 goblin | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0BX | Raider 狼骑 | WolfRider | 精灵 wolfRider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0C0 | Blood Raider 血狼骑 | ChaosWolfRider | 精灵 wolfRider | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0C4 | Young Witch Doctor 年轻巫医 | OrcWarlockRed | 精灵 hobgoblin | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0C2 | Elder Witch Doctor 长老巫医 | OrcWarlockGuldan | 精灵 hobgoblin | ❌ 严重不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0C5 | Wyvern 双足飞龙 | RiderlessWyvern | 精灵 wyvern | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0C8 | Wind rider 风骑士 | WyvernRider | 精灵 wyvern | ⚠️ 部分不符 | ToonKit 程序化重做（按 WC3 轮廓/配色） |
-| h0C9 | Orc Warchief 兽人酋长 | ChaosWarlord | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
-| h0CC | Thrall 萨尔 | Thrall | 精灵 orc | ✅ 基本相符 | 保留，后续统一换 ToonKit 时顺带做 |
+| h0BF | Orc Warrior 兽人战士 | Grunt | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BS | Blood Orc Warrior 血兽人战士 | ChaosGrunt | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BU | Wolverine 金刚狼 | ChaosOrcRange | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BV | Orc Warlock 兽人术士 | ChaosWarlockGreen | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BW | Blood Orc Warlock 血兽人术士 | ChaosWarlock | 精灵 goblin | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0BX | Raider 狼骑 | WolfRider | 精灵 wolfRider | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0C0 | Blood Raider 血狼骑 | ChaosWolfRider | 精灵 wolfRider | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（quad） |
+| h0C4 | Young Witch Doctor 年轻巫医 | OrcWarlockRed | 精灵 hobgoblin | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0C2 | Elder Witch Doctor 长老巫医 | OrcWarlockGuldan | 精灵 hobgoblin | ❌ 严重不符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0C5 | Wyvern 双足飞龙 | RiderlessWyvern | 精灵 wyvern | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h0C8 | Wind rider 风骑士 | WyvernRider | 精灵 wyvern | ⚠️ 部分不符 | **已重做**：ToonKit 程序化卡通模型（flyer） |
+| h0C9 | Orc Warchief 兽人酋长 | ChaosWarlord | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
+| h0CC | Thrall 萨尔 | Thrall | 精灵 orc | ✅ 基本相符 | **已重做**：ToonKit 程序化卡通模型（humanoid） |
 
 ## Shadow 暗影
 
