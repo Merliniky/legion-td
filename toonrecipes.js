@@ -1,0 +1,48 @@
+// 军团战争 · 兵种卡通模型配方（toonkit.js 生成）。按种族分组；k=整体缩放，升级形态更大更华丽。
+// plan: humanoid/quad/orb/flyer/tank/airship ；atk: swing/thrust/shoot/cast/slam/bite/claw/recoil/pulse/dive
+export const TKR={};
+const R=(id,o)=>{TKR[id]=o;};
+// ===================== 机械 Mech：尖端军事科技的机器人部队 =====================
+const STEEL=0x9aa4b2,GUN=0x5a6270;
+R('h00M',{k:0.85,h:0.95,bw:1.05,torso:'robot',head:'robot',legs:'robot',arms:'robot',metal:0xa8b4c4,eye:0xff4a2a,core:0xffa02a,weapon:'blade',off:'shield',glow:0x7ad8ff,shieldC:0x5a6a8a,atk:'swing',legLen:0.28,extras:['antenna']});
+R('h00T',{k:1.05,h:1.05,bw:1.2,torso:'robot',head:'robot',legs:'robot',arms:'robot',metal:0xc8d0dc,eye:0xff3a2a,core:0xff6a2a,weapon:'greatsword',off:'towershield',wMetal:0xe8eef8,shieldC:0x7a8aa8,pads:true,padC:0x3a6ad8,spikes:true,atk:'swing',extras:['plate:0x3a6ad8','antenna','backpack']});
+R('h00O',{k:0.92,h:1,torso:'robot',head:'visor',helm:'visor',legs:'robot',arms:'robot',metal:0x8a98a8,eye:0x6ad8ff,core:0x6ad8ff,weapon:'rifle',atk:'shoot',extras:['backpack','antenna']});
+R('h00X',{k:1.08,h:1.05,bw:1.1,torso:'robot',head:'dome',legs:'robot',arms:'robot',metal:0x6a7a9a,eye:0x8af0ff,core:0x8af0ff,glow:0x8af0ff,weapon:'tesla',pads:true,padC:0xd8a83a,atk:'shoot',extras:['coils','chest:0x8af0ff']});
+R('h00Y',{k:1.12,h:1.05,bw:1.35,torso:'brute',head:'visor',helm:'visor',legs:'robot',arms:'robot',metal:0x7a6a5a,torsoC:0x8a5a3a,eye:0xffa02a,core:0xff6a2a,weapon:'flamer',off:'flamer',pads:true,padC:0x4a4a52,atk:'shoot',extras:['tanks:0xd85a2a']});
+R('h00P',{k:0.98,h:1.02,torso:'robot',head:'robot',helm:'cap',capC:0x24366a,legs:'robot',arms:'robot',metal:0xb0bccc,eye:0x6ad8ff,core:0xffd23a,weapon:'sword',off:'pistol',accent:0xffc83a,atk:'swing',extras:['epaulets','medals','cape:0x2a4aa0']});
+R('h00Z',{k:1.2,h:1.12,bw:1.2,torso:'robot',head:'robot',helm:'bicorne',capC:0x14182a,legs:'robot',arms:'robot',metal:0xe0e6f0,eye:0x6ad8ff,core:0xffd23a,weapon:'greatsword',wMetal:0xfff0b0,accent:0xffc83a,pads:true,padC:0xffc83a,atk:'swing',extras:['epaulets','medals','cape:0x1a2a8a','plate:0x2a3a7a']});
+R('h00N',{k:0.72,plan:'airship',skin:0x8a6a4a,skin2:0xd8c090,atk:'recoil'});
+R('h00U',{k:0.92,plan:'airship',skin:0x3a4a5a,skin2:0x6a7a98,armor:true,atk:'recoil'});
+R('h00Q',{k:1.0,h:1.1,bw:1.4,torso:'brute',head:'robot',legs:'human',arms:'robot',skin:0xc89a7a,torsoC:0x7a8a9a,legC:0x5a5a62,metal:0x8a96a6,eye:0xff3a2a,core:0xff3a2a,weapon:'claws',off:'glowfist',glow:0xff5a3a,atk:'claw',extras:['stitches','chest:0xff3a2a']});
+R('h00W',{k:1.22,h:1.2,bw:1.55,torso:'brute',head:'robot',legs:'robot',arms:'robot',metal:0x5a6478,torsoC:0x4a5468,eye:0xff2a2a,core:0xff2a2a,weapon:'claws',off:'claws',clawC:0xff6a4a,pads:true,padC:0x3a3a44,spikes:true,atk:'claw',extras:['spikes','chest:0xff2a2a','jets']});
+R('h00S',{k:0.78,plan:'tank',skin:0x6a7a5a,barrels:1,exhaust:true,atk:'recoil'});
+R('h00V',{k:0.98,plan:'tank',skin:0x4a4a58,skin2:0x2a2a30,barrels:2,spikes:true,eye:0xff3a2a,barrelC:0x8a2a2a,exhaust:true,atk:'recoil'});
+// ===================== 元素 Element：元素精魂 =====================
+R('h040',{k:0.8,plan:'orb',glow:0x9ad8ff,atk:'pulse'});
+R('h041',{k:1.0,h:1,legs:'none',floatY:0.5,torso:'human',head:'orb',arms:'human',torsoC:0x7a5ad8,sleeve:0x7a5ad8,lowC:0x5a3ab0,lowM:'w',skin:0xb09aff,handC:0xd8c8ff,eye:0xe0d0ff,weapon:'glowfist',off:'glowfist',glow:0xc8a0ff,atk:'cast',extras:['ewings:0xc8a0ff','orbit:0xd8c0ff']});
+R('h042',{k:0.95,h:1,legs:'none',floatY:0.42,torso:'human',head:'orb',arms:'human',torsoC:0x3a9ae8,sleeve:0x3a9ae8,lowC:0x2a7ad8,lowM:'w',skin:0x6ac8ff,handC:0x9ae0ff,eye:0xc8f4ff,weapon:'glowfist',off:'glowfist',glow:0x9ae8ff,atk:'cast',extras:['wisps:0xc8f4ff']});
+R('h043',{k:1.2,h:1.15,bw:1.25,legs:'none',floatY:0.45,torso:'brute',head:'orb',arms:'human',torsoC:0x1a7ac8,sleeve:0x1a7ac8,lowC:0x1a5aa8,lowM:'w',skin:0x4ab0f0,handC:0x8ad8ff,eye:0xd0f8ff,weapon:'trident',wMetal:0x9af0ff,glow:0x9ae8ff,atk:'thrust',extras:['crest:0x9af0ff','wisps:0xe0ffff']});
+R('h044',{k:0.85,plan:'flyer',headType:'bird',skin:0xb09070,skin2:0xe8d8b0,headC:0xc8a880,wing:'bird',wingC:0x9a7a5a,eye:0xffe04a,neckLen:0.3,headS:1.5,tailLen:0.25,beak:0xe8b030,wingSpan:0.9,alt:0.4,atk:'dive'});
+R('h045',{k:1.05,h:1.05,torso:'robe',head:'bird',legs:'digit',arms:'human',torsoC:0x6a3ab0,skin:0x3a2a5a,headC:0x2a2040,eye:0xd8a0ff,weapon:'staff',glow:0xc88aff,wood:0x4a3a6a,atk:'cast',extras:['wings:0x4a2a7a','aura:0xb08aff']});
+R('h046',{k:0.95,h:0.95,bw:1.3,torso:'rock',head:'rock',headC:0x7a5a3a,eye:0xffb04a,legs:'human',arms:'rock',torsoC:0x8a6a48,legC:0x6a4a30,armC:0x7a5a3a,bootC:0x5a3a24,glow:0xffb04a,atk:'slam',extras:['chest:0xffb04a']});
+R('h047',{k:1.25,h:1.15,bw:1.6,torso:'rock',head:'rock',headC:0x7a7a84,eye:0x6affd0,legs:'human',arms:'rock',torsoC:0x8a8a94,legC:0x5a5a62,armC:0x7a7a84,bootC:0x4a4a52,glow:0x6affd0,atk:'slam',extras:['chest:0x6affd0','spikes:0x6affd0']});
+R('h048',{k:1.0,h:1,torso:'robe',head:'human',helm:'hood',hoodC:0x2a5ab0,legs:'human',arms:'human',torsoC:0x3a6ad8,skin:0xe8b88a,weapon:'staff',off:'orb',glow:0x6ad8ff,atk:'cast',extras:['tabard:0xd8c070']});
+R('h049',{k:1.18,h:1.1,torso:'robe',head:'human',helm:'wizard',capC:0x7a5ad8,legs:'none',floatY:0.48,lowC:0xc8c0ff,lowM:'w',arms:'human',torsoC:0xd8ccff,skin:0xffe8c8,accent:0xffd04a,weapon:'staff',off:'orb',glow:0xfff0a0,atk:'cast',extras:['beard:0xf8f8f8','tabard:0xffd04a','aura:0xfff0a0','orbit:0xffe08a']});
+R('h04A',{k:1.15,plan:'flyer',skin:0x3a2a5a,skin2:0x6a4a9a,wingC:0x2a1a40,eye:0xd06aff,crest:0xb06aff,crestM:'e',neckLen:0.8,tailLen:0.55,wingSpan:1.15,alt:0.35,atk:'bite',extras:['rings:0xb06aff']});
+R('h04B',{k:1.3,plan:'flyer',headType:'bird',skin:0xff7a2a,skin2:0xffd04a,headC:0xffa02a,wing:'bird',wingC:0xff5a1a,wingM:'e',eye:0xfff8c0,beak:0xffe080,crest:0xffe04a,crestM:'e',neckLen:0.5,tailLen:0.35,tailFan:0xffb02a,fanM:'e',wingSpan:1.3,alt:0.35,atk:'dive',trail:0xff8a2a});
+// ===================== 幽魂 Ghost：半透明的灵体 =====================
+const GH=0x9ad8e8;
+R('h05N',{k:0.92,ghost:true,h:1,legs:'none',floatY:0.42,torso:'robe',head:'hood',hoodC:0x7ab8d0,arms:'human',torsoC:0xa8e0f0,lowC:0x8ac8e0,skin:0xd8f8ff,eye:0x6affff,weapon:'glowfist',glow:0x8affff,atk:'cast',extras:['wisps:0xbaffff']});
+R('h05O',{k:1.08,ghost:true,h:1.08,legs:'none',floatY:0.45,torso:'robe',head:'skull',headC:0xd0f0ff,arms:'claw',torsoC:0x7ab0d8,lowC:0x5a90c0,skin:0xb8e0f8,eye:0x6affd0,helm:'hood',hoodC:0x4a7aa8,weapon:'glowfist',off:'glowfist',glow:0x6affd0,atk:'cast',extras:['chains','wisps:0x8affe0']});
+R('h05P',{k:1.15,ghost:true,h:1.1,legs:'none',floatY:0.5,torso:'human',head:'human',helm:'greathelm',arms:'human',torsoC:0x5ad0a8,lowC:0x3aa888,skin:0xb0ffe0,metal:0x8ae8c8,accent:0xc8ffe8,weapon:'blade',glow:0xa0ffe0,atk:'swing',extras:['ewings:0x8affd0','plate:0x8ae8c8']});
+R('h05S',{k:0.95,ghost:true,h:1,legs:'none',floatY:0.4,torso:'robe',head:'hood',hoodC:0x4a5a7a,arms:'claw',torsoC:0x5a6a8a,lowC:0x3a4a6a,skin:0x8a9ab8,eye:0xd0ff6a,atk:'claw',extras:['wisps:0xd0ff8a']});
+R('h062',{k:1.12,ghost:true,h:1.1,bw:1.15,legs:'human',torso:'human',head:'human',helm:'greathelm',arms:'human',torsoC:0x9ad8f8,legC:0x7ab8e0,metal:0xc8f0ff,accent:0xfff0a0,skin:0xd0f4ff,weapon:'sword',off:'shield',shieldC:0x8ad0f0,pads:true,padC:0xc8f0ff,atk:'swing',extras:['cape:0x8ac8f0','plate:0xc8f0ff']});
+R('h05T',{k:1.12,ghost:true,h:1.1,legs:'none',floatY:0.46,torso:'robe',head:'skull',headC:0xffd0d0,arms:'human',torsoC:0xb04a6a,lowC:0x8a2a4a,skin:0xffb0c0,eye:0xff3a3a,helm:'horns',hornC:0x2a1a1a,weapon:'staff',glow:0xff4a4a,wood:0x2a1a1a,atk:'cast',extras:['cape:0x6a1a2a','orbit:0xff6a6a']});
+R('h05R',{k:1.0,ghost:true,h:1,bw:1.2,legs:'none',floatY:0.5,torso:'brute',head:'orb',arms:'claw',torsoC:0x7a4ad8,lowC:0x5a2ab0,skin:0x9a6aff,eye:0xe0b0ff,atk:'cast',extras:['rings:0xc08aff','chest:0xe0c0ff']});
+R('h05U',{k:1.2,ghost:true,h:1.12,bw:1.35,legs:'none',floatY:0.52,torso:'brute',head:'orb',helm:'horns',hornC:0xffa08a,arms:'claw',torsoC:0xc8304a,lowC:0x8a1a3a,skin:0xff5a6a,eye:0xffe08a,atk:'cast',extras:['rings:0xff6a4a','chest:0xffd08a','spikes:0xff8a6a']});
+R('h05V',{k:1.05,ghost:true,h:1.05,bw:1.15,legs:'human',torso:'human',head:'skull',headC:0xc8e8d8,helm:'helm',metal:0x8aa8a0,arms:'human',torsoC:0x6a8a80,legC:0x4a6a62,skin:0xb8d8c8,eye:0x6affa0,weapon:'axe',wMetal:0xa8c8c0,pads:true,padC:0x8aa8a0,atk:'swing',extras:['bones','chains']});
+R('h05W',{k:1.25,ghost:true,h:1.15,bw:1.3,legs:'human',torso:'brute',head:'skull',headC:0xb0f0e0,helm:'horns',hornC:0x2a6a5a,arms:'human',torsoC:0x2a8a7a,legC:0x1a6a5a,skin:0x8ae0d0,eye:0x8affe0,weapon:'trident',wMetal:0x9af0e0,pads:true,padC:0x3aa898,spikes:true,atk:'thrust',extras:['crest:0x8affe0','bones']});
+R('h05X',{k:1.05,ghost:true,plan:'flyer',skin:0x6ab8d0,skin2:0xa8e8f8,wingC:0x5aa8c8,eye:0xc8ffff,neckLen:0.5,tailLen:0.5,wingSpan:1.1,alt:0.3,rider:0x5a8aa8,atk:'dive'});
+R('h05Y',{k:1.25,ghost:true,plan:'flyer',skin:0x5a9a8a,skin2:0x9ad8c0,wingC:0x3a7a6a,eye:0xd0ff8a,crest:0xd8f0e0,neckLen:0.6,tailLen:0.6,wingSpan:1.3,alt:0.3,rider:0x3a5a52,atk:'dive',extras:['spikes:0xe8f8f0']});
+R('h05Z',{k:1.1,ghost:true,h:1.08,legs:'none',floatY:0.44,torso:'robe',head:'hood',hoodC:0x2a2a4a,arms:'human',torsoC:0x3a3a6a,lowC:0x22224a,skin:0x8a8ab8,eye:0xb06aff,weapon:'staff',off:'book',bookC:0x3a1a4a,glow:0xb06aff,wood:0x3a2a4a,atk:'cast',extras:['halo:0xb06aff','wisps:0xc08aff']});
+R('h060',{k:1.35,ghost:true,h:1.2,bw:1.4,legs:'hoof',torso:'brute',head:'beast',headC:0x9ae0ff,helm:'horns',hornC:0xe0f8ff,arms:'human',torsoC:0x7ac8f0,legC:0x5aa8d8,skin:0x9ad8ff,eye:0xffffff,weapon:'staff',glow:0xe0ffff,wood:0x6aa8c8,atk:'cast',extras:['aura:0xc0f0ff','orbit:0xe0ffff','mane:0xc8f0ff']});

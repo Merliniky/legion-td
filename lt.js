@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import {SPR_UNITS,SPR_K,SPR_V} from './sprdata.js';
 import {MODELS,modelOf} from './models.js';
 import {ABZ as ABZ_} from './abil_zh.js';
+import {initTK,buildTK,animTK} from './toonkit.js?v=4';
+import {TKR} from './toonrecipes.js?v=4';
 const LT=window.LT,S=SFX.S,$=id=>document.getElementById(id);
 const Q=location.search;const DEBUG=/[?&]debug/.test(Q);const SHOWCASE=(Q.match(/[?&]showcase=([^&]+)/)||[])[1];
 const W=LT.W,H=LT.H,W2=W/2,H2=H/2;const B=LT.BUILD;
@@ -19,7 +21,7 @@ scene.add(new THREE.HemisphereLight(0xdcefff,0x4f7a2c,1.05));
 const sun=new THREE.DirectionalLight(0xfff0d0,2.45);sun.position.set(-6,15,7);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
 Object.assign(sun.shadow.camera,{left:-10,right:10,top:13,bottom:-13,near:1,far:45});sun.shadow.bias=-0.0005;sun.shadow.normalBias=0.025;scene.add(sun);scene.add(sun.target);
 const ramp=(()=>{const d=new Uint8Array([110,110,110,255,190,190,190,255,255,255,255,255]);const t=new THREE.DataTexture(d,3,1);t.minFilter=t.magFilter=THREE.NearestFilter;t.needsUpdate=true;return t;})();
-const toonM={};const tmat=(c,em=0,ei=0)=>{const k=c+'|'+em+'|'+ei;return toonM[k]||(toonM[k]=new THREE.MeshToonMaterial({color:c,gradientMap:ramp,emissive:em||0,emissiveIntensity:ei}));};
+initTK(ramp);const toonM={};const tmat=(c,em=0,ei=0)=>{const k=c+'|'+em+'|'+ei;return toonM[k]||(toonM[k]=new THREE.MeshToonMaterial({color:c,gradientMap:ramp,emissive:em||0,emissiveIntensity:ei}));};
 function cnv(w,h,f){const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
 const glowTex=cnv(64,64,(x)=>{const g=x.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.25,'rgba(255,255,255,.75)');g.addColorStop(0.6,'rgba(255,255,255,.18)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,64,64);});
 const puffTex=cnv(64,64,(x)=>{for(const [cx,cy,r] of [[32,34,20],[22,30,13],[42,28,14],[30,22,12],[38,40,12]]){const g=x.createRadialGradient(cx,cy,0,cx,cy,r);g.addColorStop(0,'rgba(255,255,255,.95)');g.addColorStop(0.7,'rgba(255,255,255,.7)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.beginPath();x.arc(cx,cy,r,0,7);x.fill();}});
@@ -113,14 +115,16 @@ function sprGC(){const used=new Set();for(const v of views.values())if(v.spec.s)
 const shadowMat=new THREE.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false});const shadowGeo=new THREE.PlaneGeometry(1,1);shadowGeo.rotateX(-Math.PI/2);
 const _cr=new THREE.Vector3(),_cf=new THREE.Vector3(),_sp=new THREE.Vector3(),_cp=new THREE.Vector3();
 function camFacing(yaw){_cr.setFromMatrixColumn(camera.matrixWorld,0);_cr.y=0;_cr.normalize();_cf.setFromMatrixColumn(camera.matrixWorld,2);_cf.y=0;_cf.normalize().negate();const fx=Math.sin(yaw),fz=Math.cos(yaw);return Math.atan2(fx*_cr.x+fz*_cr.z,fx*_cf.x+fz*_cf.z)*180/Math.PI;}
-const UNIT_K=1.05,SPR_PUSH=1.6;
+const UNIT_K=1.05,SPR_PUSH=1.6,TK_K=1.3;
 const views=new Map();const unitLayer=new THREE.Group();scene.add(unitLayer);
 const hpBgM=new THREE.SpriteMaterial({color:0x10131f,depthTest:false,transparent:true,opacity:0.85});
 const hpFgM={c:new THREE.SpriteMaterial({color:0xff4a3a,depthTest:false}),b:new THREE.SpriteMaterial({color:0xff2a8a,depthTest:false}),u:new THREE.SpriteMaterial({color:0x5fdc5a,depthTest:false}),k:new THREE.SpriteMaterial({color:0x4ab8ff,depthTest:false}),m:new THREE.SpriteMaterial({color:0xc070ff,depthTest:false}),s:new THREE.SpriteMaterial({color:0x8affe0,depthTest:false})};
 const mpFgM=new THREE.SpriteMaterial({color:0x5a8aff,depthTest:false});
 const ringG=new THREE.RingGeometry(0.3,0.4,24).rotateX(-Math.PI/2);
 const ringM={c:new THREE.MeshBasicMaterial({color:0xff3b3b,transparent:true,opacity:0.85,depthWrite:false}),u:new THREE.MeshBasicMaterial({color:0x3b9bff,transparent:true,opacity:0.85,depthWrite:false}),m:new THREE.MeshBasicMaterial({color:0xb050ff,transparent:true,opacity:0.9,depthWrite:false}),b:new THREE.MeshBasicMaterial({color:0xff2a8a,transparent:true,opacity:0.9,depthWrite:false}),s:new THREE.MeshBasicMaterial({color:0x6affd0,transparent:true,opacity:0.85,depthWrite:false})};
-const specOf=e=>e.isKing?MODELS.king:modelOf(e.type);
+const TKS={};function tkSpec(id){if(TKS[id])return TKS[id];const r=TKR[id];if(!r)return null;const base=MODELS[id]||{};
+  return TKS[id]={id,p:'tk',tk:r,k:r.k||1,fly:false,c:r.glow||0x88aaff,d:(base.d||[]).filter(x=>x.startsWith('aura')),trail:r.trail};}
+const specOf=e=>e.isKing?MODELS.king:(tkSpec(e.type)||modelOf(e.type));
 // ---------- procedural toon models (things the reused creature sprites cannot represent: machines, trees, elementals, crabs…) ----------
 const CYL=(rt,rb,h,s=10)=>new THREE.CylinderGeometry(rt,rb,h,s),SPH=(r,a=12,b=9)=>new THREE.SphereGeometry(r,a,b),CONE=(r,h,s=8)=>new THREE.ConeGeometry(r,h,s);
 function mk(geo,col,x=0,y=0,z=0,em){const m=new THREE.Mesh(geo,em?new THREE.MeshBasicMaterial({color:col}):tmat(col));m.position.set(x,y,z);m.castShadow=true;return m;}
@@ -172,7 +176,7 @@ const PROC={
   morph(c){const g=new THREE.Group();const m=mk(new THREE.IcosahedronGeometry(0.32,0),c,0,0.7);g.add(m);g.add(glowSpr(c,1.0,0,0.7));const q=document.createElement('canvas');q.width=q.height=64;const x=q.getContext('2d');x.font='900 52px sans-serif';x.fillStyle='#fff';x.textAlign='center';x.fillText('?',32,52);
     const t=new THREE.CanvasTexture(q);const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false}));sp.scale.set(0.5,0.5,1);sp.position.y=1.2;sp.renderOrder=9;g.add(sp);g.userData.spin=m;return g;},
 };
-function buildProc(spec){const f=PROC[spec.p]||PROC.morph;const g=f(spec.c||0x888888,spec.c2||0x444444);return g;}
+function buildProc(spec){if(spec.p==='tk')return buildTK(spec.id,spec.tk);const f=PROC[spec.p]||PROC.morph;const g=f(spec.c||0x888888,spec.c2||0x444444);return g;}
 // ---------- decorations: each unit's defining trait (crowns for leaders, auras for aura-casters, orbs for casters, flames, ghosts…) ----------
 const torusG=new THREE.TorusGeometry(0.2,0.025,6,24).rotateX(Math.PI/2);
 function addDeco(v){const d=v.spec.d||[];v.deco={};for(const s of d){const [k,cs]=s.split(':');const col=cs?parseInt(cs):0xffd75e;
@@ -208,7 +212,7 @@ function makeView(e){const g=new THREE.Group();const [x,z]=cw(e.x,e.y);g.positio
   const v={e,kind,type:e.isKing?'king':e.type,spec,g,sh,bg,fg,mp,spr:null,yaw:kind==='u'||kind==='k'||kind==='s'?Math.PI:0,hover:(e.fly||spec.fly)?0.5:0,
     k:UNIT_K*(spec.s?(SPR_K[spec.s]||1):1)*(spec.k||1)*(e.boss?1.45:1),deadT:0,sprK:'',sprT:0,sprDir:-1,sprMir:false,sprPg:0,flash:0,topY:0.7,born:now(),hidden:false};
   v.tint=new THREE.Color(spec.t!=null?spec.t:0xffffff);
-  if(spec.p){const m=buildProc(spec);m.scale.setScalar((spec.k||1)*(e.boss?1.45:1));m.position.y=v.hover;g.add(m);v.proc=m;v.topY=v.hover+1.0*(spec.k||1);m.traverse(o=>{if(o.isMesh&&o.material.isMeshToonMaterial){o.material=o.material.clone();}});}
+  if(spec.p){const m=buildProc(spec);m.scale.setScalar((spec.k||1)*(e.boss?1.45:1));m.position.y=v.hover;g.add(m);v.proc=m;v.topY=v.hover+1.0*(spec.k||1)*(spec.tk?(spec.tk.h||1)*1.05*TK_K:1);if(!spec.tk)m.traverse(o=>{if(o.isMesh&&o.material.isMeshToonMaterial){o.material=o.material.clone();}});}
   else loadSpr(spec.s).then(m=>{if(!m||v.gone)return;const tx=m.tex.map(t=>{const c=t.clone();c.needsUpdate=true;return c;});const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx[0],transparent:true,alphaTest:0.02,depthWrite:false}));sp.renderOrder=3;unitLayer.add(sp);v.spr=sp;v.m=m;v.tx=tx;});
   addDeco(v);views.set(e.id,v);return v;}
 function dropView(v){v.gone=true;unitLayer.remove(v.g);scene.remove(v.bg,v.fg,v.mp);dropDeco(v);if(v.spr){unitLayer.remove(v.spr);v.spr.material.dispose();for(const t of v.tx)t.dispose();}views.delete(v.e.id);}
@@ -228,7 +232,16 @@ function sprUpdate(v,dt){const m=v.m,e=v.e;const dead=!e.alive&&!e.inactive;let 
   const ga=v.deco&&v.deco.ghost?0.68:1;v.spr.material.opacity=(e.inactive?0.5:!dead?1:Math.max(0,1-Math.max(0,v.deadT-0.5)/0.4))*ga;
   decoUpdate(v,dt,now(),v.spr.position,F[6]/m.ppu*ks,ks*0.8);}
 // procedural model animation: idle bob, walking legs, rotors, attack lunge, death sink
-function procUpdate(v,dt){const m=v.proc,e=v.e,t=now();const dead=!e.alive&&!e.inactive;const u=m.userData;const k0=(v.spec.k||1)*(e.boss?1.45:1);
+function tkUpdate(v,dt){const m=v.proc,e=v.e,t=now();const dead=!e.alive&&!e.inactive;const k0=(v.spec.k||1)*(e.boss?1.45:1)*TK_K;const R=m.userData.tk;
+  let atk=-1;if(v.one==='attack'){v.atkT2=(v.atkT2||0)+dt;const dur=0.5/Math.max(0.6,v.atkSpd||1);atk=v.atkT2/dur;if(atk>=1){v.one=null;v.atkT2=0;atk=-1;}}
+  if(dead)v.deathT=(v.deathT||0)+dt;else v.deathT=0;
+  animTK(m,{t,dt,moving:e.moving,atk,dead,deathT:v.deathT});
+  m.rotation.y=v.yaw;if(!dead)m.position.set(0,v.hover,0);
+  m.scale.setScalar(k0*(1+v.flash*0.1)*Math.min(1,(now()-v.born)/0.3));v.flash=Math.max(0,v.flash-dt*5);m.visible=!(dead&&v.deathT>1.4);
+  if(atk>0.3&&atk<0.8&&R.meta.muzzle==='flame'&&!dead){const sy=Math.sin(v.yaw),cy=Math.cos(v.yaw);for(let i=0;i<2;i++){const sp=3+Math.random()*1.5,j=(Math.random()-0.5)*0.5;spawn(ADD,{x:v.g.position.x+sy*0.35*k0,y:0.55*k0,z:v.g.position.z+cy*0.35*k0,vx:(sy+j*cy)*sp,vy:0.3,vz:(cy-j*sy)*sp,drag:2.5,life:0.32,s0:0.12,s1:0.42*k0,col:Math.random()<0.5?0xff7a2a:0xffd04a,a:0.85});}}
+  if(v.spec.trail&&!dead&&Math.random()<dt*14)spawn(ADD,{x:v.g.position.x+(Math.random()-0.5)*0.3,y:(0.5+v.hover)*k0,z:v.g.position.z+(Math.random()-0.5)*0.3,vy:0.5,life:0.5,s0:0.22*k0,s1:0.04,col:v.spec.trail,a:0.8});
+  _sp.copy(v.g.position);decoUpdate(v,dt,t,_sp,v.topY,k0*0.9);}
+function procUpdate(v,dt){if(v.spec.p==='tk')return tkUpdate(v,dt);const m=v.proc,e=v.e,t=now();const dead=!e.alive&&!e.inactive;const u=m.userData;const k0=(v.spec.k||1)*(e.boss?1.45:1);
   if(u.rotor)u.rotor.rotation.y+=dt*18;if(u.prop)u.prop.rotation.z+=dt*14;if(u.spin){u.spin.rotation.y+=dt*1.5;u.spin.rotation.x+=dt*0.7;}
   if(u.blink)u.blink.visible=Math.sin(t*6)>0;
   if(u.legs)u.legs.forEach((l,i)=>{l.rotation.x=e.moving?Math.sin(t*14+i*1.3)*0.35:0;});
@@ -327,12 +340,12 @@ function porSpr(spec){return loadSpr(spec.s).then(m=>{if(!m)return null;const F=
   const sc=Math.min(88/F[3],88/F[4]);const w=F[3]*sc,h=F[4]*sc;x.drawImage(img,F[1],F[2],F[3],F[4],(96-w)/2,96-h-2,w,h);
   if(spec.t!=null&&spec.t!==0xffffff){x.globalCompositeOperation='multiply';x.fillStyle='#'+spec.t.toString(16).padStart(6,'0');x.fillRect(0,0,96,96);x.globalCompositeOperation='destination-in';x.drawImage(img,F[1],F[2],F[3],F[4],(96-w)/2,96-h-2,w,h);x.globalCompositeOperation='source-over';}
   porDeco(x,spec);return cv2;});}
-function portrait(id){if(POR.has(id))return POR.get(id);const spec=id==='king'?MODELS.king:modelOf(id);const p=spec.p?Promise.resolve(porProc(spec)):porSpr(spec);POR.set(id,p);return p;}
+function portrait(id){if(POR.has(id))return POR.get(id);const spec=id==='king'?MODELS.king:(tkSpec(id)||modelOf(id));const p=spec.p?Promise.resolve(porProc(spec)):porSpr(spec);POR.set(id,p);return p;}
 const porTag=(id,cls='pi')=>`<canvas class="${cls}" data-por="${id}" width="96" height="96"></canvas>`;
 function fillPor(root){for(const c of root.querySelectorAll('canvas[data-por]')){if(c.dataset.done)continue;c.dataset.done=1;portrait(c.dataset.por).then(src=>{if(src)c.getContext('2d').drawImage(src,0,0);});}}
 // ---------- game state / flow ----------
 const G={g:null,view:0,speed:1,paused:false,tab:'build',pick:null,sel:null,acc:0,overShown:false,lastHud:'',race:null,mode:'X3'};
-window.__lt={G,LT,views,scene,freeTiles,hoverTile,MODELS,portrait,cellScreen:(c,r)=>{const [x,z]=cw(c+0.5,r+0.5);return toScreen(x,0,z);}};
+window.__lt={G,LT,views,scene,camera,THREE,freeTiles,hoverTile,MODELS,portrait,cellScreen:(c,r)=>{const [x,z]=cw(c+0.5,r+0.5);return toScreen(x,0,z);}};
 const D=()=>LT.D;const U=id=>LT.D.units[id];
 function laneV(){return G.g.lanes[G.view];}
 const RACE_EMO={Arctic:'❄️',Beast:'🐻',Element:'🌀',Elf:'🧝',Ghost:'👻',Goblin:'💣',Hybrid:'❓','Demi-Human':'🪓',Marine:'🦈',Mech:'⚙️',Nature:'🌳',Paladin:'🛡️',Prophet:'🔮',Shadow:'💀',Undead:'⚰️',Orc:'🪖',Random:'🎲'};
