@@ -1,6 +1,6 @@
 // headless QA per race: 390x844 phone, race pick via UI, build via UI taps, then AI-assisted play for several waves.
 // usage: RACE=Beast MAXW=6 node test/qa_race.js   → shots/races/<race>_*.png, prints JSON summary
-const { chromium } = require('/workspace/weapon-brawl-test/node_modules/playwright-core');
+const { chromium } = require('./pw.js');
 const BT=+process.env.BUILDT||10;const RACE=process.env.RACE||'Beast',MAXW=+process.env.MAXW||6,MODE=process.env.MODE||'X3';const OUT='/workspace/legion-td/shots/races/';
 const URL=`http://127.0.0.1:8765/index.html?debug&seed=11&mode=${MODE}`;
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});

@@ -1,5 +1,5 @@
 // 截图各种族模型展示：node test/showcase.js [key ...]  → shots/races/showcase_<key>.png
-const {chromium}=require('/workspace/weapon-brawl-test/node_modules/playwright-core');
+const {chromium}=require('./pw.js');
 const keys=process.argv.slice(2).length?process.argv.slice(2):['Arctic','Beast','Demi-Human','Element','Elf','Ghost','Goblin','Hybrid','Marine','Mech','Nature','Paladin','Prophet','Shadow','Undead','Orc','waves','summons'];
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
  const res={};for(const k of keys){const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});const errs=[];

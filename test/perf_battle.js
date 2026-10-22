@@ -1,5 +1,5 @@
 // 战斗性能采样：PORT=8765 WAVE=1 node test/perf_battle.js → 可见网格数(≈draw calls)、三角形、单位数、fps(无GPU仅作相对比较)
-const {chromium}=require('/workspace/weapon-brawl-test/node_modules/playwright-core');
+const {chromium}=require('./pw.js');
 const PORT=process.env.PORT||8765,WAVE=+process.env.WAVE||1;
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
  const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));

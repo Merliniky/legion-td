@@ -1,6 +1,6 @@
 // 战斗挤压前后对比截图：node test/push_shot.js <baseURL> <out.png>
 // Paladin 阵容打第11波（54只发条地精，密集），战斗约20秒时截图，并统计我方单位向国王方向的最大漂移
-const {chromium}=require('/workspace/weapon-brawl-test/node_modules/playwright-core');
+const {chromium}=require('./pw.js');
 const [base,out]=process.argv.slice(2);
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});

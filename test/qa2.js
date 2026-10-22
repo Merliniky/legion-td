@@ -1,4 +1,4 @@
-const { chromium } = require('/workspace/weapon-brawl-test/node_modules/playwright-core');
+const { chromium } = require('./pw.js');
 const OUT='/workspace/legion-td/shots/';
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
  const ctx=await b.newContext({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true});
