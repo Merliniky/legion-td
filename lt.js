@@ -3,11 +3,11 @@ import * as THREE from 'three';
 import {SPR_UNITS,SPR_K,SPR_V} from './sprdata.js';
 import {MODELS,modelOf} from './models.js';
 import {ABZ as ABZ_} from './abil_zh.js';
-import {initTK,buildTK,animTK} from './toonkit.js?v=17';
-import {TKR} from './toonrecipes.js?v=17';
+import {initTK,buildTK,animTK} from './toonkit.js?v=18';
+import {TKR} from './toonrecipes.js?v=18';
 import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
-import {hqHas,hqReady,hqLoad,hqMake,hqUpdate,hqAttack,hqHit,hqDispose,hqPreload,hqWind,HQ_IDS,hqTpl,hqRecipe} from './hq.js?v=17';
+import {hqHas,hqReady,hqLoad,hqMake,hqUpdate,hqAttack,hqHit,hqDispose,hqPreload,hqWind,HQ_IDS,hqTpl,hqRecipe} from './hq.js?v=18';
 const LT=window.LT,S=SFX.S,$=id=>document.getElementById(id);
 const Q=location.search;const DEBUG=/[?&]debug/.test(Q);const SHOWCASE=(Q.match(/[?&]showcase=([^&]+)/)||[])[1];
 const HQON=!/[?&]hq=0/.test(Q);const useHQ=e=>HQON&&!e.isKing&&hqHas(e.type);
@@ -619,7 +619,7 @@ function placeLabels(){for(const v of views.values()){if(!v.label)continue;const
 // ---------- main loop ----------
 let last=now(),gcT=0;const DT=1/30;
 function frame(){requestAnimationFrame(frame);const t=now();let dt=Math.min(0.05,t-last);last=t;const g=G.g;
-  if(g&&!SHOWCASE){if(!G.paused&&!g.over){G.acc+=dt*G.speed;let n=0;while(G.acc>=DT&&n<16){LT.step(g,DT);G.acc-=DT;n++;onEvents(g.lanes[0],0);onEvents(g.lanes[1],1);}}
+  if(g&&!SHOWCASE){if(!G.paused&&!g.over){G.acc+=dt*G.speed;let n=0;const stepCap=Math.min(48,Math.max(16,Math.ceil(G.speed*10)));while(G.acc>=DT&&n<stepCap){LT.step(g,DT);G.acc-=DT;n++;onEvents(g.lanes[0],0);onEvents(g.lanes[1],1);}}
     else{onEvents(g.lanes[0],0);onEvents(g.lanes[1],1);}
     syncViews();hud();
     if(g.over&&!G.overShown){G.overShown=true;setTimeout(showOver,1400);}}
