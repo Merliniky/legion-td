@@ -177,7 +177,7 @@ function onDeath(g,L,x,src){L.events.push({k:'die',e:x,src});x.died=true;
       if(f.k==='deathspawn'){const sd=D.summoned[f.u];if(sd)for(let i=0;i<f.n;i++)spawnSummon(g,L,x,sd,9999);}}}}
 function spawnSummon(g,L,owner,sd,dur){const a=g.rnd()*6.28;const s={id:NID++,side:'s',owner:L.owner,type:sd.id,d:sd,x:owner.x+Math.cos(a)*0.6,y:owner.y+Math.sin(a)*0.6,hp:sd.hp,maxHp:sd.hp,mana:0,atkT:0.3,alive:true,tgt:null,radius:0.32,fly:sd.fly,st:{},cds:{},until:L.t+dur,master:owner.id};
   L.summ.push(s);L.events.push({k:'summon',e:s,m:owner});return s;}
-function attack(g,L,e,t,st){const T=L.t;e.atkT=st.cd/atkSpeedK(e,T);const wind=st.ranged?0.18:0.24;const travel=st.ranged?Math.max(0.05,dist(e,t)/9):0;
+function attack(g,L,e,t,st){const T=L.t;e.atkT=st.cd/atkSpeedK(e,T);const wind=e.d&&e.d.wind?Math.min(e.d.wind,e.atkT*0.8):(st.ranged?0.18:0.24);const travel=st.ranged?Math.max(0.05,dist(e,t)/9):0;
   let dmg=st.dmin+g.rnd()*(st.dmax-st.dmin);let crit=false,stun=0;const fx=fxOf(e);
   for(const f of fx){
     if(f.k==='flat')dmg+=f.dmg;

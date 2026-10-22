@@ -1,0 +1,18 @@
+<!doctype html><html><head><base href="../"><meta charset="utf-8"><style>body{margin:0;background:#8cc6ee}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./lib/three.module.min.js","three/addons/":"./lib/addons/"}}</script></head><body>
+<script type="module">
+// dev viewer: test/hq_view.html?ids=a,b&clip=atk|walk|idle|hit|die&t=0.4 → grid of HQ models, 3/4 view
+import * as THREE from 'three';import {HQ_IDS,hqLoad,hqMake,hqUpdate,hqAttack,hqHit} from './hq.js?v=dev';
+const Q=new URLSearchParams(location.search);const ids=(Q.get('ids')||HQ_IDS.join(',')).split(',');const clip=Q.get('clip')||'idle';const T=+(Q.get('t')||0.5);
+const r=new THREE.WebGLRenderer({antialias:true});r.setSize(innerWidth,innerHeight);r.shadowMap.enabled=true;r.outputColorSpace=THREE.SRGBColorSpace;r.toneMapping=THREE.ACESFilmicToneMapping;document.body.appendChild(r.domElement);
+const sc=new THREE.Scene();sc.background=new THREE.Color(0x8cc6ee);sc.add(new THREE.HemisphereLight(0xdcefff,0x4f7a2c,1.1));const sun=new THREE.DirectionalLight(0xfff0d0,2.4);sun.position.set(-4,10,6);sun.castShadow=true;sc.add(sun);
+const gr=new THREE.Mesh(new THREE.PlaneGeometry(40,40),new THREE.MeshLambertMaterial({color:0x7fd04a}));gr.rotation.x=-Math.PI/2;gr.receiveShadow=true;sc.add(gr);
+const cols=Math.min(5,ids.length),rows=Math.ceil(ids.length/cols);const cam=new THREE.PerspectiveCamera(30,innerWidth/innerHeight,0.1,100);
+cam.position.set((cols-1)*0.75,2.2+rows*0.9,rows*1.6+3.2);cam.lookAt((cols-1)*0.75,0.5,(rows-1)*0.75);
+await Promise.all(ids.map(hqLoad));const I=[];
+ids.forEach((id,i)=>{const x=hqMake(id);x.root.position.set((i%cols)*1.5,0,Math.floor(i/cols)*1.5);x.root.userData.p=x.root.position.clone();sc.add(x.root);I.push(x);});
+const st=(x,dt,mv)=>hqUpdate(x,{dt,x:x.root.userData.p.x+(mv?x.time*2:0),z:x.root.userData.p.z,moving:mv,dead:clip==='die',yaw:0.6,hover:x.t.rec.fly?0.55:0,k:1});
+for(const x of I){if(clip==='atk')hqAttack(x,0.4,1.2);if(clip==='hit')hqHit(x);}
+const mv=clip==='walk'||clip==='run';const n=Math.round(T/0.02);for(let k=0;k<n;k++)for(const x of I){st(x,0.02,mv);x.root.position.x=x.root.userData.p.x;x.root.position.z=x.root.userData.p.z;}
+r.render(sc,cam);window.done=true;
+</script></body></html>
